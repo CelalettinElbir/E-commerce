@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\admin\adminAuthController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\ConfirmablePasswordController;
 use App\Http\Controllers\Auth\EmailVerificationNotificationController;
@@ -57,3 +58,13 @@ Route::middleware('auth')->group(function () {
     Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
                 ->name('logout');
 });
+
+
+
+
+Route::controller(adminAuthController::class)->prefix("admin")->middleware(["auth","admin"])->group(function () {
+    Route::get('dashboard', 'index')->name("admin.dashboard");
+
+    Route::post('logout', 'logout')->name("admin.logout");
+});
+
