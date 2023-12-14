@@ -14,19 +14,18 @@ return new class extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->integer("stock");
-            $table->integer("width");
-            $table->integer("aspect_ratio");
-            $table->integer("rim_diameter");
-            $table->string('slug');
-            $table->integer('quantity');
+            $table->integer("stock");//Tamam 
+            $table->integer("stock_code");//Tamam
+            $table->integer("width");//tamam
+            $table->integer("aspect_ratio");//Tamam
+            $table->integer("rim_diameter");//Tamam 
+            $table->string('slug')->unique();//
             $table->float("price");
-            $table->float("discount_price");
+            $table->float("discount_price")->nullable();
             $table->string("description");
             $table->boolean("status")->default(1);
             $table->string("image");
-            $table->integer("category");
-
+            $table->string("short_description");
             $table->timestamps();
         });
     }

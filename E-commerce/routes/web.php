@@ -1,6 +1,7 @@
 <?php
 
-use App\Http\Controllers\admin\adminAuthController;
+use App\Http\Controllers\admin\AdminCategoryController;
+use App\Http\Controllers\Admin\AdminProductController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -27,6 +28,17 @@ Route::get('/', function () {
 
 
 
+// Route::prefix("admin/product")->resource("", AdminProductController::class);
+
+// Route::get("admin/product", [AdminProductController::class,"index"])->name("admin.product");
+
+
+Route::prefix('admin/products')->group(function () {
+    // Route::resource('products', AdminProductController::class);
+    Route::get("create", [AdminProductController::class, "create"])->name("admin.product.create");
+    Route::get("", [AdminProductController::class, "index"])->name("admin.product.index");
+    Route::post("create", [AdminProductController::class, "store"])->name("admin.product.store");
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -35,6 +47,8 @@ Route::middleware('auth')->group(function () {
 });
 
 
+Route::prefix('admin')->group(function () {
+    Route::resource('categories', AdminCategoryController::class);
+});
 
-
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
