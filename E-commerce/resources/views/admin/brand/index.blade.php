@@ -5,7 +5,7 @@
     <div class="content-header">
         <div class="d-flex align-items-center">
             <div class="mr-auto">
-                <h3 class="page-title">Kategoriler</h3>
+                <h3 class="page-title">Markalar</h3>
             </div>
         </div>
     </div>
@@ -14,7 +14,7 @@
             <div class="col-md-8">
                 <div class="box">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Kategoriler</h3>
+                        <h3 class="box-title">Markalar</h3>
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
@@ -23,22 +23,20 @@
                                 <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>Kategori Ad</th>
-                                        <th>İşlemler</th>
+                                        <th>Marka Ad</th>
+                                        <th>Açıklama</th>
                                         <th>İşlemler</th>
 
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($categories as $category)
+                                    @foreach ($brands as $brand)
                                         <tr>
-
-
-                                            <th>{{ $category->id }}</th>
-                                            <th>{{ $category->name }}</th>
-                                            <th>{{ $category->description }}</th>
+                                            <th>{{ $brand->id }}</th>
+                                            <th>{{ $brand->name }}</th>
+                                            <th>{{ $brand->description }}</th>
                                             <th class="d-flex gap-1 justify-content-center">
-                                                <form  id = "deleteForm" action="{{ route('categories.destroy', $category->id) }}"
+                                                <form id = "deleteForm" action="{{ route('brands.destroy', $brand->id) }}"
                                                     method="post">
                                                     @csrf
                                                     @method('DELETE')
@@ -48,8 +46,7 @@
                                                     </button>
                                                 </form>
 
-                                                <form action="{{ route('categories.edit', $category->id) }}" method="get">
-                                                    @csrf
+                                                <form action="{{ route('brands.edit', $brand->id) }}" method="get">
                                                     <button type="submit" class="btn btn-primary btn">
                                                         <i class="fa fa-pencil" aria-hidden="true"></i>
                                                     </button>
@@ -61,8 +58,8 @@
                                 <tfoot>
                                     <tr>
                                         <th>#</th>
-                                        <th>Kategori Ad</th>
-                                        <th>İşlemler</th>
+                                        <th>Marka Ad</th>
+                                        <th>Açıklama</th>
                                         <th>İşlemler</th>
 
                                     </tr>
@@ -77,16 +74,16 @@
             <div class="col-md-4">
                 <div class="box">
                     <div class="box-header with-border">
-                        <h4 class="box-title">Kategori oluştur</h4>
+                        <h4 class="box-title">Marka oluştur</h4>
                     </div>
                     <!-- /.box-header -->
-                    <form class="form" action="{{ route('categories.store') }}" method="POST">
+                    <form class="form" action="{{ route('brands.store') }}" method="POST">
                         @csrf
                         <div class="box-body">
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label>Kategori Ad</label>
+                                        <label>Marka Ad</label>
                                         <input type="text" class="form-control" placeholder="kategori" name="name">
 
                                         @error('name')
@@ -100,7 +97,7 @@
 
                             </div>
                             <div class="form-group">
-                                <h5>Kategory Açıklama <span class="text-danger">*</span></h5>
+                                <h5>Açıklama <span class="text-danger">*</span></h5>
                                 <div class="controls">
                                     <textarea id="textarea" name="description" class="form-control" required placeholder=""></textarea>
                                     @error('description')
@@ -146,3 +143,6 @@
             }
         </script>
     @endpush
+
+
+    

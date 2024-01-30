@@ -18,7 +18,7 @@
                             <div class="row">
                                 <div class="col-12">
 
-                                    {{-- <div class="row">
+                                    <div class="row">
                                         <div class="col-md-6 ">
                                             <div class="form-group">
                                                 <h5>Kategori Seçiniz <span class="text-danger">*</span></h5>
@@ -62,7 +62,7 @@
 
                                         </div>
 
-                                    </div> --}}
+                                    </div>
 
 
                                     <div class="row">

@@ -10,7 +10,6 @@ use App\Models\Product;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Validator;
 use Intervention\Image\Facades\Image;
-
 use function Laravel\Prompts\alert;
 
 class AdminProductController extends Controller
@@ -22,8 +21,8 @@ class AdminProductController extends Controller
     {
         $categories = Category::latest()->get();
         $brands = Brand::latest()->get();
-
-        return view("admin.product.index", compact("brands", "categories"));
+        $products =  Product::latest()->get();
+        return view("admin.product.index", compact("brands", "categories", "products"));
     }
 
     /**
@@ -43,70 +42,138 @@ class AdminProductController extends Controller
      */
     public function store(Request $request)
     {
-        try {
-            $validator = Validator::make($request->all(), [
-                'name' => 'required|max:255',
-                'stock' => 'required|integer|min:0',
-                'stock_code' => 'required',
-                'width' => 'required|integer|min:0',
-                'aspect_ratio' => 'required|integer|min:0',
-                'rim_diameter' => 'required|integer|min:0',
-                'price' => 'required|numeric|min:0',
-                'discount_price' => 'nullable|numeric|min:0',
-                'description' => 'nullable',
-                'status' => 'required|boolean',
-                'image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
-                'short_description' => 'nullable',
-            ]);
-
-            $image = $request->file("image");
-            $image_name = hexdec(uniqid()) . " " . $image->getClientOriginalExtension();
-            Image::make($image)->resize(917, 1000)->save("upload/products/" . $image_name);
-            $request["slug"] = Str::slug($request["name"]);
-            $validator->validate();
-            $product = Product::create($request->all());
-            $product->save();
-            // Eğer product başarıyla oluşturulduysa, isteği uygun şekilde işleyebilirsiniz
-            return redirect()->route('admin.products.index')->with('success', 'Ürün başarıyla oluşturuldu.');
-        } catch (\Exception $e) {
-            // Handle any exceptions that may occur during image processing or database save
-            return "ahata " . $e->getMessage();
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|max:255|unique:products',
+            'stock' => 'required|integer|min:0',
+            'stock_code' => 'required',
+            'width' => 'required|integer|min:0',
+            'aspect_ratio' => 'required|integer|min:0',
+            'rim_diameter' => 'required|integer|min:0',
+            'price' => 'required|numeric|min:0',
+            'discount_price' => 'nullable|numeric|min:0',
+            'description' => 'nullable',
+            'status' => 'required|boolean',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+            'short_description' => 'nullable',
+        ]);
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
         }
+        try {
 
-
-
-        // Eğer doğrulama başarısız olursa, hata mesajlarını göster
+            if ($request->hasFile("image")) {
+                $image = $request->file("image");
+                $image_name = hexdec(uniqid()) . "." . $image->getClientOriginalExtension();
+                $image->move("upload/products/", $image_name);
+            }
+            $slug = Str::slug($request->name);
+            Product::create([
+                'name' => $request->name,
+                'stock' => $request->stock,
+                'stock_code' => $request->stock_code,
+                'width' => $request->width,
+                'aspect_ratio' => $request->aspect_ratio,
+                'rim_diameter' => $request->rim_diameter,
+                'price' => $request->price,
+                'discount_price' => $request->discount_price,
+                'description' => $request->description,
+                'status' => $request->status,
+                'image' => $image_name,
+                'short_description' => $request->short_description,
+                'slug' => $slug,
+            ]);
+            return redirect()->route('admin.product.index')->with('success', 'Ürün başarıyla oluşturuldu.');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Ürün oluşturulurken bir hata oluştu: ' . $e->getMessage());
+        }
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
+
+
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($id)
     {
-        //
+        $product = Product::find($id);
+        $categories = Category::latest()->get();
+        $brands = Brand::latest()->get();
+        if (!$product) {
+            return redirect()->route('admin.product.index')->with('error', 'Ürün bulunamadı.');
+        }
+
+        return view('admin.product.edit', compact("product", "categories", "brands"));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, string $id)
     {
-        //
+
+        $product = Product::find($id);
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|max:255',
+            'stock' => 'required|integer|min:0',
+            'stock_code' => 'required',
+            'width' => 'required|integer|min:0',
+            'aspect_ratio' => 'required|integer|min:0',
+            'rim_diameter' => 'required|integer|min:0',
+            'price' => 'required|numeric|min:0',
+            'discount_price' => 'nullable|numeric|min:0',
+            'description' => 'nullable',
+            'status' => 'required|boolean',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+            'short_description' => 'nullable',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        try {
+            $image_name = $product->image;
+
+            if ($request->hasFile("image")) {
+                $image = $request->file('image');
+                $image_name = hexdec(uniqid())  . $image->getClientOriginalName();
+                $image_resize = Image::make($image->getRealPath());
+                $image_resize->resize(1200, 500);
+                $image_resize->save(public_path('upload/sliders/' . $image_name));
+            }
+            $slug = Str::slug($request->name);
+            $product->update([
+                'name' => $request->name,
+                'stock' => $request->stock,
+                'stock_code' => $request->stock_code,
+                'width' => $request->width,
+                'aspect_ratio' => $request->aspect_ratio,
+                'rim_diameter' => $request->rim_diameter,
+                'price' => $request->price,
+                'discount_price' => $request->discount_price,
+                'description' => $request->description,
+                'status' => $request->status,
+                'image' => $image_name,
+                'short_description' => $request->short_description,
+                'slug' => $slug,
+            ]);
+
+            return redirect()->route('admin.product.index')->with('success', 'Ürün başarıyla güncellendi.');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Ürün güncellenirken bir hata oluştu: ' . $e->getMessage());
+        }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(string $id)
     {
-        //
+        $product = Product::find($id);
+
+        if (!$product) {
+            return redirect()->route('admin.product.index')->with('error', 'Ürün bulunamadı.');
+        }
+        try {
+            $product->delete();
+            return redirect()->route('admin.product.index')->with('success', 'Ürün başarıyla silindi.');
+        } catch (\Exception $e) {
+            return redirect()->route('admin.product.index')->with('error', 'Ürün silinirken bir hata oluştu: ' . $e->getMessage());
+        }
     }
 }

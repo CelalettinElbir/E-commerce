@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminBrandController;
 use App\Http\Controllers\admin\AdminCategoryController;
 use App\Http\Controllers\Admin\AdminProductController;
+use App\Http\Controllers\Admin\AdminSliderController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -38,6 +40,9 @@ Route::prefix('admin/products')->group(function () {
     Route::get("create", [AdminProductController::class, "create"])->name("admin.product.create");
     Route::get("", [AdminProductController::class, "index"])->name("admin.product.index");
     Route::post("create", [AdminProductController::class, "store"])->name("admin.product.store");
+    Route::delete("destroy/{id}", [AdminProductController::class, "destroy"])->name("admin.product.delete");
+    Route::get("edit/{id}", [AdminProductController::class, "edit"])->name("admin.product.edit");
+    Route::patch("update/{id}", [AdminProductController::class, "update"])->name("admin.product.update");
 });
 
 Route::middleware('auth')->group(function () {
@@ -49,6 +54,8 @@ Route::middleware('auth')->group(function () {
 
 Route::prefix('admin')->group(function () {
     Route::resource('categories', AdminCategoryController::class);
+    Route::resource('brands', AdminBrandController::class);
+    route::resource('slider',AdminSliderController::class);
 });
 
 require __DIR__ . '/auth.php';
