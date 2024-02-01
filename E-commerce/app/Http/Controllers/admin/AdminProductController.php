@@ -10,6 +10,7 @@ use App\Models\Product;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Validator;
 use Intervention\Image\Facades\Image;
+
 use function Laravel\Prompts\alert;
 
 class AdminProductController extends Controller
@@ -60,7 +61,7 @@ class AdminProductController extends Controller
             return redirect()->back()->withErrors($validator)->withInput();
         }
         try {
-
+            $image_name = null;
             if ($request->hasFile("image")) {
                 $image = $request->file("image");
                 $image_name = hexdec(uniqid()) . "." . $image->getClientOriginalExtension();
@@ -133,11 +134,9 @@ class AdminProductController extends Controller
             $image_name = $product->image;
 
             if ($request->hasFile("image")) {
-                $image = $request->file('image');
-                $image_name = hexdec(uniqid())  . $image->getClientOriginalName();
-                $image_resize = Image::make($image->getRealPath());
-                $image_resize->resize(1200, 500);
-                $image_resize->save(public_path('upload/sliders/' . $image_name));
+                $image = $request->file("image");
+                $image_name = hexdec(uniqid()) . "." . $image->getClientOriginalExtension();
+                $image->move("upload/products/", $image_name);
             }
             $slug = Str::slug($request->name);
             $product->update([

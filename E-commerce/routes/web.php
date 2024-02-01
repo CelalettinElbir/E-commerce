@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AdminBrandController;
 use App\Http\Controllers\admin\AdminCategoryController;
+use App\Http\Controllers\Admin\AdminOrderController;
 use App\Http\Controllers\Admin\AdminProductController;
 use App\Http\Controllers\Admin\AdminSliderController;
 use App\Http\Controllers\ProfileController;
@@ -30,9 +31,6 @@ Route::get('/', function () {
 
 
 
-// Route::prefix("admin/product")->resource("", AdminProductController::class);
-
-// Route::get("admin/product", [AdminProductController::class,"index"])->name("admin.product");
 
 
 Route::prefix('admin/products')->group(function () {
@@ -55,7 +53,10 @@ Route::middleware('auth')->group(function () {
 Route::prefix('admin')->group(function () {
     Route::resource('categories', AdminCategoryController::class);
     Route::resource('brands', AdminBrandController::class);
-    route::resource('slider',AdminSliderController::class);
+    route::resource('slider', AdminSliderController::class);
+    route::resource('order', AdminOrderController::class);
 });
+
+
 
 require __DIR__ . '/auth.php';

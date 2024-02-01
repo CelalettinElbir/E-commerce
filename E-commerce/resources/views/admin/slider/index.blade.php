@@ -18,15 +18,13 @@
                     <!-- /.box-header -->
                     <div class="box-body">
                         <div class="table-responsive">
-                            <table id="example5" class="table table-bordered table-striped" style="width:100%">
+                            <table id="example4" class="table table-bordered table-striped" style="width:100%">
                                 <thead>
                                     <tr>
                                         <th>#</th>
                                         <th>Title</th>
                                         <th>Description</th>
                                         <th>Image</th>
-                                        <th>Created At</th>
-                                        <th>Updated At</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
@@ -36,11 +34,10 @@
                                             <td>{{ $slider->id }}</td>
                                             <td>{{ $slider->title }}</td>
                                             <td>{{ $slider->description }}</td>
-                                            <td><img src="{{ asset('upload/sliders/' . $slider->slider_img) }}"
+                                            <td><img src="{{ asset('upload/slider/' . $slider->slider_img) }}"
                                                     alt="{{ $slider->title }}" style="max-width: 150px;"></td>
-                                            <td>{{ $slider->created_at }}</td>
-                                            <td>{{ $slider->updated_at }}</td>
-                                            <td>
+                                           
+                                            <td >
                                                 <form id="deleteForm" action="{{ route('slider.destroy', $slider->id) }}"
                                                     method="post">
                                                     @csrf
@@ -84,7 +81,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="description">Açıklama</label>
-                                <textarea class="form-control" id="description" name="Açıklma" placeholder="Description"></textarea>
+                                <textarea class="form-control" id="description" name="description" placeholder="Description"></textarea>
                             </div>
                             <div class="form-group">
                                 <label for="image">Fotoğraf</label>

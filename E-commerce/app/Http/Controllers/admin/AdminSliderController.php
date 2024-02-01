@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Slider;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Validator;
 use Intervention\Image\Facades\Image;
 
@@ -27,6 +28,7 @@ class AdminSliderController extends Controller
      */
     public function store(Request $request)
     {
+
         // Doğrulama kuralları
         $validator = Validator::make($request->all(), [
             'title' => 'required|max:255',
@@ -36,18 +38,15 @@ class AdminSliderController extends Controller
 
         // Doğrulama başarısız olursa geri dön
         if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput();
+            return "hata";
         }
 
         // Dosyayı yükle ve kaydet
         if ($request->hasFile("image")) {
-            $image = $request->file('image');
-            $image_name = hexdec(uniqid())  . $image->getClientOriginalName();
-            $image_resize = Image::make($image->getRealPath());
-            $image_resize->resize(1200, 500);
-            $image_resize->save(public_path('upload/sliders/' . $image_name));
+            $image = $request->file("image");
+            $image_name = hexdec(uniqid()) . "." . $image->getClientOriginalExtension();
+            $image->move("upload/slider/", $image_name);
         }
-
         // Yeni slider oluştur
         Slider::create([
             'title' => $request->title,
@@ -56,7 +55,7 @@ class AdminSliderController extends Controller
         ]);
 
         // Yeni slider oluşturulduğunda kullanıcıyı ilgili yere yönlendir
-        return redirect()->route('sliders.index')->with('success', 'Slider başarıyla oluşturuldu.');
+        return redirect()->route('slider.index')->with('success', 'Slider başarıyla oluşturuldu.');
     }
     /**
      * Display the specified resource.
@@ -71,7 +70,7 @@ class AdminSliderController extends Controller
      */
     public function edit(Slider $slider)
     {
-        //
+        return view("admin.slider.edit", compact("slider"));
     }
 
     /**
@@ -79,14 +78,53 @@ class AdminSliderController extends Controller
      */
     public function update(Request $request, Slider $slider)
     {
-        //
-    }
+        $validator = Validator::make($request->all(), [
+            'title' => 'required|max:255',
+            'description' => 'required',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
 
+        // Doğrulama başarısız olursa geri dön
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+        // Slider öğesini güncelle
+        $slider->title = $request->title;
+        $slider->description = $request->description;
+
+        // Eğer yeni bir resim yüklendi ise
+        if ($request->hasFile('image')) {
+            // Eski resmi sil
+            if (file_exists(public_path("upload\slider\\" . $slider->slider_img))) {
+                if (file_exists(public_path("upload\slider\\" . $slider->slider_img))) {
+                    unlink(public_path("upload\slider\\" . $slider->slider_img));
+                }
+            }
+            $image = $request->file('image');
+            $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
+            Image::make($image)->resize(917, 1000)->save('upload/slider/' . $name_gen);
+            $slider->slider_img =  $name_gen;
+        }
+        $slider->save();
+        // Kullanıcıyı ilgili yere yönlendir
+        return redirect()->route('slider.index')->with('success', 'Slider başarıyla güncellendi.');
+    }
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(Slider $slider)
     {
-        //
+        if (!$slider) {
+            return redirect()->route('slider.index')
+                ->with('error', 'kategori bulunamadı');
+        }
+        if (file_exists(public_path("upload\slider\\" . $slider->slider_img))) {
+            if (file_exists(public_path("upload\slider\\" . $slider->slider_img))) {
+                unlink(public_path("upload\slider\\" . $slider->slider_img));
+            }
+        }
+        $slider->delete();
+
+        return redirect()->route('slider.index')->with('success', 'kategori başarıyla oluşturuldu.');
     }
 }
