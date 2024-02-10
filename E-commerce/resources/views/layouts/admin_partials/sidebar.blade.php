@@ -19,13 +19,13 @@
           <ul class="sidebar-menu" data-widget="tree">
 
               <li>
-                  <a href="index.html">
+                  <a href="{{ route('admin.dashboard') }}">
                       <i data-feather="pie-chart"></i>
                       <span>Dashboard</span>
                   </a>
               </li>
 
-              <li class="treeview">
+              {{-- <li class="treeview">
                   <a href="#">
                       <i data-feather="message-circle"></i>
                       <span>Application</span>
@@ -37,7 +37,7 @@
                       <li><a href="chat.html"><i class="ti-more"></i>Chat</a></li>
                       <li><a href="calendar.html"><i class="ti-more"></i>Calendar</a></li>
                   </ul>
-              </li>
+              </li> --}}
 
 
 
@@ -83,6 +83,14 @@
                       <span>Slider</span>
                   </a>
               </li>
+              <li>
+                  <a href="{{ route('order.index') }}">
+                      <i data-feather=""></i>
+                      <span>sipariş</span>
+                  </a>
+              </li>
+
+
 
 
 
@@ -119,7 +127,7 @@
                   </ul>
               </li> --}}
 
-              <li class="header nav-small-cap">User Interface</li>
+              {{-- <li class="header nav-small-cap">User Interface</li>
 
               <li class="treeview">
                   <a href="#">
@@ -325,7 +333,7 @@
                       </li>
                       <li><a href="#">Level One</a></li>
                   </ul>
-              </li>
+              </li> --}}
 
               <li>
                   <a href="auth_login.html">

@@ -14,11 +14,19 @@ class AdminOrderController extends Controller
     public function index()
     {
 
-        $shopOrder = ShopOrder::latest()->get();
+        $shopOrders = ShopOrder::latest()->get();
 
-        return view("admin.order.index", compact("shopOrder"));
-
+        return view("admin.order.index", compact("shopOrders"));
     }
+
+    public function details(ShopOrder $ShopOrder)
+    {
+
+
+        return view("admin.order.orderDetails",compact("ShopOrder"));
+    }
+
+
 
     /**
      * Show the form for creating a new resource.

@@ -4,7 +4,7 @@
     <div class="content-header">
         <div class="d-flex align-items-center">
             <div class="mr-auto">
-                <h3 class="page-title">Shop Orders</h3>
+                <h3 class="page-title">Mağaza Siparişleri</h3>
             </div>
         </div>
     </div>
@@ -13,7 +13,7 @@
             <div class="col-md-12">
                 <div class="box">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Shop Orders</h3>
+                        <h3 class="box-title">Mağaza Siparişleri</h3>
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
@@ -22,33 +22,33 @@
                                 <thead>
                                     <tr>
                                         <th>ID</th>
-                                        <th>User ID</th>
-                                        <th>Address ID</th>
-                                        <th>Order Total</th>
-                                        <th>Created At</th>
-                                        <th>Updated At</th>
+                                        <th>Kullanıcı ID</th>
+                                        <th>Adres ID</th>
+                                        <th>Sipariş Toplamı</th>
+                                        <th>Sipariş detay</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach($shopOrders as $order)
-                                    <tr>
-                                        <td>{{ $order->id }}</td>
-                                        <td>{{ $order->user_id }}</td>
-                                        <td>{{ $order->address_id }}</td>
-                                        <td>{{ $order->order_total }}</td>
-                                        <td>{{ $order->created_at }}</td>
-                                        <td>{{ $order->updated_at }}</td>
-                                    </tr>
+                                    @foreach ($shopOrders as $order)
+                                        <tr>
+                                            <td>{{ $order->id }}</td>
+                                            <td>{{ $order->user->name }}</td>
+                                            <td>{{ $order->address->address_line_1 }}</td>
+                                            <td>{{ $order->order_total }}</td>
+                                            <td>
+                                                <a  href="{{ route('admin.orders.details', $order) }}">Detayları
+                                                    Görüntüle</a>
+                                            </td>
+                                        </tr>
                                     @endforeach
                                 </tbody>
                                 <tfoot>
                                     <tr>
                                         <th>ID</th>
-                                        <th>User ID</th>
-                                        <th>Address ID</th>
-                                        <th>Order Total</th>
-                                        <th>Created At</th>
-                                        <th>Updated At</th>
+                                        <th>Kullanıcı ID</th>
+                                        <th>Adres ID</th>
+                                        <th>Sipariş Toplamı</th>
+                                        <th>Sipariş detay</th>
                                     </tr>
                                 </tfoot>
                             </table>

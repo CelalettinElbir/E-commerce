@@ -16,10 +16,18 @@ class Address extends Model
         'city',
         'state',
         'postal_code',
+        "phone_number"
     ];
 
     public function user()
     {
         return $this->belongsTo(User::class);
     }
+
+    public function orders()
+    {
+        return $this->hasMany(ShopOrder::class);
+    }
 }
+
+//TODO: migrationa phone number eklenmedi.

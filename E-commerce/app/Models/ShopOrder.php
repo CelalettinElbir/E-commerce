@@ -10,15 +10,24 @@ class ShopOrder extends Model
     use HasFactory;
 
 
-    protected $fillable = ['user_id', 'total_amount'];
+    protected $fillable = [
+        'user_id',
+        'shipping_address',
+        'order_total',
+        'order_status',
+    ];
+
+    public function orderDetails()
+    {
+        return $this->hasMany(ShopOrderItem::class, 'order_id', 'id');
+    }
 
     public function user()
     {
         return $this->belongsTo(User::class);
     }
-
-    // public function items()
-    // {
-    //     return $this->hasMany(OrderItem::class);
-    // }
+    public function address()
+    {
+        return $this->belongsTo(Address::class);
+    }
 }

@@ -17,6 +17,13 @@ class Product extends Model
         'stock', 'price', 'discount_price', 'description', 'status',
         'image', 'short_description', 'slug',
     ];
+
+    public function orderDetails()
+    {
+        return $this->hasMany(ShopOrderItem::class, 'product_id', 'id');
+    }
+
+
     // public function category()
     // {
     //     return $this->belongsTo(Category::class);

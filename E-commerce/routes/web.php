@@ -55,6 +55,7 @@ Route::prefix('admin')->group(function () {
     Route::resource('brands', AdminBrandController::class);
     route::resource('slider', AdminSliderController::class);
     route::resource('order', AdminOrderController::class);
+    Route::get('orders/{ShopOrder}/details', [AdminOrderController::class, 'details'])->name('admin.orders.details');
 });
 
 
