@@ -96,3 +96,5 @@ class AdminBrandController extends Controller
         return redirect()->route('brands.index')->with('success', 'kategori başarıyla oluşturuldu.');
     }
 }
+
+//TODO:Tostr bildirimleri yapılacak 

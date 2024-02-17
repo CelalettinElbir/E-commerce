@@ -38,9 +38,16 @@ class AdminCategoryController extends Controller
         ]);
         $request["slug"] = Str::slug($request["name"]);
         $validator->validate();
-        $category = Category::create($request->all());
+        Category::create($request->all());
+
         // Eğer product başarıyla oluşturulduysa, isteği uygun şekilde işleyebilirsiniz
-        return redirect()->route('categories.index')->with('success', 'Ürün başarıyla oluşturuldu.');
+        $notification = array(
+            "message" => "kategori başarıyla oluşturuldu.",
+            "alert-type" => "success"
+
+        );
+
+        return redirect()->route('categories.index')->with($notification);
     }
     /**
      * Display the specified resource.
@@ -68,7 +75,15 @@ class AdminCategoryController extends Controller
         ]);
 
         $category->update($request->all());
-        return redirect()->route('categories.index')->with('success', 'Kategori başarıyla güncellendi.');
+
+
+        $notification = array(
+            "message" => "Kategori başarıyla güncellendi.",
+            "alert-type" => "success"
+
+        );
+
+        return redirect()->route('categories.index')->with($notification);
     }
     /**
      * Remove the specified resource from storage.
@@ -81,6 +96,12 @@ class AdminCategoryController extends Controller
         }
         $category->delete();
 
-        return redirect()->route('Brad.index')->with('success', 'kategori başarıyla oluşturuldu.');
+        $notification = array(
+            "message" => "Kategori başarıyla silindi.",
+            "alert-type" => "success"
+
+        );
+
+        return redirect()->route('categories.index')->with($notification);
     }
 }

@@ -55,7 +55,16 @@ Route::prefix('admin')->group(function () {
     Route::resource('brands', AdminBrandController::class);
     route::resource('slider', AdminSliderController::class);
     route::resource('order', AdminOrderController::class);
-    Route::get('orders/{ShopOrder}/details', [AdminOrderController::class, 'details'])->name('admin.orders.details');
+    route::prefix("orders/")->group(function () {
+        Route::get('{ShopOrder}/details', [AdminOrderController::class, 'details'])->name('admin.orders.details');
+        Route::get('pending', [AdminOrderController::class, 'pendingOrder'])->name('admin.orders.pending');
+        Route::get('shipped', [AdminOrderController::class, 'shippedOrder'])->name('admin.orders.shipped');
+        Route::get('cancelled', [AdminOrderController::class, 'cancelledOrder'])->name('admin.orders.cancelled');
+        Route::get('processing', [AdminOrderController::class, 'processingOrder'])->name('admin.orders.processing');
+        Route::put('{ShopOrder}/update-status', [AdminOrderController::class, 'updateStatus'])->name('admin.orders.updateStatus');
+        Route::get('shipment/{ShopOrder}', [AdminOrderController::class, 'ShipmentCode'])->name('admin.orders.ShipmentCode');
+        Route::post('/shipment/{ShopOrder}/create', [AdminOrderController::class, 'ShipmentCreate'])->name('admin.orders.createShipmentCode');
+    });
 });
 
 

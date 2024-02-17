@@ -64,11 +64,13 @@
 
                             <tr>
                                 <th>Toplam </th>
+
                                 <td>{{ $ShopOrder->order_total }}</td>
                             </tr>
                             <tr>
                                 <th>Şipariş durumu </th>
-                                <td>{{ $ShopOrder->order_status }}</td>
+                                <td><span class="badge badge-pill badge-danger">{{ $ShopOrder->status }}</span>
+                                </td>
                             </tr>
 
                             <tr>
@@ -89,47 +91,43 @@
                     </div>
 
                     <!-- /.box-header -->
-                    <div class="box-body no-padding">
-                        <div class="table-responsive">
-                            <table class="table table-hover">
-                                <tbody>
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <tbody>
+                                <tr>
+                                    <th>Resim</th>
+                                    <th>Ürün İsim </th>
+                                    <th>Adet</th>
+                                    <th>Ürün Kodu</th>
+                                    <th>Lastik Ebatları</th>
+                                </tr>
+
+                                @foreach ($ShopOrder->orderDetails as $item)
                                     <tr>
-                                        <th>Resim</th>
-                                        <th>Ürün İsim </th>
-                                        <th>Adet</th>
-                                        <th>Ürün Kodu</th>
-                                        <th>Lastik Ebatları</th>
+                                        <th>
+                                            <img src="{{ asset("upload/products/{$item->product->image}") }}"
+                                                width="200px" alt="Fotoğraf">
+                                        </th>
+                                        <td>{{ $item->product->name }}</td>
+                                        <td> {{ $item->product->price }}</td>
+                                        <td> {{ $item->product->stock_code }}</td>
+                                        <td> {{ $item->product->aspect_ratio . '-' . $item->product->width . '-' . $item->product->rim_diameter }}
+                                        </td>
 
                                     </tr>
+                                @endforeach
 
-                                    @foreach ($ShopOrder->orderDetails as $item)
-                                        <tr>
-                                            <th width= "20%">
-                                                <img src="{{ asset("upload/products/{$item->product->image}") }}"
-                                                    width="200px" alt="Fotoğraf">
-                                            </th>
-                                            <td>{{ $item->product->name }}</td>
-                                            <td> {{ $item->product->price }}</td>
-                                            <td> {{ $item->product->stock_code }}</td>
-                                            <td> {{ $item->product->aspect_ratio . '-' . $item->product->width . '-' . $item->product->rim_diameter }}
-                                            </td>
-
-                                        </tr>
-                                    @endforeach
-
-                                </tbody>
-                            </table>
-                        </div>
+                            </tbody>
+                        </table>
                     </div>
                     <!-- /.box-body -->
                 </div>
                 <!-- /.box -->
             </div>
+
+
+
         </div>
-        </div>
-
-
-
 
         </div>
     </section>

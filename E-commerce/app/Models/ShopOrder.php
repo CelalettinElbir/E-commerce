@@ -14,8 +14,13 @@ class ShopOrder extends Model
         'user_id',
         'shipping_address',
         'order_total',
-        'order_status',
+        'status',
     ];
+
+    public function shippingMethod()
+    {
+        return $this->belongsTo(ShipppingMethod::class);
+    }
 
     public function orderDetails()
     {
@@ -29,5 +34,17 @@ class ShopOrder extends Model
     public function address()
     {
         return $this->belongsTo(Address::class);
+    }
+
+    public static function getStatuses()
+    {
+        return [
+            'pending' => 'onaylanmamış',
+            'processing' => 'İşleniyor',
+            'completed' => 'Tamamlandı',
+            'cancelled' => 'İptal Edildi',
+            'shipped' => 'Kargolandı',
+            'delivered' => 'Teslim Edildi',
+        ];
     }
 }

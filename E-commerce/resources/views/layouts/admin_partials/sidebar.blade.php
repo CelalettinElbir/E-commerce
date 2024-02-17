@@ -83,17 +83,41 @@
                       <span>Slider</span>
                   </a>
               </li>
-              <li>
+              {{-- <li>
                   <a href="{{ route('order.index') }}">
                       <i data-feather=""></i>
                       <span>sipariş</span>
                   </a>
+              </li> --}}
+
+              <li class="treeview">
+                  <a href="">
+                      <i data-feather="mail"></i> <span>Siparişler</span>
+                      <span class="pull-right-container">
+                          <i class="fa fa-angle-right pull-right"></i>
+                      </span>
+                  </a>
+                  <ul class="treeview-menu">
+                      <li><a href="{{ route('order.index') }}"><i class="ti-more"></i>Tüm şiparişler</a></li>
+                      <li><a href="{{ route('admin.orders.pending') }}"><i class="ti-more"></i>Onay bekleyen </a></li>
+                      <li><a href="{{ route('admin.orders.processing') }}"><i class="ti-more"></i>Onaylananlar </a></li>
+                      <li><a href="{{ route('admin.orders.shipped') }}"><i class="ti-more"></i>Kargolanan </a></li>
+                      <li><a href="{{ route('admin.orders.cancelled') }}"><i class="ti-more"></i>İptal Edilenler</a>
+
+                      </li>
+                  </ul>
               </li>
 
-
-
-
-
+             
+              {{-- return [
+                'pending' => 'Beklemede',
+                'processing' => 'İşleniyor',
+                'completed' => 'Tamamlandı',
+                'cancelled' => 'İptal Edildi',
+                'shipped' => 'Gönderildi',
+                'delivered' => 'Teslim Edildi',
+            ];
+ --}}
 
               {{-- <li class="treeview">
                   <a href="#">
