@@ -23,7 +23,6 @@
 </head>
 
 <body>
-    @include('layouts.user_partials.header')
 
     <!-- Start preloader -->
     <div id="preloader">
@@ -31,32 +30,42 @@
             <div class="animation-preloader">
                 <div class="spinner"></div>
                 <div class="txt-loading">
+                    <span data-text-preloader="Y" class="letters-loading">
+                        Y
+                    </span>
+
+                    <span data-text-preloader="Ü" class="letters-loading">
+                        Ü
+                    </span>
+
+                    <span data-text-preloader="K" class="letters-loading">
+                        K
+                    </span>
+
                     <span data-text-preloader="L" class="letters-loading">
                         L
+                    </span>
+
+                    <span data-text-preloader="E" class="letters-loading">
+                        E
+                    </span>
+                    <span data-text-preloader="N" class="letters-loading">
+                        N
+                    </span>
+
+                    <span data-text-preloader="İ" class="letters-loading">
+                        İ
+                    </span>
+
+                    <span data-text-preloader="Y" class="letters-loading">
+                        Y
                     </span>
 
                     <span data-text-preloader="O" class="letters-loading">
                         O
                     </span>
-
-                    <span data-text-preloader="A" class="letters-loading">
-                        A
-                    </span>
-
-                    <span data-text-preloader="D" class="letters-loading">
-                        D
-                    </span>
-
-                    <span data-text-preloader="I" class="letters-loading">
-                        I
-                    </span>
-
-                    <span data-text-preloader="N" class="letters-loading">
-                        N
-                    </span>
-
-                    <span data-text-preloader="G" class="letters-loading">
-                        G
+                    <span data-text-preloader="R" class="letters-loading">
+                        R
                     </span>
                 </div>
             </div>
@@ -514,7 +523,7 @@
     <!-- Quickview Wrapper End -->
 
     <!-- Start News letter popup -->
-    <div class="newsletter__popup" data-animation="slideInUp">
+    {{-- <div class="newsletter__popup" data-animation="slideInUp">
         <div id="boxes" class="newsletter__popup--inner">
             <button class="newsletter__popup--close__btn" aria-label="search close button">
                 <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 512 512">
@@ -548,7 +557,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     <!-- End News letter popup -->
 
     <!-- Scroll top bar -->

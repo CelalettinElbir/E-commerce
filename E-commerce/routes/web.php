@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\AdminOrderController;
 use App\Http\Controllers\Admin\AdminProductController;
 use App\Http\Controllers\Admin\AdminSliderController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\User\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,17 +20,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('user.index');
+// });
 
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
 // })->middleware(['auth', 'verified'])->name('dashboard');
+Route::get("", [HomeController::class, "index"])->name("user.index");
 
-
-
-
+Route::middleware("auth")->group(function () {
+    Route::get("/whislist", [HomeController::class, "favorites"])->name("user.favorites");
+});
 
 
 

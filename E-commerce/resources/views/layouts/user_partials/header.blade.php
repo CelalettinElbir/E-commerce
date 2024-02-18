@@ -721,23 +721,7 @@
                     </div>
                     <div class="language__currency d-none d-lg-block">
                         <ul class="d-flex align-items-center">
-                            <li class="language__currency--list">
-                                <a class="account__currency--link" href="javascript:void(0)">
-                                    <img class="currency__link--icon" src="assets/img/icon/language-icon.webp" alt="currency">
-                                    <span>USD</span> 
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="9.797" height="6.05" viewBox="0 0 9.797 6.05">
-                                        <path  d="M14.646,8.59,10.9,12.329,7.151,8.59,6,9.741l4.9,4.9,4.9-4.9Z" transform="translate(-6 -8.59)" fill="currentColor" opacity="0.7"/>
-                                    </svg>
-                                </a>
-                                <div class="dropdown__currency">
-                                    <ul>
-                                        <li class="currency__items"><a class="currency__text" href="#">CAD</a></li>
-                                        <li class="currency__items"><a class="currency__text" href="#">CNY</a></li>
-                                        <li class="currency__items"><a class="currency__text" href="#">EUR</a></li>
-                                        <li class="currency__items"><a class="currency__text" href="#">GBP</a></li>
-                                    </ul>
-                                </div>
-                            </li>
+                           
                             <li class="language__currency--list">
                                 <a class="language__switcher" href="javascript:void(0)">
                                     <span>English</span> 

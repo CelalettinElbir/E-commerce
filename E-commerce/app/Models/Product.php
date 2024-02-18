@@ -23,6 +23,11 @@ class Product extends Model
         return $this->hasMany(ShopOrderItem::class, 'product_id', 'id');
     }
 
+    public function favoritedBy()
+    {
+        return $this->belongsToMany(User::class, 'favorites', 'product_id', 'user_id');
+    }
+
 
     // public function category()
     // {
