@@ -43,6 +43,7 @@ class AdminProductController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request);
         $validator = Validator::make($request->all(), [
             'name' => 'required|max:255|unique:products',
             'stock' => 'required|integer|min:0',
@@ -56,6 +57,9 @@ class AdminProductController extends Controller
             'status' => 'required|boolean',
             'image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
             'short_description' => 'nullable',
+            "brand_id" => "required|integer",
+            "category_id" => "required|integer"
+
         ]);
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
@@ -82,6 +86,8 @@ class AdminProductController extends Controller
                 'image' => $image_name,
                 'short_description' => $request->short_description,
                 'slug' => $slug,
+                "brand_id" => $request->brand_id,
+                "category_id" =>  $request->category_id
             ]);
             return redirect()->route('admin.product.index')->with('success', 'Ürün başarıyla oluşturuldu.');
         } catch (\Exception $e) {

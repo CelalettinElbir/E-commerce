@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
 
 class Product extends Model
 {
@@ -15,7 +16,7 @@ class Product extends Model
     protected $fillable = [
         'name', 'stock_code', 'aspect_ratio', 'width', 'rim_diameter',
         'stock', 'price', 'discount_price', 'description', 'status',
-        'image', 'short_description', 'slug',
+        'image', 'short_description', 'slug', "brand_id", "category_id"
     ];
 
     public function orderDetails()
@@ -26,6 +27,32 @@ class Product extends Model
     public function favoritedBy()
     {
         return $this->belongsToMany(User::class, 'favorites', 'product_id', 'user_id');
+    }
+
+
+    public function scopeFilter($query, $request)
+    {
+        // Maksimum fiyat varsa ve boş değilse
+        if ($request->filled('max_price')) {
+            $query->where('price', '<=', $request->max_price);
+        }
+
+        // Minimum fiyat varsa ve boş değilse
+        if ($request->filled('min_price')) {
+            $query->where('price', '>=', $request->min_price);
+        }
+
+        // Marka filtresi varsa ve boş değilse
+        if ($request->filled('brands')) {
+            $query->whereIn('brand_id', $request->brands);
+        }
+
+        // Kategori filtresi varsa ve boş değilse
+        if ($request->filled('categories')) {
+            $query->whereIn('category_id', $request->categories);
+        }
+
+        return $query;
     }
 
 

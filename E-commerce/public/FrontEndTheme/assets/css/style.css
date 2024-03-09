@@ -3307,7 +3307,7 @@ input[type=number]::-webkit-outer-spin-button {
     home two css here
 */
 .slider__section--bg2 {
-  background: url(../img/slider/home2-slider-shape-bg.webp);
+  /* background: url(../img/slider/home2-slider-shape-bg.webp); */
   background-repeat: no-repeat;
   background-attachment: scroll;
   background-position: center center;

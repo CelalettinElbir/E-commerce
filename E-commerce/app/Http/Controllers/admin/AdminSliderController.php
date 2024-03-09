@@ -33,7 +33,7 @@ class AdminSliderController extends Controller
         $validator = Validator::make($request->all(), [
             'title' => 'required|max:255',
             'description' => 'required',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image' => 'required|image|mimes:jpeg,png,jpg,webp|max:2048',
         ]);
 
         // Doğrulama başarısız olursa geri dön
@@ -45,7 +45,10 @@ class AdminSliderController extends Controller
         if ($request->hasFile("image")) {
             $image = $request->file("image");
             $image_name = hexdec(uniqid()) . "." . $image->getClientOriginalExtension();
-            $image->move("upload/slider/", $image_name);
+
+            // Resmi yüklemeden önce boyutunu değiştir
+            $resized_image = Image::make($image)->resize(931, 553)->encode('webp');
+            $resized_image->save("upload/slider/" . $image_name);
         }
         // Yeni slider oluştur
         Slider::create([
