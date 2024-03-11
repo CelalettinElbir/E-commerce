@@ -167,12 +167,12 @@
                                                     <article class="product__card">
                                                         <div class="product__card--thumbnail">
                                                             <a class="product__card--thumbnail__link display-block"
-                                                                href="product-details.html">
+                                                                href="{{ route('shop.show',$product->slug ) }}">
                                                                 <img class="product__card--thumbnail__img product__primary--img"
                                                                     src=" {{ asset('upload/products') . '/' . $product->image }}"
                                                                     alt="product-img">
                                                                 <img class="product__card--thumbnail__img product__secondary--img"
-                                                                    src="assets/img/product/main-product/product8.webp"
+                                                                    src=" {{ asset('upload/products') . '/' . $product->image }}"
                                                                     alt="product-img">
                                                             </a>
                                                             {{-- indirim olduğunda F --}}
@@ -232,56 +232,15 @@
 
                             </div>
                             <div class="pagination__area">
-                                
                                 <nav class="pagination justify-content-center">
                                     <ul class="pagination__wrapper d-flex align-items-center justify-content-center">
-                                        <!-- Önceki sayfa bağlantısı -->
 
 
+                                        {{ $products->links('vendor.pagination.custom') }}
 
-                                        {{-- @dd($products->previousPageUrl()) --}}
-
-                                        @if ($products->onFirstPage())
-                                            {{-- <li class="pagination__list disabled"><i class="fa-solid fa-arrow-left"></i>
-                                            </li> --}}
-                                        @else
-                                            <li class="pagination__list">
-                                                <a href="{{ $products->previousPageUrl() }}"
-                                                    class="pagination__item link">
-                                                    <i class="fa-solid fa-arrow-left"></i>
-                                                </a>
-                                            </li>
-                                        @endif
-
-                                        <!-- Sayfa numaraları -->
-                                        @foreach ($products as $product)
-                                            <li class="pagination__list">
-                                                @if ($product->id == $products->currentPage())
-                                                    <span
-                                                        class="pagination__item pagination__item--current">{{ $product->id }}</span>
-                                                @else
-                                                    <a href="{{ $products->url($product->id) }}"
-                                                        class="pagination__item link">{{ $product->id }}</a>
-                                                @endif
-                                            </li>
-                                        @endforeach
-
-                                      
-                                        <!-- Sonraki sayfa bağlantısı -->
-                                        @if ($products->hasMorePages())
-                                            <li class="pagination__list">
-                                                <a href="{{ $products->nextPageUrl() }}"
-                                                    class="pagination__item--arrow link">
-                                                    <i class="fa-solid fa-arrow-right"></i>
-                                                </a>
-                                            </li>
-                                        @else
-                                            <li class="pagination__list disabled">
-                                                <i class="fa-solid fa-arrow-right"></i>
-                                            </li>
-                                        @endif
                                     </ul>
                                 </nav>
+
                             </div>
                         </div>
                     </div>

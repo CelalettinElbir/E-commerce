@@ -15,7 +15,7 @@ class ShopController extends Controller
      */
     public function index(Request $request)
     {
-        $products = Product::latest()->filter(request())->paginate();
+        $products = Product::latest()->filter(request())->paginate(1);
         $categories = Category::latest()->get();
         $brands = Brand::latest()->get();
         return view("user.shop.index", compact("products", "brands", "categories"));
@@ -40,9 +40,12 @@ class ShopController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Product $product)
     {
-        return "deemee";
+    //  dd($product);
+        // $products = Product::latest()->filter(request())->paginate(1);
+
+        return view("user.shop.detail",compact("product"));
     }
 
     /**

@@ -36,14 +36,17 @@ Route::get("", [HomeController::class, "index"])->name("user.index");
 
 //shop page
 
-Route::get("/shop", [ShopController::class, "index"])->name("shop.index");
-Route::get("shop/{slug}", [ShopController::class, "show"])->name("shop.show");
+Route::get("/products", [ShopController::class, "index"])->name("shop.index");
+Route::get("product/{product:slug}", [ShopController::class, "show"])->name("shop.show");
 
 
 Route::middleware("auth")->group(function () {
     Route::get("/wishlist", [FavoriteController::class, "favorites"])->name("user.favorites");
-    Route::delete("/favorites/{favorite}", [FavoriteController::class, "destroy"])->name("user.favorite.destroy");
-    Route::get("/my-account", [UserAccountController::class, "index"])->name("user.account.index");
+    Route::delete("/favorites/{product}", [FavoriteController::class, "destroy"])->name("user.favorite.destroy");
+    Route::Post("/favorites/{product}", [FavoriteController::class, "store"])->name("user.favorite.store");
+
+
+    Route::post("/my-account", [UserAccountController::class, "index"])->name("user.account.index");
 });
 
 

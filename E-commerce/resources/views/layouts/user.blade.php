@@ -15,11 +15,12 @@
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700&family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500&display=swap"
         rel="stylesheet">
 
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <!-- Plugin css -->
     <link rel="stylesheet" href="{{ asset('FrontEndTheme/assets/css/vendor/bootstrap.min.css') }}">
     <!-- Custom Style CSS -->
     <link rel="stylesheet" href="{{ asset('FrontEndTheme/assets/css/style.css') }}">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
 
 </head>
 
@@ -568,12 +569,40 @@
         </svg></button>
 
     <!-- All Script JS Plugins here  -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="{{ asset('FrontEndTheme/assets/js/vendor/popper.js') }}" defer="defer"></script>
     <script src="{{ asset('FrontEndTheme/assets/js/vendor/bootstrap.min.js') }}" defer="defer"></script>
     <script src="{{ asset('FrontEndTheme/assets/js/plugins/swiper-bundle.min.js') }}"></script>
     <script src="{{ asset('FrontEndTheme/assets/js/plugins/glightbox.min.js') }}"></script>
     <!-- Customscript js -->
     <script src="{{ asset('FrontEndTheme/assets/js/script.js') }}"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+
+    <script>
+        @if (Session::has('message'))
+            var type = "{{ Session::get('alert-type', 'info') }}";
+            switch (type) {
+                case 'info':
+                    toastr.info(" {{ Session::get('message') }} ");
+                    break;
+                case 'success':
+                    toastr.success(" {{ Session::get('message') }} ");
+                    break;
+                case 'warning':
+                    toastr.warning(" {{ Session::get('message') }} ");
+                    break;
+                case 'error':
+                    toastr.error(" {{ Session::get('message') }} ");
+                    break;
+            }
+        @endif
+    </script>
+
+
+
+
 </body>
 
 </html>
