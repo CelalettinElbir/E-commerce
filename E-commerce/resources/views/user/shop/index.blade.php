@@ -167,7 +167,7 @@
                                                     <article class="product__card">
                                                         <div class="product__card--thumbnail">
                                                             <a class="product__card--thumbnail__link display-block"
-                                                                href="{{ route('shop.show',$product->slug ) }}">
+                                                                href="{{ route('shop.show', $product->slug) }}">
                                                                 <img class="product__card--thumbnail__img product__primary--img"
                                                                     src=" {{ asset('upload/products') . '/' . $product->image }}"
                                                                     alt="product-img">
@@ -179,7 +179,7 @@
                                                             {{-- <span class="product__badge">-11%</span> --}}
                                                             <ul
                                                                 class="product__card--action d-flex align-items-center justify-content-center">
-                                                                <li class="product__card--action__list">
+                                                                {{-- <li class="product__card--action__list">
                                                                     <a class="product__card--action__btn"
                                                                         title="Quick View" data-bs-toggle="modal"
                                                                         data-bs-target="#examplemodal"
@@ -187,16 +187,32 @@
                                                                         <i class="fa-solid fa-magnifying-glass"></i>
                                                                         <span class="visually-hidden">Quick View</span>
                                                                     </a>
-                                                                </li>
+                                                                </li> --}}
 
                                                                 <li class="product__card--action__list">
-                                                                    <a class="product__card--action__btn" title="Wishlist"
+
+                                                                    <form
+                                                                        action="{{ route('user.favorite.store', $product) }}"
+                                                                        method="post">
+                                                                        @csrf
+                                                                        <button class="product__card--action__btn">
+                                                                            <i class="fa-regular fa-heart"></i>
+                                                                            <span class="visually-hidden">Favorilere
+                                                                                ekle</span>
+
+                                                                        </button>
+
+                                                                    </form>
+
+
+                                                                    {{-- <a class="product__card--action__btn" title="Wishlist"
                                                                         href="wishlist.html">
                                                                         <i class="fa-regular fa-heart"></i>
 
 
-                                                                        <span class="visually-hidden">Wishlist</span>
-                                                                    </a>
+                                                                        <span class="visually-hidden">Favorilere
+                                                                            ekle</span>
+                                                                    </a> --}}
                                                                 </li>
                                                             </ul>
                                                         </div>
@@ -214,12 +230,24 @@
                                                                 {{-- <span class="old__price"> $315.00</span> --}}
                                                             </div>
                                                             <div class="product__card--footer">
-                                                                <a class="product__card--btn primary__btn"
-                                                                    href="cart.html">
-                                                                    <i class="fa-solid fa-basket-shopping"></i>
-                                                                    Sepete Ekle
-                                                                </a>
+
+                                                                <form action="{{ route('cart.add', $product->id) }}"
+                                                                    method="post">
+                                                                    @csrf
+
+                                                                    <button class="primary__btn" type="submit">Sepete
+                                                                        Ekle</button>
+
+                                                                </form>
+
+
+
                                                             </div>
+
+
+
+
+
                                                         </div>
                                                     </article>
                                                 </div>

@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\AdminOrderController;
 use App\Http\Controllers\Admin\AdminProductController;
 use App\Http\Controllers\Admin\AdminSliderController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\User\CartController;
 use App\Http\Controllers\User\FavoriteController;
 use App\Http\Controllers\User\HomeController;
 use App\Http\Controllers\User\ShopController;
@@ -44,9 +45,13 @@ Route::middleware("auth")->group(function () {
     Route::get("/wishlist", [FavoriteController::class, "favorites"])->name("user.favorites");
     Route::delete("/favorites/{product}", [FavoriteController::class, "destroy"])->name("user.favorite.destroy");
     Route::Post("/favorites/{product}", [FavoriteController::class, "store"])->name("user.favorite.store");
-
-
     Route::post("/my-account", [UserAccountController::class, "index"])->name("user.account.index");
+});
+
+Route::controller(CartController::class)->prefix("cart")->group(function () {
+    Route::get('/', 'index')->name("user.cart.index");
+    Route::post('/add-to-cart/{product:id}', [CartController::class, 'addToCart'])->name('cart.add');
+    route::delete("/delete-from-cart/{product:id}",[CartController::class, 'deleteFromCart'])->name("delete.item.cart");
 });
 
 

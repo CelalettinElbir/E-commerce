@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use App\Models\Cart;
 
 class User extends Authenticatable
 {
@@ -57,5 +58,10 @@ class User extends Authenticatable
     public function favoriteProducts()
     {
         return $this->belongsToMany(Product::class, 'favorites', 'user_id', 'product_id');
+    }
+
+    public function cart()
+    {
+        return $this->hasOne(Cart::class);
     }
 }
