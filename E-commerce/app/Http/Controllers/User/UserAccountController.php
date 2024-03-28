@@ -11,4 +11,6 @@ class UserAccountController extends Controller
     {
         return view("user.account.index");
     }
+
+  
 }

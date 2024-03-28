@@ -27,7 +27,7 @@
 <body>
 
     <!-- Start preloader -->
-    {{-- <div id="preloader">
+    <div id="preloader">
         <div id="ctn-preloader" class="ctn-preloader">
             <div class="animation-preloader">
                 <div class="spinner"></div>
@@ -74,11 +74,27 @@
             <div class="loader-section section-left"></div>
             <div class="loader-section section-right"></div>
         </div>
-    </div> --}}
+    </div>
     <!-- End preloader -->
 
     <!-- Start header area -->
     @include('layouts.user_partials.header')
+
+    @if (Session::has('success'))
+        <div class=" container alert alert-success alert-dismissible  fade show" role="alert">
+            <button type="button" class="btn-close close" data-dismiss="alert" aria-label="Close"></button>
+            <strong>Başarılı !</strong> {{ session('success') }}
+        </div>
+    @endif
+
+    @if (Session::has('error'))
+        <div class=" container alert alert-danger alert-dismissible  fade show" role="alert">
+            <button type="button" class="close" data-dismiss="alert">
+                <i class="fa fa-times"></i>
+            </button>
+            <strong>Hata !</strong> {{ session('error') }}
+        </div>
+    @endif
 
     <!-- End header area -->
 
@@ -108,14 +124,11 @@
                                         <div class="swiper-slide">
                                             <div class="product__media--preview__items">
                                                 <a class="product__media--preview__items--link glightbox"
-                                                    data-gallery="product-media-preview"
-                                                    href="assets/img/product/big-product/product1.webp"><img
-                                                        class="product__media--preview__items--img"
-                                                        src="assets/img/product/big-product/product1.webp"
+                                                    data-gallery="product-media-preview" href="#"><img
+                                                        class="product__media--preview__items--img" src="#"
                                                         alt="product-media-img"></a>
                                                 <div class="product__media--view__icon">
-                                                    <a class="product__media--view__icon--link glightbox"
-                                                        href="assets/img/product/big-product/product1.webp"
+                                                    <a class="product__media--view__icon--link glightbox" href="#"
                                                         data-gallery="product-media-preview">
                                                         <svg class="product__items--action__btn--svg"
                                                             xmlns="http://www.w3.org/2000/svg" width="22.51"
@@ -136,10 +149,8 @@
                                         <div class="swiper-slide">
                                             <div class="product__media--preview__items">
                                                 <a class="product__media--preview__items--link glightbox"
-                                                    data-gallery="product-media-preview"
-                                                    href="assets/img/product/big-product/product2.webp"><img
-                                                        class="product__media--preview__items--img"
-                                                        src="assets/img/product/big-product/product2.webp"
+                                                    data-gallery="product-media-preview" href="#"><img
+                                                        class="product__media--preview__items--img" src="#"
                                                         alt="product-media-img"></a>
                                                 <div class="product__media--view__icon">
                                                     <a class="product__media--view__icon--link glightbox"
@@ -164,15 +175,12 @@
                                         <div class="swiper-slide">
                                             <div class="product__media--preview__items">
                                                 <a class="product__media--preview__items--link glightbox"
-                                                    data-gallery="product-media-preview"
-                                                    href="assets/img/product/big-product/product3.webp"><img
-                                                        class="product__media--preview__items--img"
-                                                        src="assets/img/product/big-product/product3.webp"
+                                                    data-gallery="product-media-preview" href="#"><img
+                                                        class="product__media--preview__items--img" src="#"
                                                         alt="product-media-img"></a>
                                                 <div class="product__media--view__icon">
                                                     <a class="product__media--view__icon--link glightbox"
-                                                        href="assets/img/product/big-product/product3.webp"
-                                                        data-gallery="product-media-preview">
+                                                        href="#" data-gallery="product-media-preview">
                                                         <svg class="product__items--action__btn--svg"
                                                             xmlns="http://www.w3.org/2000/svg" width="22.51"
                                                             height="22.443" viewBox="0 0 512 512">
@@ -192,15 +200,12 @@
                                         <div class="swiper-slide">
                                             <div class="product__media--preview__items">
                                                 <a class="product__media--preview__items--link glightbox"
-                                                    data-gallery="product-media-preview"
-                                                    href="assets/img/product/big-product/product4.webp"><img
-                                                        class="product__media--preview__items--img"
-                                                        src="assets/img/product/big-product/product4.webp"
+                                                    data-gallery="product-media-preview" href="#"><img
+                                                        class="product__media--preview__items--img" src="#"
                                                         alt="product-media-img"></a>
                                                 <div class="product__media--view__icon">
                                                     <a class="product__media--view__icon--link glightbox"
-                                                        href="assets/img/product/big-product/product4.webp"
-                                                        data-gallery="product-media-preview">
+                                                        href="#" data-gallery="product-media-preview">
                                                         <svg class="product__items--action__btn--svg"
                                                             xmlns="http://www.w3.org/2000/svg" width="22.51"
                                                             height="22.443" viewBox="0 0 512 512">
@@ -220,15 +225,12 @@
                                         <div class="swiper-slide">
                                             <div class="product__media--preview__items">
                                                 <a class="product__media--preview__items--link glightbox"
-                                                    data-gallery="product-media-preview"
-                                                    href="assets/img/product/big-product/product5.webp"><img
-                                                        class="product__media--preview__items--img"
-                                                        src="assets/img/product/big-product/product5.webp"
+                                                    data-gallery="product-media-preview" href="#"><img
+                                                        class="product__media--preview__items--img" src="#"
                                                         alt="product-media-img"></a>
                                                 <div class="product__media--view__icon">
                                                     <a class="product__media--view__icon--link glightbox"
-                                                        href="assets/img/product/big-product/product5.webp"
-                                                        data-gallery="product-media-preview">
+                                                        href="#" data-gallery="product-media-preview">
                                                         <svg class="product__items--action__btn--svg"
                                                             xmlns="http://www.w3.org/2000/svg" width="22.51"
                                                             height="22.443" viewBox="0 0 512 512">
@@ -251,36 +253,31 @@
                                     <div class="swiper-wrapper">
                                         <div class="swiper-slide">
                                             <div class="product__media--nav__items">
-                                                <img class="product__media--nav__items--img"
-                                                    src="assets/img/product/small-product/product1.webp"
+                                                <img class="product__media--nav__items--img" src="#"
                                                     alt="product-nav-img">
                                             </div>
                                         </div>
                                         <div class="swiper-slide">
                                             <div class="product__media--nav__items">
-                                                <img class="product__media--nav__items--img"
-                                                    src="assets/img/product/small-product/product2.webp"
+                                                <img class="product__media--nav__items--img" src="#"
                                                     alt="product-nav-img">
                                             </div>
                                         </div>
                                         <div class="swiper-slide">
                                             <div class="product__media--nav__items">
-                                                <img class="product__media--nav__items--img"
-                                                    src="assets/img/product/small-product/product3.webp"
+                                                <img class="product__media--nav__items--img" src="#"
                                                     alt="product-nav-img">
                                             </div>
                                         </div>
                                         <div class="swiper-slide">
                                             <div class="product__media--nav__items">
-                                                <img class="product__media--nav__items--img"
-                                                    src="assets/img/product/small-product/product4.webp"
+                                                <img class="product__media--nav__items--img" src="#"
                                                     alt="product-nav-img">
                                             </div>
                                         </div>
                                         <div class="swiper-slide">
                                             <div class="product__media--nav__items">
-                                                <img class="product__media--nav__items--img"
-                                                    src="assets/img/product/small-product/product5.webp"
+                                                <img class="product__media--nav__items--img" src="#"
                                                     alt="product-nav-img">
                                             </div>
                                         </div>
@@ -377,29 +374,25 @@
                                                         <input id="color-red1" name="color" type="radio" checked>
                                                         <label class="variant__color--value red" for="color-red1"
                                                             title="Red"><img class="variant__color--value__img"
-                                                                src="assets/img/product/small-product/product1.webp"
-                                                                alt="variant-color-img"></label>
+                                                                src="#" alt="variant-color-img"></label>
                                                     </div>
                                                     <div class="variant__color--list">
                                                         <input id="color-red2" name="color" type="radio">
                                                         <label class="variant__color--value red" for="color-red2"
                                                             title="Black"><img class="variant__color--value__img"
-                                                                src="assets/img/product/small-product/product2.webp"
-                                                                alt="variant-color-img"></label>
+                                                                src="#" alt="variant-color-img"></label>
                                                     </div>
                                                     <div class="variant__color--list">
                                                         <input id="color-red3" name="color" type="radio">
                                                         <label class="variant__color--value red" for="color-red3"
                                                             title="Pink"><img class="variant__color--value__img"
-                                                                src="assets/img/product/small-product/product3.webp"
-                                                                alt="variant-color-img"></label>
+                                                                src="#" alt="variant-color-img"></label>
                                                     </div>
                                                     <div class="variant__color--list">
                                                         <input id="color-red4" name="color" type="radio">
                                                         <label class="variant__color--value red" for="color-red4"
                                                             title="Orange"><img class="variant__color--value__img"
-                                                                src="assets/img/product/small-product/product4.webp"
-                                                                alt="variant-color-img"></label>
+                                                                src="#" alt="variant-color-img"></label>
                                                     </div>
                                                 </div>
                                             </fieldset>
@@ -571,7 +564,9 @@
     <!-- All Script JS Plugins here  -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"
         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-        
+
+  
+
     <script src="{{ asset('FrontEndTheme/assets/js/vendor/popper.js') }}" defer="defer"></script>
     <script src="{{ asset('FrontEndTheme/assets/js/vendor/bootstrap.min.js') }}" defer="defer"></script>
     <script src="{{ asset('FrontEndTheme/assets/js/plugins/swiper-bundle.min.js') }}"></script>
@@ -581,25 +576,7 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
 
-    <script>
-        @if (Session::has('message'))
-            var type = "{{ Session::get('alert-type', 'info') }}";
-            switch (type) {
-                case 'info':
-                    toastr.info(" {{ Session::get('message') }} ");
-                    break;
-                case 'success':
-                    toastr.success(" {{ Session::get('message') }} ");
-                    break;
-                case 'warning':
-                    toastr.warning(" {{ Session::get('message') }} ");
-                    break;
-                case 'error':
-                    toastr.error(" {{ Session::get('message') }} ");
-                    break;
-            }
-        @endif
-    </script>
+
 
 
 

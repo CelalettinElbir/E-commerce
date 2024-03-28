@@ -124,8 +124,8 @@
                     </a>
                 </div>
                 <div class="main__logo">
-                    <a class="main__logo--link" href="index.html"><img class="main__logo--img"
-                            src="assets/img/logo/nav-log.webp" alt="logo-img"></a>
+                    <a class="main__logo--link" href="{{ route('user.index') }}"><img class="main__logo--img"
+                            src="#" alt="logo-img"></a>
                 </div>
                 <div class="header__search--widget d-none d-lg-block header__sticky--none">
                     <form class="d-flex header__search--form border-radius-5" action="#">
@@ -268,8 +268,8 @@
                                     </li>
                                     <li class="header__mega--menu__li fullscreen__style d-flex">
                                         <a class="header__mega--menu__banner display-block" href="shop.html"><img
-                                                class="header__mega--menu__banner--img"
-                                                src="assets/img/banner/banner1.webp" alt="banner-menu">
+                                                class="header__mega--menu__banner--img" src="#"
+                                                alt="banner-menu">
                                             <div class="banner__content">
                                                 <span class="banner__content--subtitle text__secondary mb-10">20%
                                                     off</span>
@@ -280,8 +280,8 @@
                                             </div>
                                         </a>
                                         <a class="header__mega--menu__banner display-block" href="shop.html"><img
-                                                class="header__mega--menu__banner--img"
-                                                src="assets/img/banner/banner2.webp" alt="banner-menu">
+                                                class="header__mega--menu__banner--img" src="#"
+                                                alt="banner-menu">
                                             <div class="banner__content right">
                                                 <span class="banner__badge--style2">20% Off</span>
                                                 <h2 class="banner__content--title"><span
@@ -351,17 +351,36 @@
                 </div>
                 <div class="header__account header__sticky--none">
                     <ul class="header__account--wrapper d-flex align-items-center">
-                        <li class="header__account--items d-none d-lg-block">
-                            <a class="header__account--btn" href="my-account.html">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                    stroke-linecap="round" stroke-linejoin="round" class=" -user">
-                                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                                    <circle cx="12" cy="7" r="4"></circle>
-                                </svg>
-                                <span class="visually-hidden">My account</span>
-                            </a>
-                        </li>
+
+
+                        @auth
+                            <li class="header__account--items d-none d-lg-block">
+                                <a class="header__account--btn" href="{{ route('profile.edit') }}">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round" class=" -user">
+                                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                        <circle cx="12" cy="7" r="4"></circle>
+                                    </svg>
+                                    <span class="visually-hidden">Profilim({{ auth()->user()->name }})</span>
+                                </a>
+                            </li>
+                        @endauth
+
+                        @guest
+                            <li class="header__account--items d-none d-lg-block">
+                                <a class="header__account--btn" href="{{ route('profile.edit') }}">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round" class=" -user">
+                                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                        <circle cx="12" cy="7" r="4"></circle>
+                                    </svg>
+                                    <span class="visually-hidden">Profilim</span>
+                                </a>
+                            </li>
+                        @endguest
+
                         <li
                             class="header__account--items  header__account--search__items mobile__d--block d-sm-2-none">
                             <a class="header__account--btn search__open--btn" href="javascript:void(0)"
@@ -408,9 +427,12 @@
                                         </g>
                                     </g>
                                 </svg>
-                                <span class="items__count">2</span>
-                                <span class="minicart__btn--text">My Cart <br> <span
-                                        class="minicart__btn--text__price">$0.00</span></span>
+
+
+
+                                @livewire('cart.cart-counter')
+
+
                             </a>
                         </li>
                     </ul>
@@ -431,17 +453,40 @@
                                 <span class="visually-hidden">Search</span>
                             </a>
                         </li>
-                        <li class="header__account--items d-none d-lg-block">
-                            <a class="header__account--btn" href="my-account.html">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                    stroke-linecap="round" stroke-linejoin="round" class=" -user">
-                                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                                    <circle cx="12" cy="7" r="4"></circle>
-                                </svg>
-                                <span class="visually-hidden">My account</span>
-                            </a>
-                        </li>
+                        @auth
+
+
+                            <li class="header__account--items d-none d-lg-block">
+                                <a class="header__account--btn" href="{{ route('profile.edit') }}">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round" class=" -user">
+                                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                        <circle cx="12" cy="7" r="4"></circle>
+                                    </svg>
+                                    <span class="visually-hidden">Profilim({{ auth()->user()->name }})</span>
+                                </a>
+                            </li>
+
+                        @endauth
+
+                        @guest
+
+                            <li class="header__account--items d-none d-lg-block">
+                                <a class="header__account--btn"href="{{ route('profile.edit') }}">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round" class=" -user">
+                                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                        <circle cx="12" cy="7" r="4"></circle>
+                                    </svg>
+                                    <span class="visually-hidden">My account</span>
+                                </a>
+                            </li>
+
+                        @endguest
+
+
                         <li class="header__account--items d-none d-lg-block">
                             <a class="header__account--btn" href="{{ route('user.favorites') }}">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
@@ -451,7 +496,9 @@
                                         d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z">
                                     </path>
                                 </svg>
-                                <span class="items__count">3</span>
+                                <span class="items__count">
+                                    2
+                                </span>
                             </a>
                         </li>
                         <li class="header__account--items header__minicart--items">
@@ -473,7 +520,7 @@
                                         </g>
                                     </g>
                                 </svg>
-                                <span class="items__count">2</span>
+                                @livewire('cart.cart-counter')
                             </a>
                         </li>
                     </ul>
@@ -629,8 +676,7 @@
                                     </li>
                                     <li class="categories__submenu--items">
                                         <a class="categories__submenu--thumbnail" href="shop.html">
-                                            <img src="assets/img/product/main-product/product1.webp"
-                                                alt="categories-img">
+                                            <img src="#" alt="categories-img">
                                         </a>
                                     </li>
                                 </ul>
@@ -1269,7 +1315,7 @@
                                         <li class="header__mega--menu__li fullscreen__style d-flex">
                                             <a class="header__mega--menu__banner display-block"
                                                 href="shop.html"><img class="header__mega--menu__banner--img"
-                                                    src="assets/img/banner/banner1.webp" alt="banner-menu">
+                                                    src="#" alt="banner-menu">
                                                 <div class="banner__content">
                                                     <span class="banner__content--subtitle text__secondary mb-10">20%
                                                         off</span>
@@ -1281,7 +1327,7 @@
                                             </a>
                                             <a class="header__mega--menu__banner display-block"
                                                 href="shop.html"><img class="header__mega--menu__banner--img"
-                                                    src="assets/img/banner/banner2.webp" alt="banner-menu">
+                                                    src="#" alt="banner-menu">
                                                 <div class="banner__content right">
                                                     <span class="banner__badge--style2">20% Off</span>
                                                     <h2 class="banner__content--title"><span
@@ -1334,7 +1380,8 @@
                                                 class="header__sub--menu__link">Cart Page</a></li>
                                         <li class="header__sub--menu__items"><a href="portfolio.html"
                                                 class="header__sub--menu__link">Portfolio Page</a></li>
-                                        <li class="header__sub--menu__items"><a href="{{ route('user.favorites') }}"
+                                        <li class="header__sub--menu__items"><a
+                                                href="{{ route('user.favorites') }}"
                                                 class="header__sub--menu__link">Wishlist Page</a></li>
                                         <li class="header__sub--menu__items"><a href="privacy-policy.html"
                                                 class="header__sub--menu__link">Privacy Policy</a></li>
@@ -1354,8 +1401,7 @@
                         <ul class="d-flex align-items-center">
                             <li class="language__currency--list">
                                 <a class="account__currency--link" href="javascript:void(0)">
-                                    <img class="currency__link--icon" src="assets/img/icon/language-icon.webp"
-                                        alt="currency">
+                                    <img class="currency__link--icon" src="#" alt="currency">
                                     <span>USD</span>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="9.797" height="6.05"
                                         viewBox="0 0 9.797 6.05">
@@ -1410,7 +1456,7 @@
         <div class="offcanvas__inner">
             <div class="offcanvas__logo">
                 <a class="offcanvas__logo_link" href="index.html">
-                    <img src="assets/img/logo/nav-log.webp" alt="Grocee Logo" width="158" height="36">
+                    <img src="#" alt="Grocee Logo" width="158" height="36">
                 </a>
                 <button class="offcanvas__close--btn" data-offcanvas="">close</button>
             </div>
@@ -1563,7 +1609,7 @@
                     <div class="offcanvas__account--currency">
                         <a class="offcanvas__account--currency__menu d-flex align-items-center text-black"
                             href="javascript:void(0)">
-                            <img src="assets/img/icon/usd-icon.webp" alt="currency">
+                            <img src="#" alt="currency">
                             <span>USD</span>
                             <svg xmlns="http://www.w3.org/2000/svg" width="9.797" height="6.05"
                                 viewBox="0 0 9.797 6.05">
@@ -1711,74 +1757,21 @@
         </div>
         <div class="minicart__product">
 
+            <div class="container">
 
-            @if (empty(session()->get('shoppingCart')))
-                <h3>ürün bulunmamaktadır</h3>
-            @else
-                @foreach (session()->get('shoppingCart') as $item)
-                    {{-- <li>{{ $item['name'] }} - {{ $item['price'] }} TL ({{ $item['amount'] }} adet)</li> --}}
+                @livewire('cart.IconCartList')
 
-                    <div class="minicart__product--items d-flex">
-                        <div class="minicart__thumb">
-                            <a href="product-details.html"><img
-                                    src="{{ asset('upload/products') . '/' . $item['image'] }}"
-                                    alt="prduct-img"></a>
-                        </div>
+            </div>
 
 
-                        <div class="minicart__text">
-                            <h4 class="minicart__subtitle"><a href="product-details.html"> {{ $item['name'] }} </a>
-                            </h4>
-                            <span class="color__variant"><b>Marka:</b> {{ $item['brand'] }} </span>
-                            <div class="minicart__price">
-                                <span class="minicart__current--price">{{ $item['price'] }} </span>
-                                {{-- <span class="minicart__old--price">$140.00</span> --}}
-                            </div>
-                            <div class="minicart__text--footer d-flex align-items-center">
-                                <div class="quantity__box minicart__quantity">
-                                    <button type="button" class="quantity__value decrease"
-                                        aria-label="quantity value" value="Decrease Value">-</button>
-                                    <label>
-                                        <input type="number" class="quantity__number"
-                                            value="{{ $item['amount'] }}" data-counter="">
-                                    </label>
-                                    <button type="button" class="quantity__value increase"
-                                        aria-label="quantity value" value="Increase Value">+</button>
-                                </div>
-
-
-                                <form action="{{ route('delete.item.cart', $item['productId']) }}" method="post">
-                                    @csrf
-                                    @method('DELETE')
-
-                                    <button class="minicart__product--remove" type="submit">Sil</button>
-                                </form>
-
-                            </div>
-                        </div>
-                    </div>
-                @endforeach
-
-                <div class="minicart__amount">
-                    <div class="minicart__amount_list d-flex justify-content-between">
-                        <span>Toplam</span>
-                        <span><b></b></span>
-                    </div>
-                    <div class="minicart__amount_list d-flex justify-content-between">
-                        <span>Total:</span>
-                        <span><b>$240.00</b></span>
-                    </div>
-                </div>
-                <div class="minicart__button d-flex justify-content-center">
-                    <a class="primary__btn minicart__button--link" href="cart.html">Sepete Git</a>
-                    <a class="primary__btn minicart__button--link" href="checkout.html">Satın Al</a>
-                </div>
-
-            @endif
+            <div class="minicart__button d-flex justify-content-center">
+                <a class="primary__btn minicart__button--link" href="cart.html">Sepete Git</a>
+                <a class="primary__btn minicart__button--link" href="checkout.html">Satın Al</a>
+            </div>
 
 
         </div>
-       
+
     </div>
     <!-- End offCanvas minicart -->
 

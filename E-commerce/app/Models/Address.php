@@ -16,9 +16,14 @@ class Address extends Model
         'city',
         'state',
         'postal_code',
-        "phone_number"
+        "tel_no",
+        'addres_name',
+        'first_name',
+        'last_name',
+        'tc'
     ];
 
+    // 
     public function user()
     {
         return $this->belongsTo(User::class);

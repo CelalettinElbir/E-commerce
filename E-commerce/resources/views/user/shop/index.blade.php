@@ -231,16 +231,8 @@
                                                             </div>
                                                             <div class="product__card--footer">
 
-                                                                <form action="{{ route('cart.add', $product->id) }}"
-                                                                    method="post">
-                                                                    @csrf
 
-                                                                    <button class="primary__btn" type="submit">Sepete
-                                                                        Ekle</button>
-
-                                                                </form>
-
-
+                                                                @livewire('cart.cart-add', ['product' => $product])
 
                                                             </div>
 

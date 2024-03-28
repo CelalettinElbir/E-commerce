@@ -667,6 +667,20 @@ hr {
   color: var(--text-white-color);
   border: 0;
 }
+
+.btn{
+  font-weight: 600;
+  display: inline-block;
+  font-size: 1.3rem;
+  line-height: 3.8rem;
+  height: 3.8rem;
+  padding: 0 2rem;
+  letter-spacing: 0.2px;
+  border-radius: 2.4rem;
+  border: 0;
+
+}
+
 .primary__btn:hover {
   background: var(--primary-color);
   color: var(--text-white-color);
@@ -678,6 +692,12 @@ hr {
     padding: 0 2.2rem;
     font-size: 1.4rem;
   }
+  .btn{
+    line-height: 4rem;
+    height: 4rem;
+    padding: 0 2.2rem;
+    font-size: 1.4rem;}
+
 }
 @media only screen and (min-width: 992px) {
   .primary__btn {
@@ -686,9 +706,20 @@ hr {
     height: 4.2rem;
     padding: 0 2.5rem;
   }
+
+  .btn{    font-size: 1.5rem;
+    line-height: 4.2rem;
+    height: 4.2rem;
+    padding: 0 2.5rem;
+  }
 }
 @media only screen and (min-width: 1600px) {
   .primary__btn {
+    line-height: 4.6rem;
+    height: 4.6rem;
+    padding: 0 3rem;
+  }
+  .btn{ 
     line-height: 4.6rem;
     height: 4.6rem;
     padding: 0 3rem;

@@ -64,4 +64,14 @@ class User extends Authenticatable
     {
         return $this->hasOne(Cart::class);
     }
+
+    public function orders()
+    {
+        return $this->hasMany(ShopOrder::class, 'user_id');
+    }
+
+    public function favoriteCount()
+    {
+        return Favorite::where('user_id', auth()->id())->count();
+    }
 }

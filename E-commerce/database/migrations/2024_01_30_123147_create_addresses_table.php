@@ -19,6 +19,12 @@ return new class extends Migration
             $table->string('city');
             $table->string('state');
             $table->string('postal_code');
+            $table->string("first_name", $length = 20);
+            $table->string("last_name", $length = 20);
+            $table->string("addres_name", $length = 20);
+            $table->string("tel_no", $length = 20);
+            $table->string("tc");
+
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });

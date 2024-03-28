@@ -3,23 +3,28 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
-use App\Models\Brand;
-use App\Models\Category;
-use App\Models\Product;
+use App\Models\ShopOrder;
 use Illuminate\Http\Request;
 
-class ShopController extends Controller
+class UserOrderController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request)
+    public function index()
     {
-        $products = Product::latest()->filter(request())->with("brand")->paginate(10);
-        $categories = Category::latest()->get();
-        $brands = Brand::latest()->get();
-        return view("user.shop.index", compact("products", "brands", "categories"));
+        $user = auth()->user();
+        // $orders = $user->orders; 
+        $orders = ShopOrder::with([
+            'orderDetails.product:id,name,aspect_ratio,width,rim_diameter,price,discount_price',
+            'address:id,first_name,last_name'
+        ])->where('user_id', $user->id)->get();
+
+        // dd($orders);
+
+        return view("user.order.index", compact("orders"));
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -40,18 +45,15 @@ class ShopController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Product $product)
+    public function show(ShopOrder $shopOrder)
     {
-        //  dd($product);
-        // $products = Product::latest()->filter(request())->paginate(1);
-
-        return view("user.shop.detail", compact("product"));
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(ShopOrder $shopOrder)
     {
         //
     }
@@ -59,7 +61,7 @@ class ShopController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, ShopOrder $shopOrder)
     {
         //
     }
@@ -67,7 +69,7 @@ class ShopController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(ShopOrder $shopOrder)
     {
         //
     }

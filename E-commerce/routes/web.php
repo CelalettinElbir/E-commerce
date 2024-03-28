@@ -6,11 +6,13 @@ use App\Http\Controllers\Admin\AdminOrderController;
 use App\Http\Controllers\Admin\AdminProductController;
 use App\Http\Controllers\Admin\AdminSliderController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\user\AdressController;
 use App\Http\Controllers\User\CartController;
 use App\Http\Controllers\User\FavoriteController;
 use App\Http\Controllers\User\HomeController;
 use App\Http\Controllers\User\ShopController;
 use App\Http\Controllers\User\UserAccountController;
+use App\Http\Controllers\User\UserOrderController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -41,23 +43,35 @@ Route::get("/products", [ShopController::class, "index"])->name("shop.index");
 Route::get("product/{product:slug}", [ShopController::class, "show"])->name("shop.show");
 
 
+
+
+
 Route::middleware("auth")->group(function () {
     Route::get("/wishlist", [FavoriteController::class, "favorites"])->name("user.favorites");
     Route::delete("/favorites/{product}", [FavoriteController::class, "destroy"])->name("user.favorite.destroy");
     Route::Post("/favorites/{product}", [FavoriteController::class, "store"])->name("user.favorite.store");
-    Route::post("/my-account", [UserAccountController::class, "index"])->name("user.account.index");
+    Route::get("/my-account", [UserAccountController::class, "index"])->name("user.account.index");
+
+
+
+    Route::get("/user/adresses", [AdressController::class, "index"])->name("user.address.index");
+    Route::get("/user/addresses/{address}/edit", [AdressController::class, "edit"])->name("user.address.edit");
+    Route::put("/user/addresses/{address}", [AdressController::class, "update"])->name("user.address.update");
 });
 
 Route::controller(CartController::class)->prefix("cart")->group(function () {
     Route::get('/', 'index')->name("user.cart.index");
     Route::post('/add-to-cart/{product:id}', [CartController::class, 'addToCart'])->name('cart.add');
-    route::delete("/delete-from-cart/{product:id}",[CartController::class, 'deleteFromCart'])->name("delete.item.cart");
+    route::delete("/delete-from-cart/{product:id}", [CartController::class, 'deleteFromCart'])->name("delete.item.cart");
+});
+
+Route::controller(UserOrderController::class)->prefix("user/orders/")->group(function () {
+    Route::get('', 'index')->name("user.order.index");
 });
 
 
 
 Route::prefix('admin/products')->group(function () {
-    // Route::resource('products', AdminProductController::class);
     Route::get("create", [AdminProductController::class, "create"])->name("admin.product.create");
     Route::get("", [AdminProductController::class, "index"])->name("admin.product.index");
     Route::post("create", [AdminProductController::class, "store"])->name("admin.product.store");
@@ -71,8 +85,6 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
-
-
 Route::prefix('admin')->group(function () {
     Route::resource('categories', AdminCategoryController::class);
     Route::resource('brands', AdminBrandController::class);
