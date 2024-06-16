@@ -8,16 +8,13 @@
                 <x-user-side-bar />
 
                 <div class="account__wrapper">
-
-
-
                     @foreach ($orders as $order)
                         <div class="card">
                             <div class="card-header">
                                 <div class="row">
                                     <div class="col-md-3 col">
                                         Sipariş Tarihi
-                                        <p>{{ $order->status }}</p>
+                                        <p>{{ $status[$order->status] }}</p>
                                     </div>
                                     <div class="col-md-3 col">
 
@@ -30,27 +27,31 @@
                                         <p>{{ $order->order_total }}</p>
                                     </div>
                                     <div class="col-md-3 col">
-
-                                        <a href="" class="btn primary__btn">Detay</a>
+                                        <a href="{{ route('user.order.detail', $order) }}"
+                                            class="btn primary__btn">Detay</a>
                                     </div>
-
                                 </div>
-
                             </div>
-                            <div class="card-body p-5">
-                                @foreach ($order->orderDetails as $product)
-                                    {{ $product->product->name }}
-                                @endforeach
+                            <div class="card-body ">
+                                <div class="container row">
+
+                                    <p class="col-md-6">{{ $status[$order->status] }}</p>
+                                    <ul class=" col-md-6 d-flex">
+
+                                        @foreach ($order->orderDetails as $orderItem)
+                                            <li> <img
+                                                    src="{{ asset('upload/products') . '/' . $orderItem->product->image }}"
+                                                    style="height: auto;width:30%;">
+                                            </li>
+                                        @endforeach
 
 
+                                    </ul>
+                                </div>
 
                             </div>
                         </div>
                     @endforeach
-
-
-
-
 
 
 
@@ -62,4 +63,4 @@
 
 
 
-TODO:Orders Yapılan Şiparişlerin hangi durumda olduğunu göstermem gerekiyor.
+{{-- TODO:Orders Yapılan Şiparişlerin hangi durumda olduğunu göstermem gerekiyor. --}}

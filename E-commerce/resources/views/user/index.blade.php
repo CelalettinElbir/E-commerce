@@ -15,52 +15,92 @@
                                 <p class="search__filter--desc">Lastik ölçülerini girerek filtreleyebilirsiniz</p>
                             </div>
                         </div>
-                        <form class="search__filter--form" action="#">
+                        <form class="search__filter--form" action="{{ route('shop.sliderSearch') }}"
+                            onsubmit="return validateForm()" method="GET">
                             <div class="search__filter--select select">
                                 <select class="search__filter--select__field">
-                                    <option selected value="1">Marka </option>
-                                    <option value="2">Brake Calipers </option>
-                                    <option value="3">Engine Oil </option>
-                                    <option value="4">Motor Oil </option>
-                                    <option value="5">Oil Filters </option>
+                                    <option selected value="0">Marka </option>
+                                    @foreach ($brands as $brand)
+                                        <option value="{{ $loop->index + 1 }}">{{ $brand->name }} </option>
+                                    @endforeach
+
+
+
                                 </select>
                             </div>
                             <div class="search__filter--select select">
-                                <select class="search__filter--select__field">
-                                    <option selected value="1">Mevsim</option>
-                                    <option value="2">Toyota Combo </option>
-                                    <option value="3">Model 2022 </option>
-                                    <option value="4">Air Boxes </option>
+                                <select class="search__filter--select__field" name="category">
+                                    <option selected disabled value="">Seçiniz</option>
+                                    @foreach ($categories as $category)
+                                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+
+                            <div class="search__filter--select select">
+                                <select class="search__filter--select__field" name="width">
+                                    <option selected disabled>Taban Genişliği</option>
+                                    <option value="145">145</option>
+                                    <option value="155">155</option>
+                                    <option value="165">165</option>
+                                    <option value="175">175</option>
+                                    <option value="185">185</option>
+                                    <option value="195">195</option>
+                                    <option value="205">205</option>
+                                    <option value="215">215</option>
+                                    <option value="225">225</option>
+                                    <option value="235">235</option>
+                                    <option value="245">245</option>
+                                    <option value="255">255</option>
+                                    <option value="265">265</option>
+                                    <option value="275">275</option>
+                                    <option value="285">285</option>
+                                    <option value="295">295</option>
+                                    <option value="305">305</option>
+                                    <option value="315">315</option>
+                                    <option value="325">325</option>
+                                    <option value="335">335</option>
+                                    <option value="345">345</option>
                                 </select>
                             </div>
                             <div class="search__filter--select select">
-                                <select class="search__filter--select__field">
-                                    <option selected value="1">Taban Genişliği</option>
-                                    <option value="2">Year 2020 </option>
-                                    <option value="3">Year 2022 </option>
-                                    <option value="4">Year 2024</option>
-                                    <option value="5">Year 2026 </option>
+                                <select class="search__filter--select__field" name="aspect_ratio">
+                                    <option selected disabled>Yanak Oranı</option>
+                                    <option value="30">30</option>
+                                    <option value="35">35</option>
+                                    <option value="40">40</option>
+                                    <option value="45">45</option>
+                                    <option value="50">50</option>
+                                    <option value="55">55</option>
+                                    <option value="60">60</option>
+                                    <option value="65">65</option>
+                                    <option value="70">70</option>
+                                    <option value="75">75</option>
+                                    <option value="80">80</option>
+                                    <option value="85">85</option>
                                 </select>
                             </div>
+
                             <div class="search__filter--select select">
-                                <select class="search__filter--select__field">
-                                    <option selected value="1">Yanak Kesit Oranı</option>
-                                    <option value="2">Class One </option>
-                                    <option value="3">Class Two </option>
-                                    <option value="4">Class Three </option>
-                                    <option value="5">Class Four </option>
+                                <select class="search__filter--select__field" name="rim_diameter">
+                                    <option selected disabled>Jant Çapı</option>
+                                    <option value="13">13</option>
+                                    <option value="14">14</option>
+                                    <option value="15">15</option>
+                                    <option value="16">16</option>
+                                    <option value="17">17</option>
+                                    <option value="18">18</option>
+                                    <option value="19">19</option>
+                                    <option value="20">20</option>
+                                    <option value="21">21</option>
+                                    <option value="22">22</option>
+                                    <option value="23">23</option>
+                                    <option value="24">24</option>
                                 </select>
                             </div>
-                            <div class="search__filter--select select">
-                                <select class="search__filter--select__field">
-                                    <option selected value="1">Jant Çapı</option>
-                                    <option value="2">Tail Lights </option>
-                                    <option value="3">Car Covers </option>
-                                    <option value="4">Hoods </option>
-                                    <option value="5">Bumpers </option>
-                                </select>
-                            </div>
-                            <button class="search__filter--btn primary__btn" type="submit">Search</button>
+
+                            <button class="search__filter--btn primary__btn" type="submit">Ara</button>
                         </form>
                     </div>
                 </div>
@@ -71,11 +111,12 @@
                                 <div class="swiper-slide ">
                                     <div class="hero__slider--items home1-slider1-bg">
                                         <div class="slider__content">
-                                            <span class="slider__subtitle text__secondary">2022 Collections</span>
-                                            <h2 class="slider__maintitle h1">Wheelss <br> <span
-                                                    class="slider__maintitle--inner__text">Body Part</span></h2>
-                                            <span class="slider__price--text text__secondary">415.00/$</span>
-                                            <a class="primary__btn slider__btn" href="shop.html">
+                                            <span class="slider__subtitle text__secondary"> </span>
+                                            <h2 class="slider__maintitle h1">{{ $item->title }} <br> <span
+                                                    class="slider__maintitle--inner__text">{{ $item->description }}</span>
+                                            </h2>
+                                            {{-- <span class="slider__price--text text__secondary">415.00/$</span> --}}
+                                            <a class="primary__btn slider__btn" href="{{ route('shop.index') }}">
                                                 Shop now
                                                 <svg width="12" height="8" viewBox="0 0 12 8" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg">
@@ -239,4 +280,6 @@
             </div>
         </div>
     </section>
+
+    
 @endsection

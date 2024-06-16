@@ -54,23 +54,13 @@ class FavoriteController extends Controller
             $favorite->product_id = $product->id;
             $favorite->save();
 
-            $notification = [
-                "message" => "Favorilere başarıyla eklendi",
-                "alert-type" => "success"
-            ];
 
             // Başarıyla favori eklendiğine dair mesaj gönder
 
-            return redirect()->back()->with($notification);
+            return redirect()->back()->with(['type' => 'success', 'message' => 'Favorilere Başarıyla Eklendi']);
         } catch (\Exception $e) {
-
-            $notification = [
-                "message" => "Bilinmeyen Bir Hata Oluştu.",
-                "alert-type" => "error"
-            ];
-
             // Favori eklenirken bir hata oluşursa hata mesajı gönder
-            return redirect()->back()->with($notification);
+            return redirect()->back()->with(['type' => 'error', 'message' => 'Bilinmeyen bir hata oluştu']);
         }
     }
 }

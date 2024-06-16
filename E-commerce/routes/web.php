@@ -10,9 +10,11 @@ use App\Http\Controllers\user\AdressController;
 use App\Http\Controllers\User\CartController;
 use App\Http\Controllers\User\FavoriteController;
 use App\Http\Controllers\User\HomeController;
+use App\Http\Controllers\user\paymentController;
 use App\Http\Controllers\User\ShopController;
 use App\Http\Controllers\User\UserAccountController;
 use App\Http\Controllers\User\UserOrderController;
+use Faker\Provider\ar_EG\Payment;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -41,7 +43,8 @@ Route::get("", [HomeController::class, "index"])->name("user.index");
 
 Route::get("/products", [ShopController::class, "index"])->name("shop.index");
 Route::get("product/{product:slug}", [ShopController::class, "show"])->name("shop.show");
-
+Route::get('/products/searchNavbar', [ShopController::class, "search"])->name('shop.search');
+Route::get('/products/search', [ShopController::class, "sliderSearch"])->name('shop.sliderSearch');
 
 
 
@@ -52,6 +55,10 @@ Route::middleware("auth")->group(function () {
     Route::Post("/favorites/{product}", [FavoriteController::class, "store"])->name("user.favorite.store");
     Route::get("/my-account", [UserAccountController::class, "index"])->name("user.account.index");
 
+
+    // route::get("/checkout", "checkout")->name("checkout");
+
+    Route::get("/user/checkout", [paymentController::class, "index"])->name("user.account.index");
 
 
     Route::get("/user/adresses", [AdressController::class, "index"])->name("user.address.index");
@@ -67,6 +74,7 @@ Route::controller(CartController::class)->prefix("cart")->group(function () {
 
 Route::controller(UserOrderController::class)->prefix("user/orders/")->group(function () {
     Route::get('', 'index')->name("user.order.index");
+    Route::get('/{shopOrder}', "show")->name("user.order.detail");
 });
 
 

@@ -22,6 +22,10 @@
     <link rel="stylesheet" href="{{ asset('FrontEndTheme/assets/css/style.css') }}">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
 
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+
 </head>
 
 <body>
@@ -80,20 +84,27 @@
     <!-- Start header area -->
     @include('layouts.user_partials.header')
 
-    @if (Session::has('success'))
-        <div class=" container alert alert-success alert-dismissible  fade show" role="alert">
-            <button type="button" class="btn-close close" data-dismiss="alert" aria-label="Close"></button>
-            <strong>Başarılı !</strong> {{ session('success') }}
-        </div>
-    @endif
-
-    @if (Session::has('error'))
-        <div class=" container alert alert-danger alert-dismissible  fade show" role="alert">
-            <button type="button" class="close" data-dismiss="alert">
-                <i class="fa fa-times"></i>
-            </button>
-            <strong>Hata !</strong> {{ session('error') }}
-        </div>
+    @if (session('message'))
+        @if (session('type') == 'info')
+            <script>
+                toastr.info('{{ session('message') }} ');
+            </script>
+        @endif
+        @if (session('type') == 'success')
+            <script>
+                toastr.success('{{ session('message') }} ');
+            </script>
+        @endif
+        @if (session('type') == 'warning')
+            <script>
+                toastr.warning('{{ session('message') }} ');
+            </script>
+        @endif
+        @if (session('type') == 'error')
+            <script>
+                toastr.error('{{ session('message') }} ');
+            </script>
+        @endif
     @endif
 
     <!-- End header area -->
@@ -562,18 +573,19 @@
         </svg></button>
 
     <!-- All Script JS Plugins here  -->
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
-        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 
-  
+
 
     <script src="{{ asset('FrontEndTheme/assets/js/vendor/popper.js') }}" defer="defer"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
     <script src="{{ asset('FrontEndTheme/assets/js/vendor/bootstrap.min.js') }}" defer="defer"></script>
     <script src="{{ asset('FrontEndTheme/assets/js/plugins/swiper-bundle.min.js') }}"></script>
     <script src="{{ asset('FrontEndTheme/assets/js/plugins/glightbox.min.js') }}"></script>
+    <script src="{{ asset('FrontEndTheme/assets/js/plugins/jquery.min.js') }}"></script>
+
     <!-- Customscript js -->
     <script src="{{ asset('FrontEndTheme/assets/js/script.js') }}"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
 
 

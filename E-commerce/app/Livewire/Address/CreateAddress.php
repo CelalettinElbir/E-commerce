@@ -15,7 +15,7 @@ class CreateAddress extends Component
     public function save()
     {
         $this->form->store();
-        session()->flash('success', 'Post successfully updated.');
+        $this->dispatchBrowserEvent('showToast', ['type' => 'success', 'message' => 'Adres başarıyla güncellendi.']);
         return $this->redirectRoute("user.address.index");
     }
 

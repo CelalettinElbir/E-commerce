@@ -51,12 +51,7 @@
                                     </div>
                                 </div>
 
-                                <div class="swiper-slide">
-                                    <div class="product__media--nav__items">
-                                        <img class="product__media--nav__items--img"
-                                            src="assets/img/product/small-product/product5.webp" alt="product-nav-img">
-                                    </div>
-                                </div>
+                               
                             </div>
                             <div class="swiper__nav--btn swiper-button-next">
 
@@ -206,23 +201,30 @@
 
 
                             <div class="product__variant--list mb-15">
-                                @if (auth()->user()->isFavorited($product->id))
-                                    <form action=" {{ route('user.favorite.destroy', $product) }}" method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button class="variant__wishlist--icon mb-15 btn btn-lg" style="font-size: 1 rem;"
-                                            type="submit"> <i class="fa-solid fa-heart fa-2x m-2"></i> Favorilerden sil
-                                        </button>
-                                    </form>
-                                @else
-                                    <form action=" {{ route('user.favorite.store', $product) }}" method="POST">
-                                        @csrf
 
-                                        <button class="variant__wishlist--icon mb-15 btn btn-lg" style="font-size: 1 rem;"
-                                            type="submit"> <i class="fa-solid fa-heart fa-2x m-2"></i> Favorilere Ekle
-                                        </button>
-                                    </form>
-                                @endif
+                                @auth
+
+
+
+                                    @if (auth()->user()->isFavorited($product->id))
+                                        <form action=" {{ route('user.favorite.destroy', $product) }}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button class="variant__wishlist--icon mb-15 btn btn-lg" style="font-size: 1 rem;"
+                                                type="submit"> <i class="fa-solid fa-heart fa-2x m-2"></i> Favorilerden sil
+                                            </button>
+                                        </form>
+                                    @else
+                                        <form action=" {{ route('user.favorite.store', $product) }}" method="POST">
+                                            @csrf
+
+                                            <button class="variant__wishlist--icon mb-15 btn btn-lg" style="font-size: 1 rem;"
+                                                type="submit"> <i class="fa-solid fa-heart fa-2x m-2"></i> Favorilere Ekle
+                                            </button>
+                                        </form>
+                                    @endif
+                                @endauth
+
                                 <button class="variant__buy--now__btn primary__btn" type="submit">Şimdi Satın Al</button>
                             </div>
                             <div class="product__variant--list mb-15">

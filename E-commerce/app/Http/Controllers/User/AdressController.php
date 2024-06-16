@@ -48,11 +48,11 @@ class AdressController extends Controller
 
             ]);
 
-            Log::info('Güncellenen veriler: ', $validatedData);
+            // Log::info('Güncellenen veriler: ', $validatedData);
             $address->update($request->all());
-            return redirect()->route('user.address.index')->with('success', 'Adres başarıyla güncellendi.');
+            return redirect()->route('user.address.index')->with(['type' => 'success', 'message' => 'Adres başarıyla güncellendi.']);
         } catch (Exception $e) {
-            return $e;
+            return redirect()->route('user.address.index')->with(['type' => 'error', 'message' => 'Bilinmeyen Bir Hata Oluştu.']);
         }
     }
 }

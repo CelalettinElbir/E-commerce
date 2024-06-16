@@ -14,4 +14,8 @@ class ShipppingMethod extends Model
         'price',
         'hint',
     ];
+    public function orders()
+    {
+        return $this->hasMany(ShopOrder::class);
+    }
 }

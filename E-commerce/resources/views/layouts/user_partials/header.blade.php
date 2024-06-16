@@ -128,19 +128,20 @@
                             src="#" alt="logo-img"></a>
                 </div>
                 <div class="header__search--widget d-none d-lg-block header__sticky--none">
-                    <form class="d-flex header__search--form border-radius-5" action="#">
+                    <form class="d-flex header__search--form border-radius-5" action="{{ route('shop.search') }}" method="GET">
                         <div class="header__select--categories select">
                             <select class="header__select--inner">
-                                <option selected="" value="1"> All categories</option>
-                                <option value="2">Accessories</option>
-                                <option value="3">Accessories &amp; More</option>
-                                <option value="4">Camera &amp; Video </option>
-                                <option value="5">Butters &amp; Eggs </option>
+                            <option selected="" value="1"> Tüm Katexroriler</option>
+                            @foreach($categories as $category)
+                                <option value="{{$loop->index}}">{{$category->name}} </option>
+                            @endforeach
+
+                            
                             </select>
                         </div>
                         <div class="header__search--box">
                             <label>
-                                <input class="header__search--input" placeholder="Search For Products..."
+                                <input class="header__search--input" placeholder="Lastikleri Ara..."
                                     type="text">
                             </label>
                             <button class="header__search--button bg__primary text-white" aria-label="search button"
@@ -1765,10 +1766,10 @@
 
 
             <div class="minicart__button d-flex justify-content-center">
-                <a class="primary__btn minicart__button--link" href="cart.html">Sepete Git</a>
-                <a class="primary__btn minicart__button--link" href="checkout.html">Satın Al</a>
+                <a class="primary__btn minicart__button--link" href="{{ route('user.cart.index') }}">Sepete Git</a>
+                <a class="primary__btn minicart__button--link" href="{{ route('user.account.index') }}">Satın
+                    Al</a>
             </div>
-
 
         </div>
 

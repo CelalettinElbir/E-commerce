@@ -190,29 +190,18 @@
                                                                 </li> --}}
 
                                                                 <li class="product__card--action__list">
-
-                                                                    <form
+                                                                    <form id="favorite-form"
                                                                         action="{{ route('user.favorite.store', $product) }}"
                                                                         method="post">
                                                                         @csrf
-                                                                        <button class="product__card--action__btn">
-                                                                            <i class="fa-regular fa-heart"></i>
+                                                                        <button type="submit"
+                                                                            class="product__card--action__btn">
+                                                                            <i class="far fa-heart"></i>
                                                                             <span class="visually-hidden">Favorilere
                                                                                 ekle</span>
-
                                                                         </button>
-
                                                                     </form>
 
-
-                                                                    {{-- <a class="product__card--action__btn" title="Wishlist"
-                                                                        href="wishlist.html">
-                                                                        <i class="fa-regular fa-heart"></i>
-
-
-                                                                        <span class="visually-hidden">Favorilere
-                                                                            ekle</span>
-                                                                    </a> --}}
                                                                 </li>
                                                             </ul>
                                                         </div>
@@ -268,4 +257,29 @@
             </div>
         </div>
     </div>
+
+
+    <script>
+        $(document).ready(function() {
+            $('#favorite-form').on('submit', function(e) {
+                e.preventDefault(); // Formun normal submit işlemini engelle
+
+                $.ajax({
+                    type: 'POST',
+                    url: $(this).attr('action'), // Formun action attribute'undan URL'yi al
+                    data: $(this).serialize(), // Form verilerini al
+                    success: function(response) {
+                        // Favorilere ekleme başarılı olduğunda yapılacak işlemler
+                        console.log('Ürün favorilere eklendi');
+                        // Burada başka işlemler de yapılabilir, örneğin bir mesaj gösterme
+                    },
+                    error: function(xhr, status, error) {
+                        // Favorilere ekleme sırasında bir hata oluştuğunda yapılacak işlemler
+                        console.error(error);
+                        // Hata durumunda kullanıcıya bir mesaj gösterilebilir
+                    }
+                });
+            });
+        });
+    </script>
 @endsection

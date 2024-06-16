@@ -17,7 +17,7 @@ class ShopOrder extends Model
         'status',
     ];
 
-    public function shippingMethod()
+    public function ShippingDetails()
     {
         return $this->belongsTo(ShipppingMethod::class);
     }
@@ -39,11 +39,11 @@ class ShopOrder extends Model
     public static function getStatuses()
     {
         return [
-            'pending' => 'onaylanmamış',
+            'pending' => 'Beklemede',
             'processing' => 'İşleniyor',
             'completed' => 'Tamamlandı',
             'cancelled' => 'İptal Edildi',
-            'shipped' => 'Kargolandı',
+            'Shipped' => 'Kargolandı',
             'delivered' => 'Teslim Edildi',
         ];
     }

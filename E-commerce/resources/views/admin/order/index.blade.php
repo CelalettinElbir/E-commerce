@@ -88,8 +88,6 @@
                                                         class="fa fa-truck" aria-hidden="true"></i></a>
                                             @endif
                                         </td>
-
-
                                     </tr>
                                     @endforeach
                                 </tbody>

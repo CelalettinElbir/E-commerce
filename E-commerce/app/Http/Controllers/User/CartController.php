@@ -43,11 +43,8 @@ class CartController extends Controller
 
         // update the session data (this equals Session::put() )
         session(['shoppingCart' => $shoppingCart]);
-        $notification = array(
-            "message" => "Sepete Başarıyla Eklendi",
-            "alert-type" => "success"
-        );
-        return back()->with($notification);
+
+        return back()->with('success', 'Sepete Başarıyla Eklendi!');
     }
 
 
@@ -56,24 +53,17 @@ class CartController extends Controller
         $shoppingCart = session('shoppingCart', []);
 
         if (!isset($shoppingCart[$product->id])) {
-            $notification = array(
-                "message" => "Bir Hata Oluştu ",
-                "alert-type" => "error"
-            );
+
             return null;
         } else {
             unset($shoppingCart[$product->id]);
-            $notification = array(
-                "message" => "Başarıyla silindi",
-                "alert-type" => "success"
-            );
         }
 
         session(['shoppingCart' => $shoppingCart]);
 
 
-
-        return back()->with($notification);
+        
+        return back()->with(['type' => 'succses', 'message' =>'Hata oluştu']);
     }
 
 
