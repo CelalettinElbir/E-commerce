@@ -3,9 +3,12 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Models\Address;
 use App\Models\ShipppingMethod;
 use App\Models\ShopOrder;
+use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserOrderController extends Controller
 {
@@ -38,6 +41,60 @@ class UserOrderController extends Controller
         $shopOrder->load("orderDetails", "address", "ShippingDetails", "orderDetails.product")->get();
         return view("user.order.detail", compact("shopOrder", "status"));
     }
+
+
+
+
+
+
+
+
+
+
+    public function store(Request $request)
+    {
+        $addressData = $request->validate([
+            'address_line_1' => 'required',
+            'address_line_2' => 'nullable',
+            'city' => 'required',
+            'state' => 'nullable',
+            'postal_code' => 'required',
+            'tel_no' => 'nullable',
+            'addres_name' => 'nullable',
+            'first_name' => 'nullable',
+            'last_name' => 'nullable',
+            'tc' => 'nullable',
+            // Add other address fields as needed
+        ]);
+
+        $address = Address::create($addressData);
+
+        
+        // Validate the request data for order
+        $orderData = $request->validate([
+            'order_total' => 'required|numeric|min:0',
+            // Add other order fields as needed
+        ]);
+
+        // Add user_id and shipping_address_id to order data
+        $orderData['user_id'] = Auth::id();
+        $orderData['shipping_address_id'] = $address->id;
+
+        // Create the order
+        $order = ShopOrder::create($orderData);
+
+        // Optionally, you may want to return a response or redirect
+        return response()->json(['order' => $order, 'address' => $address], 201);
+    }
+
+   
+
+
+
+
+
+
+
 
     public function checkout()
     {
@@ -78,11 +135,4 @@ class UserOrderController extends Controller
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
 }

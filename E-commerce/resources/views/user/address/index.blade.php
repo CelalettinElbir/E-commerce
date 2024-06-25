@@ -3,7 +3,9 @@
 <script>
     // public/js/custom.js (veya başka bir yerde)
     document.addEventListener('DOMContentLoaded', function() {
-        var cities = {!! json_encode($cities) !!};
+        var cities = {
+            !!json_encode($cities) !!
+        };
 
         var cityDropdown = document.getElementById('city');
         var districtDropdown = document.getElementById('state');
@@ -51,37 +53,36 @@
 
 
 @section('content')
-    <section class="my__account--section section--padding">
-        <div class="container">
-            <div class="my__account--section__inner border-radius-10 d-flex">
-                <x-user-side-bar />
+<section class="my__account--section section--padding">
+    <div class="container">
+        <div class="my__account--section__inner border-radius-10 d-flex">
+            <x-user-side-bar />
 
-                <div class="account__wrapper">
-                    <div class="account__content">
-                        <button type="button" class="btn btn-success btn-lg float-end" data-bs-toggle="modal"
-                            data-bs-target="#createModal">
-                            &plus;
-                            Yeni Adress Ekle
-                        </button>
-                        <div class="login__section section--padding">
-
+            <div class="account__wrapper">
+                <div class="account__content">
+                    <button type="button" class="btn btn-success btn-lg float-end" data-bs-toggle="modal" data-bs-target="#createModal">
+                        &plus;
+                        Yeni Adress Ekle
+                    </button>
+                    <div class="login__section section--padding">
 
 
 
-                            @livewire('address.ListAdresses')
+
+                        @livewire('address.ListAdresses')
 
 
-                            @livewire('address.CreateAddress')
+                        @livewire('address.CreateAddress')
 
 
-
-                        </div>
 
                     </div>
 
-
                 </div>
+
+
             </div>
         </div>
-    </section>
+    </div>
+</section>
 @endsection

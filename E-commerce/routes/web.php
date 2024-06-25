@@ -1,20 +1,20 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminBrandController;
-use App\Http\Controllers\admin\AdminCategoryController;
+use App\Http\Controllers\Admin\AdminCategoryController;
 use App\Http\Controllers\Admin\AdminOrderController;
 use App\Http\Controllers\Admin\AdminProductController;
 use App\Http\Controllers\Admin\AdminSliderController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\user\AdressController;
+use App\Http\Controllers\User\AdressController;
 use App\Http\Controllers\User\CartController;
 use App\Http\Controllers\User\FavoriteController;
 use App\Http\Controllers\User\HomeController;
-use App\Http\Controllers\user\paymentController;
+use App\Http\Controllers\User\paymentController;
 use App\Http\Controllers\User\ShopController;
 use App\Http\Controllers\User\UserAccountController;
 use App\Http\Controllers\User\UserOrderController;
-use Faker\Provider\ar_EG\Payment;
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -55,16 +55,30 @@ Route::middleware("auth")->group(function () {
     Route::Post("/favorites/{product}", [FavoriteController::class, "store"])->name("user.favorite.store");
     Route::get("/my-account", [UserAccountController::class, "index"])->name("user.account.index");
 
-
     // route::get("/checkout", "checkout")->name("checkout");
 
-    Route::get("/user/checkout", [paymentController::class, "index"])->name("user.account.index");
+    // Route::get("/user/checkout", [paymentController::class, "index"])->name("user.payment.index");
+
+
+    // Route::post('/checkout/payment', [paymentController::class, 'handleFakePayment'])->name('user.payment');
+    // Route::get('/checkout/success', [paymentController::class, 'success'])->name('checkout.success');
+
+
+    Route::get('/user/checkout', [paymentController::class, 'index'])->name('user.payment.index');
+    Route::post('/checkout/address', [paymentController::class, 'storeAddress'])->name('user.checkout.store');
+    Route::get('/checkout/payment', [paymentController::class, 'paymentForm'])->name('user.payment.checkout');
+    Route::post('/checkout/payment/process', [paymentController::class, 'processPayment'])->name('user.payment.process');
+    Route::post('/checkout/payment/callback', [paymentController::class, 'paytrCallback'])->name('user.payment.callback');
+    Route::get('/checkout/success', [paymentController::class, 'success'])->name('user.payment.success');
+    Route::get('/checkout/failure', [paymentController::class, 'failure'])->name('user.payment.failure');
+
 
 
     Route::get("/user/adresses", [AdressController::class, "index"])->name("user.address.index");
     Route::get("/user/addresses/{address}/edit", [AdressController::class, "edit"])->name("user.address.edit");
     Route::put("/user/addresses/{address}", [AdressController::class, "update"])->name("user.address.update");
 });
+
 
 Route::controller(CartController::class)->prefix("cart")->group(function () {
     Route::get('/', 'index')->name("user.cart.index");

@@ -4,8 +4,6 @@
 
 
 
-
-
 @section('content')
     <script>
         document.addEventListener('DOMContentLoaded', function() {
