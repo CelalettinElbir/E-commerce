@@ -3,30 +3,30 @@
 
 
 @section('content')
-    <section class="cart__section section--padding">
-        <div class="container">
-            <div class="cart__section--inner">
-                <form action="#">
-                    <div class="row">
-                        <div class="col-lg-10 mx-auto">
-                            <h2 class="cart__title mb-30">Alışveriş Sepeti </h2>
+<section class="cart__section section--padding">
+    <div class="container">
+        <div class="cart__section--inner">
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <h2 class="cart__title mb-30">Alışveriş Sepeti </h2>
 
+                    @livewire('cart.cart-list')
+                    <div class="continue__shopping d-flex justify-content-between">
+                        <a class="continue__shopping--link" href="{{route("shop.index")}}">Alışverişe Devam Et</a>
 
-                            @livewire('cart.cart-list')
-
-
-                            <div class="continue__shopping d-flex justify-content-between">
-                                <a class="continue__shopping--link" href="shop.html">Alışverişe Deveam Et</a>
-                                <button class="continue__shopping--clear" type="submit">Kartı Temizle</button>
-                            </div>
-                        </div>
-
-
-
-
-
+                        <form action="{{ route('cart.empty') }}" method="post">
+                            @csrf
+                            <button type="submit" class="continue__shopping--clear">Kartı Temizle</button>
+                        </form>
                     </div>
-                    {{-- <div class="col-lg-4">
+                </div>
+
+
+
+
+
+            </div>
+            {{-- <div class="col-lg-4">
                             <div class="cart__summary border-radius-10">
                                 <div class="coupon__code mb-30">
                                     <h3 class="coupon__code--title">Coupon</h3>
@@ -70,9 +70,8 @@
                                 </div>
                             </div>
                         </div> --}}
-            </div>
-            </form>
         </div>
-        </div>
-    </section>
+    </div>
+    </div>
+</section>
 @endsection

@@ -3,10 +3,10 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Partsix - Auto Parts & Car Accessories Shop HTML Template</title>
+    <title>Özelçi Otolastik</title>
     <meta name="description" content="Morden Bootstrap HTML5 Template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="{{asset("upload/logo.jpg")}}">
 
     <!-- ======= All CSS Plugins here ======== -->
     <link rel="stylesheet" href="   {{ asset('FrontEndTheme/assets/css/plugins/swiper-bundle.min.css') }}">
@@ -80,9 +80,168 @@
         </div>
     </div>
     <!-- End preloader -->
-
     <!-- Start header area -->
     @include('layouts.user_partials.header')
+
+
+
+
+    <div class="offcanvas__filter--sidebar widget__area  ">
+        <button type="button" class="offcanvas__filter--close" data-offcanvas="">
+            <svg class="minicart__close--icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                <path fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M368 368L144 144M368 144L144 368"></path>
+            </svg> <span class="offcanvas__filter--close__text">Kapat</span>
+        </button>
+        <div class="offcanvas__filter--sidebar__inner">
+
+
+            <form action="{{route("shop.index")}}" method="GET" id="filterForm">
+                <!-- Existing filters -->
+
+                <!-- Hidden inputs for the selected filters -->
+                @if(request('min_price'))
+                <input type="hidden" name="min_price" value="{{ request('min_price') }}">
+                @endif
+                @if(request('max_price'))
+                <input type="hidden" name="max_price" value="{{ request('max_price') }}">
+                @endif
+                @if(request('categories'))
+                @foreach(request('categories') as $category)
+                <input type="hidden" name="categories[]" value="{{ $category }}">
+                @endforeach
+                @endif
+                @if(request('brands'))
+                @foreach(request('brands') as $brand)
+                <input type="hidden" name="brands[]" value="{{ $brand }}">
+                @endforeach
+                @endif
+                @if(request('width'))
+                <input type="hidden" name="width" value="{{ request('width') }}">
+                @endif
+                @if(request('aspect_ratio'))
+                <input type="hidden" name="aspect_ratio" value="{{ request('aspect_ratio') }}">
+                @endif
+                @if(request('rim_diameter'))
+                <input type="hidden" name="rim_diameter" value="{{ request('rim_diameter') }}">
+                @endif
+
+
+
+                <div class="single__widget price__filter widget__bg">
+                    <h2 class="widget__title h3">Fiyat Aralığı</h2>
+                    <div class="price__filter--form__inner mb-15">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="min_price">En Az</label>
+                                    <input type="number" class="form-control" id="min_price" name="min_price" placeholder="0" min="0" value="{{ request('min_price') }}">
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="max_price">En Çok</label>
+                                    <input type="number" class="form-control" id="max_price" name="max_price" placeholder="250.00" min="0" value="{{ request('max_price') }}">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="single__widget widget__bg">
+                    <h2 class="widget__title h3">Kategoriler</h2>
+                    <ul class="widget__tagcloud d-flex flex-column">
+                        @foreach ($categories as $category)
+                        <li class="widget__tagcloud--item d-flex gap-2">
+                            <input type="checkbox" name="categories[]" value="{{ $category->id }}" @if(in_array($category->id, request('categories', []))) checked @endif>
+                            <label for="{{ $category->id }}">{{ $category->name }}</label>
+                        </li>
+                        @endforeach
+                    </ul>
+                </div>
+
+                <!-- Brands -->
+                <div class="single__widget widget__bg">
+                    <h2 class="widget__title h3">Markalar</h2>
+                    <ul class="widget__tagcloud d-flex flex-column">
+                        @foreach ($brands as $brand)
+                        <li class="widget__tagcloud--item d-flex gap-2">
+                            <input type="checkbox" name="brands[]" value="{{ $brand->id }}" @if(in_array($brand->id, request('brands', []))) checked @endif>
+                            <label for="{{ $brand->id }}">{{ $brand->name }}</label>
+                        </li>
+                        @endforeach
+                    </ul>
+                </div>
+
+                <!-- Width -->
+                <div class="single__widget widget__bg">
+                    <a class="widget__title h3  d-flex align-items-center justify-content-between" type="button" data-bs-toggle="collapse" data-bs-target="#widthCollapse" aria-expanded="false" aria-controls="brandCollapse">
+                        Genişliği
+                        <i class="fas fa-chevron-down"></i>
+                    </a>
+                    <div class="collapse" id="widthCollapse">
+                        <div class="search__filter--radio">
+                            @foreach(range(145, 345, 10) as $width)
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="width" id="width_{{ $width }}" value="{{ $width }}" @if(request('width')==$width) checked @endif>
+                                <label class="form-check-label" for="width_{{ $width }}">{{ $width }}</label>
+                            </div>
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Aspect Ratio -->
+                <div class="single__widget widget__bg">
+                    <a class="widget__title h3  d-flex align-items-center justify-content-between" type="button" data-bs-toggle="collapse" data-bs-target="#aspectRatioCollapse" aria-expanded="false" aria-controls="brandCollapse">
+                        Yanak Oranı
+                        <i class="fas fa-chevron-down"></i>
+                    </a>
+                    <div class="collapse show" id="aspectRatioCollapse">
+                        @foreach([30, 35, 40] as $aspectRatio)
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="aspect_ratio" id="aspect_ratio_{{ $aspectRatio }}" value="{{ $aspectRatio }}" @if(request('aspect_ratio')==$aspectRatio) checked @endif>
+                            <label class="form-check-label" for="aspect_ratio_{{ $aspectRatio }}">{{ $aspectRatio }}</label>
+                        </div>
+                        @endforeach
+                    </div>
+                </div>
+
+                <!-- Rim Diameter -->
+                <div class="single__widget widget__bg">
+                    <a class="widget__title h3  d-flex align-items-center justify-content-between" type="button" data-bs-toggle="collapse" data-bs-target="#rimDiameterCollapse" aria-expanded="false" aria-controls="brandCollapse">
+                        Jant Çapı
+                        <i class="fas fa-chevron-down"></i>
+                    </a>
+                    <div class="collapse show" id="rimDiameterCollapse">
+                        @foreach([13, 14, 15] as $rimDiameter)
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="rim_diameter" id="rim_diameter_{{ $rimDiameter }}" value="{{ $rimDiameter }}" @if(request('rim_diameter')==$rimDiameter) checked @endif>
+                            <label class="form-check-label" for="rim_diameter_{{ $rimDiameter }}">{{ $rimDiameter }}</label>
+                        </div>
+                        @endforeach
+                    </div>
+                </div>
+
+                <div class="shop__sidebar--footer d-flex justify-content-between align-items-center p-3 bg-light rounded">
+                    <button class="btn primary__btn btn-lg">Ara</button>
+                    <a href="{{ route('shop.index') }}" class="btn btn-secondary btn-lg">Temizle</a>
+                </div>
+
+            </form>
+
+
+
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
 
 
     @if(Session::has('message'))
@@ -444,6 +603,7 @@
             // $(containerSelector).html(alertHtml).removeClass('d-none');
             // Append alert to the specified container
             $(containerSelector).html(alertHtml);
+            i
 
             // Dismiss alert after a few seconds (optional)
             setTimeout(function() {
@@ -454,6 +614,10 @@
 
         }
     </script>
+
+
+
+
 
 
 

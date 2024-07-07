@@ -22,24 +22,52 @@
             <div class="col-xl-3 col-lg-4  col-md-4 shop-col-width-lg-4">
                 <div class="shop__sidebar--widget widget__area d-none d-lg-block">
 
-                    <form action="" method="GET">
+                    <form action="{{route("shop.index")}}" method="GET" id="filterForm">
+                        <!-- Existing filters -->
 
+                        <!-- Hidden inputs for the selected filters -->
+                        @if(request('min_price'))
+                        <input type="hidden" name="min_price" value="{{ request('min_price') }}">
+                        @endif
+                        @if(request('max_price'))
+                        <input type="hidden" name="max_price" value="{{ request('max_price') }}">
+                        @endif
+                        @if(request('categories'))
+                        @foreach(request('categories') as $category)
+                        <input type="hidden" name="categories[]" value="{{ $category }}">
+                        @endforeach
+                        @endif
+                        @if(request('brands'))
+                        @foreach(request('brands') as $brand)
+                        <input type="hidden" name="brands[]" value="{{ $brand }}">
+                        @endforeach
+                        @endif
+                        @if(request('width'))
+                        <input type="hidden" name="width" value="{{ request('width') }}">
+                        @endif
+                        @if(request('aspect_ratio'))
+                        <input type="hidden" name="aspect_ratio" value="{{ request('aspect_ratio') }}">
+                        @endif
+                        @if(request('rim_diameter'))
+                        <input type="hidden" name="rim_diameter" value="{{ request('rim_diameter') }}">
+                        @endif
+
+                        <!-- Other filters -->
                         <div class="single__widget price__filter widget__bg">
                             <h2 class="widget__title h3">Fiyat Aralığı</h2>
-                            <div class="price__filter--form__inner mb-15 d-flex align-items-center">
-                                <div class="price__filter--group">
-                                    <label class="price__filter--label" for="Filter-Price-GTE2">En Az </label>
-                                    <div class="price__filter--input border-radius-5 d-flex align-items-center">
-                                        <input class="price__filter--input__field border-0" name="min_price" id="Filter-Price-GTE2" type="number" placeholder="0" min="0">
+                            <div class="price__filter--form__inner mb-15">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label for="min_price">En Az</label>
+                                            <input type="number" class="form-control" id="min_price" name="min_price" placeholder="0" min="0" value="{{ request('min_price') }}">
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="price__divider">
-                                    <span>-</span>
-                                </div>
-                                <div class="price__filter--group">
-                                    <label class="price__filter--label" for="Filter-Price-LTE2">En Çok</label>
-                                    <div class="price__filter--input border-radius-5 d-flex align-items-center">
-                                        <input class="price__filter--input__field border-0" name="max_price" id="Filter-Price-LTE2" type="number" min="0" placeholder="250.00">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label for="max_price">En Çok</label>
+                                            <input type="number" class="form-control" id="max_price" name="max_price" placeholder="250.00" min="0" value="{{ request('max_price') }}">
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -50,7 +78,7 @@
                             <ul class="widget__tagcloud d-flex flex-column">
                                 @foreach ($categories as $category)
                                 <li class="widget__tagcloud--item d-flex gap-2">
-                                    <input type="checkbox" name="categories[]" value="{{ $category->id }}">
+                                    <input type="checkbox" name="categories[]" value="{{ $category->id }}" @if(in_array($category->id, request('categories', []))) checked @endif>
                                     <label for="{{ $category->id }}">{{ $category->name }}</label>
                                 </li>
                                 @endforeach
@@ -63,18 +91,69 @@
                             <ul class="widget__tagcloud d-flex flex-column">
                                 @foreach ($brands as $brand)
                                 <li class="widget__tagcloud--item d-flex gap-2">
-                                    <input type="checkbox" name="brands[]" value="{{ $brand->id }}">
+                                    <input type="checkbox" name="brands[]" value="{{ $brand->id }}" @if(in_array($brand->id, request('brands', []))) checked @endif>
                                     <label for="{{ $brand->id }}">{{ $brand->name }}</label>
                                 </li>
                                 @endforeach
                             </ul>
                         </div>
 
-                        <div class="d-grid">
-                            <button class="primary__btn price__filter--btn " type="submit">Filtrele</button>
+                        <!-- Width -->
+                        <div class="single__widget widget__bg">
+                            <a class="widget__title h3  d-flex align-items-center justify-content-between" type="button" data-bs-toggle="collapse" data-bs-target="#widthCollapse" aria-expanded="false" aria-controls="brandCollapse">
+                                Genişliği
+                                <i class="fas fa-chevron-down"></i>
+                            </a>
+                            <div class="collapse" id="widthCollapse">
+                                <div class="search__filter--radio">
+                                    @foreach(range(145, 345, 10) as $width)
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="width" id="width_{{ $width }}" value="{{ $width }}" @if(request('width')==$width) checked @endif>
+                                        <label class="form-check-label" for="width_{{ $width }}">{{ $width }}</label>
+                                    </div>
+                                    @endforeach
+                                </div>
+                            </div>
                         </div>
 
+                        <!-- Aspect Ratio -->
+                        <div class="single__widget widget__bg">
+                            <a class="widget__title h3  d-flex align-items-center justify-content-between" type="button" data-bs-toggle="collapse" data-bs-target="#aspectRatioCollapse" aria-expanded="false" aria-controls="brandCollapse">
+                                Yanak Oranı
+                                <i class="fas fa-chevron-down"></i>
+                            </a>
+                            <div class="collapse show" id="aspectRatioCollapse">
+                                @foreach([30, 35, 40] as $aspectRatio)
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="aspect_ratio" id="aspect_ratio_{{ $aspectRatio }}" value="{{ $aspectRatio }}" @if(request('aspect_ratio')==$aspectRatio) checked @endif>
+                                    <label class="form-check-label" for="aspect_ratio_{{ $aspectRatio }}">{{ $aspectRatio }}</label>
+                                </div>
+                                @endforeach
+                            </div>
+                        </div>
+
+                        <!-- Rim Diameter -->
+                        <div class="single__widget widget__bg">
+                            <a class="widget__title h3  d-flex align-items-center justify-content-between" type="button" data-bs-toggle="collapse" data-bs-target="#rimDiameterCollapse" aria-expanded="false" aria-controls="brandCollapse">
+                                Jant Çapı
+                                <i class="fas fa-chevron-down"></i>
+                            </a>
+                            <div class="collapse show" id="rimDiameterCollapse">
+                                @foreach([13, 14, 15] as $rimDiameter)
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="rim_diameter" id="rim_diameter_{{ $rimDiameter }}" value="{{ $rimDiameter }}" @if(request('rim_diameter')==$rimDiameter) checked @endif>
+                                    <label class="form-check-label" for="rim_diameter_{{ $rimDiameter }}">{{ $rimDiameter }}</label>
+                                </div>
+                                @endforeach
+                            </div>
+                        </div>
+
+                        <div class="shop__sidebar--footer d-flex justify-content-between align-items-center p-3 bg-light rounded">
+                            <button class="btn primary__btn btn-lg">Ara</button>
+                            <a href="{{ route('shop.index') }}" class="btn btn-secondary btn-lg">Temizle</a>
+                        </div>
                     </form>
+
 
 
                 </div>
@@ -92,9 +171,9 @@
                                         <circle cx="176" cy="256" r="28" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="28" />
                                         <circle cx="336" cy="384" r="28" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="28" />
                                     </svg>
-                                    <span class="widget__filter--btn__text">Filter</span>
+                                    <span class="widget__filter--btn__text">Filtrele</span>
                                 </button>
-                                <div class="product__view--mode__list product__short--by align-items-center d-flex ">
+                                <!-- <div class="product__view--mode__list product__short--by align-items-center d-flex ">
                                     <label class="product__view--label">Prev Page :</label>
                                     <div class="select shop__header--select">
                                         <select class="product__view--select">
@@ -105,8 +184,8 @@
                                             <option value="5">60 </option>
                                         </select>
                                     </div>
-                                </div>
-                                <div class="product__view--mode__list product__short--by align-items-center d-flex">
+                                </div> -->
+                                <!-- <div class="product__view--mode__list product__short--by align-items-center d-flex">
                                     <label class="product__view--label">Sort By :</label>
                                     <div class="select shop__header--select">
                                         <select class="product__view--select">
@@ -117,7 +196,7 @@
                                         </select>
                                     </div>
 
-                                </div>
+                                </div> -->
                                 <div class="product__view--mode__list">
                                     <div class="product__tab--one product__grid--column__buttons d-flex justify-content-center">
                                         <button class="product__grid--column__buttons--icons active" aria-label="grid btn" data-toggle="tab" data-target="#product_grid">
@@ -134,7 +213,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <p class="product__showing--count">Toplam Ürün sayısı {{ count($products) }}</p>
+                            <p class="product__showing--count">Toplam Ürün sayısı {{ $productCount}}</p>
                         </div>
                         <div class="tab_content">
                             <div id="product_grid" class="tab_pane active show">
@@ -175,7 +254,7 @@
                                                 </div>
                                                 <div class="product__card--content">
 
-                                                    <h3 class="product__card--title"><a href="product-details.html">{{ $product->name }}
+                                                    <h3 class="product__card--title"><a href="{{ route('shop.show', $product->slug) }}">{{ $product->name }}
                                                         </a>
                                                     </h3>
                                                     <div class="product__card--price">
@@ -186,9 +265,10 @@
                                                     <div class="product__card--footer">
 
                                                         @livewire('cart.cart-add', ['product' => $product])
-                                                        // Handle success response
 
                                                     </div>
+
+
 
                                                 </div>
                                             </article>
@@ -239,7 +319,15 @@
                 success: function(response) {
                     toastr.success('Başarıyla Favorilere eklendi ');
                     button.find('i').removeClass('far').addClass('fas');
-                    button.prop('disabled', true); // Disable the button after successful action
+                    button.prop('filterFormdisabled', true); // Disable the button after successful action
+
+
+                    $('.favorite_count').each(function() {
+                        console.log("deneme");
+                        var currentCount = parseInt($(this).text());
+                        $(this).text(currentCount + 1); // Increment the favorite count
+                    });
+
                 },
                 error: function(xhr, status, error) {
                     // Handle error response
@@ -250,6 +338,71 @@
                 }
             });
         });
+
+
+
+
+
+
+
+
     });
 </script>
+
+
+<script>
+    $('#filterForm').submit(function(event) {
+        event.preventDefault(); // Prevent default form submission
+
+        // Construct the URL based on current filters
+        var baseUrl = "{{ route('shop.index') }}"; // Replace with your route URL
+        var params = [];
+
+        // Add min_price and max_price if available
+        var minPrice = $('#min_price').val();
+        var maxPrice = $('#max_price').val();
+        if (minPrice) {
+            params.push('min_price=' + encodeURIComponent(minPrice));
+        }
+        if (maxPrice) {
+            params.push('max_price=' + encodeURIComponent(maxPrice));
+        }
+
+        // Add categories
+        $('input[name="categories[]"]:checked').each(function() {
+            params.push('categories[]=' + encodeURIComponent($(this).val()));
+        });
+
+        // Add brands
+        $('input[name="brands[]"]:checked').each(function() {
+            params.push('brands[]=' + encodeURIComponent($(this).val()));
+        });
+
+        // Add width, aspect_ratio, and rim_diameter
+        var width = $('input[name="width"]:checked').val();
+        if (width) {
+            params.push('width=' + encodeURIComponent(width));
+        }
+
+        var aspectRatio = $('input[name="aspect_ratio"]:checked').val();
+        if (aspectRatio) {
+            params.push('aspect_ratio=' + encodeURIComponent(aspectRatio));
+        }
+
+        var rimDiameter = $('input[name="rim_diameter"]:checked').val();
+        if (rimDiameter) {
+            params.push('rim_diameter=' + encodeURIComponent(rimDiameter));
+        }
+
+        // Construct the final URL
+        var url = baseUrl + '?' + params.join('&');
+
+        // Redirect to the constructed URL
+        window.location.href = url;
+    });
+</script>
+
+
+
+
 @endsection

@@ -26,15 +26,15 @@
                                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class=" -heart">
                                     <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z">
                                     </path>
-                                </svg> Wishlist</a>
+                                </svg> Favoriler</a>
                         </li>
-                        <li class="header__link--menu"><a class="header__link--menu__text" href="compare.html">
+                        <!-- <li class="header__link--menu"><a class="header__link--menu__text" href="compare.html">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 512 512">
                                     <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M400 304l48 48-48 48M400 112l48 48-48 48M64 352h85.19a80 80 0 0066.56-35.62L256 256">
                                     </path>
                                     <path d="M64 160h85.19a80 80 0 0166.56 35.62l80.5 120.76A80 80 0 00362.81 352H416M416 160h-53.19a80 80 0 00-66.56 35.62L288 208" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"></path>
                                 </svg>Compare</a>
-                        </li>
+                        </li> -->
                     </ul>
                     <ul class="social__share d-flex">
                         <li class="social__share--list">
@@ -47,7 +47,16 @@
                         </li>
 
                         <li class="social__share--list">
-                            <a class="social__share--icon" target="_blank" href="https://www.instagram.com/ozelciler_oto_michelin/   ">
+                            <a class="social__share--icon" target="_blank" href="{{route("whatsapp")}}">
+                                <i class="fa-brands fa-whatsapp"></i>
+
+                                <span class="visually-hidden">whatsapp</span>
+                            </a>
+                        </li>
+
+
+                        <li class="social__share--list">
+                            <a class="social__share--icon" target="_blank" href="https://www.instagram.com/ozelciler_oto_michelin/">
                                 <svg width="14" height="13" viewBox="0 0 14 13" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M7.125 3.60547C5.375 3.60547 3.98047 5.02734 3.98047 6.75C3.98047 8.5 5.375 9.89453 7.125 9.89453C8.84766 9.89453 10.2695 8.5 10.2695 6.75C10.2695 5.02734 8.84766 3.60547 7.125 3.60547ZM7.125 8.80078C6.00391 8.80078 5.07422 7.89844 5.07422 6.75C5.07422 5.62891 5.97656 4.72656 7.125 4.72656C8.24609 4.72656 9.14844 5.62891 9.14844 6.75C9.14844 7.89844 8.24609 8.80078 7.125 8.80078ZM11.1172 3.49609C11.1172 3.08594 10.7891 2.75781 10.3789 2.75781C9.96875 2.75781 9.64062 3.08594 9.64062 3.49609C9.64062 3.90625 9.96875 4.23438 10.3789 4.23438C10.7891 4.23438 11.1172 3.90625 11.1172 3.49609ZM13.1953 4.23438C13.1406 3.25 12.9219 2.375 12.2109 1.66406C11.5 0.953125 10.625 0.734375 9.64062 0.679688C8.62891 0.625 5.59375 0.625 4.58203 0.679688C3.59766 0.734375 2.75 0.953125 2.01172 1.66406C1.30078 2.375 1.08203 3.25 1.02734 4.23438C0.972656 5.24609 0.972656 8.28125 1.02734 9.29297C1.08203 10.2773 1.30078 11.125 2.01172 11.8633C2.75 12.5742 3.59766 12.793 4.58203 12.8477C5.59375 12.9023 8.62891 12.9023 9.64062 12.8477C10.625 12.793 11.5 12.5742 12.2109 11.8633C12.9219 11.125 13.1406 10.2773 13.1953 9.29297C13.25 8.28125 13.25 5.24609 13.1953 4.23438ZM11.8828 10.3594C11.6914 10.9062 11.2539 11.3164 10.7344 11.5352C9.91406 11.8633 8 11.7812 7.125 11.7812C6.22266 11.7812 4.30859 11.8633 3.51562 11.5352C2.96875 11.3164 2.55859 10.9062 2.33984 10.3594C2.01172 9.56641 2.09375 7.65234 2.09375 6.75C2.09375 5.875 2.01172 3.96094 2.33984 3.14062C2.55859 2.62109 2.96875 2.21094 3.51562 1.99219C4.30859 1.66406 6.22266 1.74609 7.125 1.74609C8 1.74609 9.91406 1.66406 10.7344 1.99219C11.2539 2.18359 11.6641 2.62109 11.8828 3.14062C12.2109 3.96094 12.1289 5.875 12.1289 6.75C12.1289 7.65234 12.2109 9.56641 11.8828 10.3594Z" fill="currentColor"></path>
                                 </svg>
@@ -80,13 +89,13 @@
                     </a>
                 </div>
                 <div class="main__logo">
-                    <a class="main__logo--link" href="{{ route('user.index') }}"><img class="main__logo--img" src="#" alt="logo-img"></a>
+                    <a class="main__logo--link" href="{{ route('user.index') }}"><img class="main__logo--img" src="{{asset("upload/logo.jpg")}}" alt="logo-img"></a>
                 </div>
                 <div class="header__search--widget d-none d-lg-block header__sticky--none">
                     <form class="d-flex header__search--form border-radius-5" action="{{ route('shop.search') }}" method="GET">
                         <div class="header__select--categories select">
                             <select class="header__select--inner">
-                                <option selected="" value="1"> Tüm Katexroriler</option>
+                                <option selected="" value="1"> Kategoriler</option>
                                 @foreach($categories as $category)
                                 <option value="{{$loop->index}}">{{$category->name}} </option>
                                 @endforeach
@@ -109,20 +118,22 @@
                 <div class="header__menu d-none d-lg-block header__sticky--block">
                     <nav class="header__menu--navigation">
                         <ul class="header__menu--wrapper d-flex">
+
+
                             <li class="header__menu--items">
-                                <a class="header__menu--link" href="index.html">Home
+                                <!-- <a class="header__menu--link" href="index.html">Home
                                     <svg class="menu__arrowdown--icon" xmlns="http://www.w3.org/2000/svg" width="12" height="7.41" viewBox="0 0 12 7.41">
                                         <path d="M16.59,8.59,12,13.17,7.41,8.59,6,10l6,6,6-6Z" transform="translate(-6 -8.59)" fill="currentColor" opacity="0.7">
                                         </path>
                                     </svg>
-                                </a>
-                                <ul class="header__sub--menu">
+                                </a> -->
+                                <!-- <ul class="header__sub--menu">
                                     <li class="header__sub--menu__items"><a href="index.html" class="header__sub--menu__link">Home One</a></li>
                                     <li class="header__sub--menu__items"><a href="index-2.html" class="header__sub--menu__link">Home Two</a></li>
                                     <li class="header__sub--menu__items"><a href="index-3.html" class="header__sub--menu__link">Home Three</a></li>
                                     <li class="header__sub--menu__items"><a href="index-4.html" class="header__sub--menu__link">Home Four</a></li>
                                     <li class="header__sub--menu__items"><a href="index-5.html" class="header__sub--menu__link">Home Five</a></li>
-                                </ul>
+                                </ul> -->
                             </li>
                             <li class="header__menu--items mega__menu--items">
                                 <a class="header__menu--link" href="shop.html">Shop
@@ -282,7 +293,7 @@
                                     <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z">
                                     </path>
                                 </svg>
-                                <span class="items__count">3</span>
+                                <span class="items__count favorite_count">{{$favoriteCount}}</span>
                             </a>
                         </li>
                         <li class="header__account--items header__minicart--items">
@@ -340,7 +351,7 @@
                                     <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
                                     <circle cx="12" cy="7" r="4"></circle>
                                 </svg>
-                                <span class="visually-hidden">My account</span>
+                                <span class="visually-hidden">Hesabım</span>
                             </a>
                         </li>
 
@@ -353,8 +364,8 @@
                                     <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z">
                                     </path>
                                 </svg>
-                                <span class="items__count">
-                                    2
+                                <span class="items__count favorite_count" class="favorite_count">
+                                    {{$favoriteCount}}
                                 </span>
                             </a>
                         </li>
@@ -389,165 +400,107 @@
                             <rect y="13.3333" width="17" height="1.5" fill="currentColor"></rect>
                         </svg>
 
-                        <span class="categories__menu--title">Select catagories</span>
+                        <span class="categories__menu--title">Kategoriler</span>
                         <svg class="categories__arrowdown--icon" xmlns="http://www.w3.org/2000/svg" width="12.355" height="8.394" viewBox="0 0 10.355 6.394">
                             <path d="M15.138,8.59l-3.961,3.952L7.217,8.59,6,9.807l5.178,5.178,5.178-5.178Z" transform="translate(-6 -8.59)" fill="currentColor"></path>
                         </svg>
                     </div>
                     <div class="dropdown__categories--menu border-radius-5 active collapse" id="categoriesAccordion" style="">
                         <ul class="d-none d-lg-block">
-                            <li class="categories__menu--items">
-                                <a class="categories__menu--link" href="shop.html">
-                                    <svg class="categories__menu--svgicon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-                                        <line x1="8" y1="21" x2="16" y2="21"></line>
-                                        <line x1="12" y1="17" x2="12" y2="21"></line>
-                                    </svg>
-                                    Lighting
-                                </a>
-                            </li>
-                            <li class="categories__menu--items">
-                                <a class="categories__menu--link" href="shop.html">
-                                    <svg class="categories__menu--svgicon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <polyline points="6 9 6 2 18 2 18 9"></polyline>
-                                        <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2">
-                                        </path>
-                                        <rect x="6" y="14" width="12" height="8"></rect>
-                                    </svg> Smart Devices
 
-                                    <svg class="categories__menu--right__arrow--icon" xmlns="http://www.w3.org/2000/svg" width="17.007" height="16.831" viewBox="0 0 512 512">
-                                        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="48" d="M184 112l144 144-144 144">
-                                        </path>
-                                    </svg>
+
+
+                            <li class="categories__menu--items">
+                                <a class="categories__menu--link" href="{{ route('shop.index') }}">
+                                    <i class="fa-solid fa-tire"></i>
+                                    Kategoriler
                                 </a>
                                 <ul class="categories__submenu border-radius-10 d-flex justify-content-between">
-                                    <li class="categories__submenu--items"><a class="categories__submenu--items__text" href="shop.html"><strong>Body Parts</strong></a>
+                                    @foreach ($categories as $category)
+                                    <li class="categories__submenu--items">
+                                        <a class="categories__submenu--items__text" href="{{ route('shop.index', ['categories[]' => $category->id]) }}">
+                                            <strong>{{ $category->name }}</strong>
+                                        </a>
                                         <ul class="categories__submenu--child">
-                                            <li class="categories__submenu--child__items"><a class="categories__submenu--child__items--link" href="shop.html">Brake Calipers </a></li>
-                                            <li class="categories__submenu--child__items"><a class="categories__submenu--child__items--link" href="shop.html">Engine Oil </a></li>
-                                            <li class="categories__submenu--child__items"><a class="categories__submenu--child__items--link" href="shop.html">Motor Oil </a></li>
-                                            <li class="categories__submenu--child__items"><a class="categories__submenu--child__items--link" href="shop.html">Oil Filters </a></li>
+                                            @foreach ($category->products->take(4) as $product)
+                                            <li class="categories__submenu--child__items">
+                                                <a class="categories__submenu--child__items--link" href="{{ route('shop.show', ['product' => $product->slug]) }}">
+                                                    {{ $product->name }}
+                                                </a>
+                                            </li>
+                                            @endforeach
                                         </ul>
                                     </li>
-                                    <li class="categories__submenu--items"><a class="categories__submenu--items__text" href="shop.html"><strong>Interior Parts</strong></a>
-                                        <ul class="categories__submenu--child">
-                                            <li class="categories__submenu--child__items"><a class="categories__submenu--child__items--link" href="shop.html">Air Boxes </a></li>
-                                            <li class="categories__submenu--child__items"><a class="categories__submenu--child__items--link" href="shop.html">Tail Lights </a></li>
-                                            <li class="categories__submenu--child__items"><a class="categories__submenu--child__items--link" href="shop.html">Mobile Electronics </a></li>
-                                            <li class="categories__submenu--child__items"><a class="categories__submenu--child__items--link" href="shop.html">Car Covers </a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="categories__submenu--items"><a class="categories__submenu--items__text" href="shop.html"><strong>Engine &amp; Drivetrain</strong></a>
-                                        <ul class="categories__submenu--child">
-                                            <li class="categories__submenu--child__items"><a class="categories__submenu--child__items--link" href="shop.html">Bumpers </a></li>
-                                            <li class="categories__submenu--child__items"><a class="categories__submenu--child__items--link" href="shop.html">Hoods </a></li>
-                                            <li class="categories__submenu--child__items"><a class="categories__submenu--child__items--link" href="shop.html">care kits </a></li>
-                                            <li class="categories__submenu--child__items"><a class="categories__submenu--child__items--link" href="shop.html">Fog Lights </a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="categories__submenu--items"><a class="categories__submenu--items__text" href="shop.html"><strong>Fluids &amp; Chemicals</strong></a>
-                                        <ul class="categories__submenu--child">
-                                            <li class="categories__submenu--child__items"><a class="categories__submenu--child__items--link" href="shop.html">Cabin Air Filters </a></li>
-                                            <li class="categories__submenu--child__items"><a class="categories__submenu--child__items--link" href="shop.html">Pistons liners </a></li>
-                                            <li class="categories__submenu--child__items"><a class="categories__submenu--child__items--link" href="shop.html">Oil &amp; lubricants </a></li>
-                                            <li class="categories__submenu--child__items"><a class="categories__submenu--child__items--link" href="shop.html">
-                                                    Paintworks
-                                                </a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="categories__submenu--items"><a class="categories__submenu--items__text" href="shop.html"><strong>Cargo Accessories</strong></a>
-                                        <ul class="categories__submenu--child">
-                                            <li class="categories__submenu--child__items"><a class="categories__submenu--child__items--link" href="shop.html">Body Parts </a></li>
-                                            <li class="categories__submenu--child__items"><a class="categories__submenu--child__items--link" href="shop.html">Engine Parts </a></li>
-                                            <li class="categories__submenu--child__items"><a class="categories__submenu--child__items--link" href="shop.html">Tires &amp; Wheels </a></li>
-                                            <li class="categories__submenu--child__items"><a class="categories__submenu--child__items--link" href="shop.html">Repair Parts </a></li>
-                                        </ul>
-                                    </li>
+                                    @endforeach
                                     <li class="categories__submenu--items">
                                         <a class="categories__submenu--thumbnail" href="shop.html">
-                                            <img src="#" alt="categories-img">
                                         </a>
                                     </li>
                                 </ul>
 
                             </li>
+
+
                             <li class="categories__menu--items">
-                                <a class="categories__menu--link" href="shop.html">
+                                <a class="categories__menu--link" href="{{ route('shop.index') }}">
                                     <svg class="categories__menu--svgicon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <rect x="2" y="7" width="20" height="15" rx="2" ry="2"></rect>
-                                        <polyline points="17 2 12 7 7 2"></polyline>
-                                    </svg> Paintworks
-                                </a>
-                            </li>
-                            <li class="categories__menu--items">
-                                <a class="categories__menu--link" href="shop.html">
-                                    <svg class="categories__menu--svgicon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <path d="M18 8h1a4 4 0 0 1 0 8h-1"></path>
-                                        <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path>
-                                        <line x1="6" y1="1" x2="6" y2="4"></line>
-                                        <line x1="10" y1="1" x2="10" y2="4"></line>
-                                        <line x1="14" y1="1" x2="14" y2="4"></line>
-                                    </svg> Replacement Parts
-                                    <svg class="categories__menu--right__arrow--icon" xmlns="http://www.w3.org/2000/svg" width="17.007" height="16.831" viewBox="0 0 512 512">
-                                        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="48" d="M184 112l144 144-144 144">
-                                        </path>
+                                        <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                                        <line x1="8" y1="21" x2="16" y2="21"></line>
+                                        <line x1="12" y1="17" x2="12" y2="21"></line>
                                     </svg>
+                                    Lastikler
                                 </a>
-                                <ul class="categories__submenu style2 border-radius-10 d-flex justify-content-between">
-                                    <li class="categories__submenu--items"><a class="categories__submenu--items__text" href="shop.html"><strong>Fluids &amp; Chemicals</strong></a>
+                                <ul class="categories__submenu border-radius-10 d-flex justify-content-between">
+
+                                    <li class="categories__submenu--items">
+                                        <a class="categories__submenu--items__text  secondary-color" href="{{ route('shop.index', ['categories[]' => 1]) }}"><strong>Markalar</strong></a>
+                                        @foreach($brands as $brand)
+
                                         <ul class="categories__submenu--child">
-                                            <li class="categories__submenu--child__items"><a class="categories__submenu--child__items--link" href="shop.html">Cabin Air Filters </a></li>
-                                            <li class="categories__submenu--child__items"><a class="categories__submenu--child__items--link" href="shop.html">Pistons liners </a></li>
-                                            <li class="categories__submenu--child__items"><a class="categories__submenu--child__items--link" href="shop.html">Oil &amp; lubricants </a></li>
-                                            <li class="categories__submenu--child__items"><a class="categories__submenu--child__items--link" href="shop.html">
-                                                    Paintworks
-                                                </a></li>
+                                            <li class="categories__submenu--child__items">
+                                                <a class="categories__submenu--child__items--link " style="font-size: 2rem;" href="{{ route('shop.index', ['brands[]' => $brand->id]) }}">{{ $brand->name }}</a>
+                                            </li>
+                                        </ul>
+                                        @endforeach
+
+                                    </li>
+
+
+
+                                    <li class="categories__submenu--items">
+                                        <a class="categories__submenu--items__text" href="{{ route('shop.index', ['width' => 185]) }}"><strong>Genişlik</strong></a>
+                                        <ul class="categories__submenu--child">
+                                            <li class="categories__submenu--child__items"><a class="categories__submenu--child__items--link" href="{{ route('shop.index', ['width' => 185]) }}">185 mm</a></li>
+                                            <li class="categories__submenu--child__items"><a class="categories__submenu--child__items--link" href="{{ route('shop.index', ['width' => 195]) }}">195 mm</a></li>
+                                            <li class="categories__submenu--child__items"><a class="categories__submenu--child__items--link" href="{{ route('shop.index', ['width' => 205]) }}">205 mm</a></li>
+                                            <li class="categories__submenu--child__items"><a class="categories__submenu--child__items--link" href="{{ route('shop.index', ['width' => 215]) }}">215 mm</a></li>
                                         </ul>
                                     </li>
-                                    <li class="categories__submenu--items"><a class="categories__submenu--items__text" href="shop.html"><strong>Interior Parts</strong></a>
+                                    <li class="categories__submenu--items">
+                                        <a class="categories__submenu--items__text" href="{{ route('shop.index', ['aspect_ratio' => 50]) }}"><strong>Yanak Oranı</strong></a>
                                         <ul class="categories__submenu--child">
-                                            <li class="categories__submenu--child__items"><a class="categories__submenu--child__items--link" href="shop.html">Air Boxes </a></li>
-                                            <li class="categories__submenu--child__items"><a class="categories__submenu--child__items--link" href="shop.html">Tail Lights </a></li>
-                                            <li class="categories__submenu--child__items"><a class="categories__submenu--child__items--link" href="shop.html">Mobile Electronics </a></li>
-                                            <li class="categories__submenu--child__items"><a class="categories__submenu--child__items--link" href="shop.html">Car Covers </a></li>
+                                            <li class="categories__submenu--child__items"><a class="categories__submenu--child__items--link" href="{{ route('shop.index', ['aspect_ratio' => 50]) }}">50</a></li>
+                                            <li class="categories__submenu--child__items"><a class="categories__submenu--child__items--link" href="{{ route('shop.index', ['aspect_ratio' => 55]) }}">55</a></li>
+                                            <li class="categories__submenu--child__items"><a class="categories__submenu--child__items--link" href="{{ route('shop.index', ['aspect_ratio' => 60]) }}">60</a></li>
+                                            <li class="categories__submenu--child__items"><a class="categories__submenu--child__items--link" href="{{ route('shop.index', ['aspect_ratio' => 65]) }}">65</a></li>
                                         </ul>
                                     </li>
-                                    <li class="categories__submenu--items"><a class="categories__submenu--items__text" href="shop.html"><strong>Engine &amp; Drivetrain</strong></a>
+                                    <li class="categories__submenu--items">
+                                        <a class="categories__submenu--items__text" href="{{ route('shop.index', ['rim_diameter' => 15]) }}"><strong>Jant Çapı</strong></a>
                                         <ul class="categories__submenu--child">
-                                            <li class="categories__submenu--child__items"><a class="categories__submenu--child__items--link" href="shop.html">Bumpers </a></li>
-                                            <li class="categories__submenu--child__items"><a class="categories__submenu--child__items--link" href="shop.html">Hoods </a></li>
-                                            <li class="categories__submenu--child__items"><a class="categories__submenu--child__items--link" href="shop.html">Fog Lights </a></li>
-                                            <li class="categories__submenu--child__items"><a class="categories__submenu--child__items--link" href="shop.html">
-                                                    Engine Partses </a></li>
+                                            <li class="categories__submenu--child__items"><a class="categories__submenu--child__items--link" href="{{ route('shop.index', ['rim_diameter' => 15]) }}">15 inç</a></li>
+                                            <li class="categories__submenu--child__items"><a class="categories__submenu--child__items--link" href="{{ route('shop.index', ['rim_diameter' => 16]) }}">16 inç</a></li>
+                                            <li class="categories__submenu--child__items"><a class="categories__submenu--child__items--link" href="{{ route('shop.index', ['rim_diameter' => 17]) }}">17 inç</a></li>
+                                            <li class="categories__submenu--child__items"><a class="categories__submenu--child__items--link" href="{{ route('shop.index', ['rim_diameter' => 18]) }}">18 inç</a></li>
                                         </ul>
                                     </li>
-                                    <li class="categories__submenu--items"><a class="categories__submenu--items__text" href="shop.html"><strong>Body Parts</strong></a>
-                                        <ul class="categories__submenu--child">
-                                            <li class="categories__submenu--child__items"><a class="categories__submenu--child__items--link" href="shop.html">Brake Calipers </a></li>
-                                            <li class="categories__submenu--child__items"><a class="categories__submenu--child__items--link" href="shop.html">Engine Oil </a></li>
-                                            <li class="categories__submenu--child__items"><a class="categories__submenu--child__items--link" href="shop.html">Motor Oil </a></li>
-                                            <li class="categories__submenu--child__items"><a class="categories__submenu--child__items--link" href="shop.html">Oil Filters </a></li>
-                                        </ul>
-                                    </li>
+
                                 </ul>
                             </li>
-                            <li class="categories__menu--items">
-                                <a class="categories__menu--link" href="shop.html">
-                                    <svg class="categories__menu--svgicon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect>
-                                        <rect x="9" y="9" width="6" height="6"></rect>
-                                        <line x1="9" y1="1" x2="9" y2="4"></line>
-                                        <line x1="15" y1="1" x2="15" y2="4"></line>
-                                        <line x1="9" y1="20" x2="9" y2="23"></line>
-                                        <line x1="15" y1="20" x2="15" y2="23"></line>
-                                        <line x1="20" y1="9" x2="23" y2="9"></line>
-                                        <line x1="20" y1="14" x2="23" y2="14"></line>
-                                        <line x1="1" y1="9" x2="4" y2="9"></line>
-                                        <line x1="1" y1="14" x2="4" y2="14"></line>
-                                    </svg> Car Parts
-                                </a>
-                            </li>
-                            <li class="categories__menu--items">
+
+
+
+                            <!-- <li class="categories__menu--items">
                                 <a class="categories__menu--link" href="shop.html">
                                     <svg class="categories__menu--svgicon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                         <line x1="22" y1="12" x2="2" y2="12"></line>
@@ -557,52 +510,10 @@
                                         <line x1="10" y1="16" x2="10.01" y2="16"></line>
                                     </svg>Gaming Toiys
                                 </a>
-                            </li>
-                            <li class="categories__menu--items">
-                                <a class="categories__menu--link" href="shop.html">
-                                    <svg class="categories__menu--svgicon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
-                                        <polyline points="2 17 12 22 22 17"></polyline>
-                                        <polyline points="2 12 12 17 22 12"></polyline>
-                                    </svg> Oil Fluids
-                                </a>
-                            </li>
-                            <li class="categories__menu--items">
-                                <a class="categories__menu--link" href="shop.html">
-                                    <svg class="categories__menu--svgicon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <path d="M4 11a9 9 0 0 1 9 9"></path>
-                                        <path d="M4 4a16 16 0 0 1 16 16"></path>
-                                        <circle cx="5" cy="19" r="1"></circle>
-                                    </svg> Baby Car Seat
-                                </a>
-                            </li>
-                            <li class="categories__menu--items">
-                                <a class="categories__menu--link" href="shop.html">
-                                    <svg class="categories__menu--svgicon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                                        <path d="M322 416c0 35.35-20.65 64-56 64H134c-35.35 0-56-28.65-56-64M336 336c17.67 0 32 17.91 32 40h0c0 22.09-14.33 40-32 40H64c-17.67 0-32-17.91-32-40h0c0-22.09 14.33-40 32-40" fill="none" stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="32"></path>
-                                        <path d="M344 336H179.31a8 8 0 00-5.65 2.34l-26.83 26.83a4 4 0 01-5.66 0l-26.83-26.83a8 8 0 00-5.65-2.34H56a24 24 0 01-24-24h0a24 24 0 0124-24h288a24 24 0 0124 24h0a24 24 0 01-24 24zM64 276v-.22c0-55 45-83.78 100-83.78h72c55 0 100 29 100 84v-.22M241 112l7.44 63.97" fill="none" stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="32"></path>
-                                        <path d="M256 480h139.31a32 32 0 0031.91-29.61L463 112" fill="none" stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="32"></path>
-                                        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M368 112l16-64 47-16"></path>
-                                        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="32" d="M224 112h256"></path>
-                                    </svg> Bread &amp; Bakery
-                                </a>
-                            </li>
-                            <li class="categories__menu--items">
-                                <a class="categories__menu--link" href="shop.html">
-                                    <svg class="categories__menu--svgicon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
-                                        <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
-                                    </svg> Engine Parts
-                                </a>
-                            </li>
-                            <li class="categories__menu--items">
-                                <a class="categories__menu--link" href="shop.html">
-                                    <svg class="categories__menu--svgicon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <path d="M3 3l7.07 16.97 2.51-7.39 7.39-2.51L3 3z"></path>
-                                        <path d="M13 13l6 6"></path>
-                                    </svg> Car &amp; Motorbike Care
-                                </a>
-                            </li>
+                            </li> -->
+
+
+
                         </ul>
                         <nav class="category__mobile--menu">
                             <ul class="category__mobile--menu_ul">
@@ -932,44 +843,30 @@
                             </ul>
                         </nav>
                     </div>
-                    <div class="language__currency d-none d-lg-block">
-                        <ul class="d-flex align-items-center">
-                            <li class="language__currency--list">
-                                <a class="account__currency--link" href="javascript:void(0)">
-                                    <img class="currency__link--icon" src="#" alt="currency">
-                                    <span>USD</span>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="9.797" height="6.05" viewBox="0 0 9.797 6.05">
-                                        <path d="M14.646,8.59,10.9,12.329,7.151,8.59,6,9.741l4.9,4.9,4.9-4.9Z" transform="translate(-6 -8.59)" fill="currentColor" opacity="0.7">
-                                        </path>
-                                    </svg>
-                                </a>
-                                <div class="dropdown__currency">
-                                    <ul>
-                                        <li class="currency__items"><a class="currency__text" href="#">CAD</a></li>
-                                        <li class="currency__items"><a class="currency__text" href="#">CNY</a></li>
-                                        <li class="currency__items"><a class="currency__text" href="#">EUR</a></li>
-                                        <li class="currency__items"><a class="currency__text" href="#">GBP</a></li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li class="language__currency--list">
-                                <a class="language__switcher" href="javascript:void(0)">
-                                    <span>English</span>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="9.797" height="6.05" viewBox="0 0 9.797 6.05">
-                                        <path d="M14.646,8.59,10.9,12.329,7.151,8.59,6,9.741l4.9,4.9,4.9-4.9Z" transform="translate(-6 -8.59)" fill="currentColor" opacity="0.7">
-                                        </path>
-                                    </svg>
-                                </a>
-                                <div class="dropdown__language">
-                                    <ul>
-                                        <li class="language__items"><a class="language__text" href="#">France</a></li>
-                                        <li class="language__items"><a class="language__text" href="#">Russia</a></li>
-                                        <li class="language__items"><a class="language__text" href="#">Spanish</a></li>
-                                    </ul>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
+
+
+
+                    <li class="language__currency--list">
+                        <a class="language__switcher" href="javascript:void(0)">
+                            <span>Türkçe </span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="9.797" height="6.05" viewBox="0 0 9.797 6.05">
+                                <path d="M14.646,8.59,10.9,12.329,7.151,8.59,6,9.741l4.9,4.9,4.9-4.9Z" transform="translate(-6 -8.59)" fill="currentColor" opacity="0.7"></path>
+                            </svg>
+                        </a>
+                        <div class="dropdown__language gtranslate_wrapper">
+                            <ul>
+                                <li class="language__items"><a class="language__text" href="#" onclick="doGTranslate('tr|fr');return false;">France</a></li>
+                                <li class="language__items"><a class="language__text" href="#" onclick="doGTranslate('tr|ru');return false;">Russia</a></li>
+                                <li class="language__items"><a class="language__text" href="#" onclick="doGTranslate('tr|es');return false;">Spanish</a></li>
+                                <li class="language__items"><a class="language__text" href="#" onclick="doGTranslate('tr|en');return false;">English</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <div id="google_translate_element" style="display: none;"></div>
+
+
+
+
                 </div>
             </div>
         </div>
@@ -980,9 +877,9 @@
         <div class="offcanvas__inner">
             <div class="offcanvas__logo">
                 <a class="offcanvas__logo_link" href="index.html">
-                    <img src="#" alt="Grocee Logo" width="158" height="36">
+                    <img src="assets/img/logo/nav-log.webp" alt="Grocee Logo" width="158" height="36">
                 </a>
-                <button class="offcanvas__close--btn" data-offcanvas="">close</button>
+                <button class="offcanvas__close--btn" data-offcanvas>Kapat</button>
             </div>
             <nav class="offcanvas__menu">
                 <ul class="offcanvas__menu_ul">
@@ -995,7 +892,6 @@
                             <li class="offcanvas__sub_menu_li"><a href="index-4.html" class="offcanvas__sub_menu_item">Home Four</a></li>
                             <li class="offcanvas__sub_menu_li"><a href="index-5.html" class="offcanvas__sub_menu_item">Home Five</a></li>
                         </ul>
-                        <button class="offcanvas__sub_menu_toggle"></button>
                     </li>
                     <li class="offcanvas__menu_li">
                         <a class="offcanvas__menu_item" href="shop.html">Shop</a>
@@ -1009,7 +905,6 @@
                                     <li class="offcanvas__sub_menu_li"><a class="offcanvas__sub_menu_item" href="shop-grid-list.html">Shop Grid List</a></li>
                                     <li class="offcanvas__sub_menu_li"><a class="offcanvas__sub_menu_item" href="shop-list.html">Shop List</a></li>
                                 </ul>
-                                <button class="offcanvas__sub_menu_toggle"></button>
                             </li>
                             <li class="offcanvas__sub_menu_li">
                                 <a href="#" class="offcanvas__sub_menu_item">Column Two</a>
@@ -1020,18 +915,25 @@
                                     <li class="offcanvas__sub_menu_li"><a class="offcanvas__sub_menu_item" href="product-left-sidebar.html">Product Left Sidebar</a></li>
                                     <li class="offcanvas__sub_menu_li"><a class="offcanvas__sub_menu_item" href="product-gallery.html">Product Gallery</a></li>
                                 </ul>
-                                <button class="offcanvas__sub_menu_toggle"></button>
                             </li>
                             <li class="offcanvas__sub_menu_li">
                                 <a href="#" class="offcanvas__sub_menu_item">Column Three</a>
                                 <ul class="offcanvas__sub_menu">
-                                    <li class="offcanvas__sub_menu_li"><a class="offcanvas__sub_menu_item" href="my-account.html">My Account</a></li>
+                                    <li class="offcanvas__sub_menu_li"><a class="offcanvas__sub_menu_item" href="{{route("profile.edit")}}">Hesabım</a></li>
                                     <li class="offcanvas__sub_menu_li"><a class="offcanvas__sub_menu_item" href="my-account-2.html">My Account 2</a></li>
                                     <li class="offcanvas__sub_menu_li"><a class="offcanvas__sub_menu_item" href="404.html">404 Page</a></li>
-                                    <li class="offcanvas__sub_menu_li"><a class="offcanvas__sub_menu_item" href="login.html">Login Page</a></li>
-                                    <li class="offcanvas__sub_menu_li"><a class="offcanvas__sub_menu_item" href="faq.html">Faq Page</a></li>
+                                    @guest
+                                    <li class="offcanvas__sub_menu_li"><a class="offcanvas__sub_menu_item" href="{{route("register")}}">Giriş Yap</a></li>
+
+                                    <li class="offcanvas__sub_menu_li"><a class="offcanvas__sub_menu_item" href="{{route("login")}}">Kayıt Ol</a></li>
+
+                                    @endguest
+
+
+
+
+
                                 </ul>
-                                <button class="offcanvas__sub_menu_toggle"></button>
                             </li>
                             <li class="offcanvas__sub_menu_li">
                                 <a href="#" class="offcanvas__sub_menu_item">Column Three</a>
@@ -1042,10 +944,8 @@
                                     <li class="offcanvas__sub_menu_li"><a class="offcanvas__sub_menu_item" href="compare.html">Compare Pages</a></li>
                                     <li class="offcanvas__sub_menu_li"><a class="offcanvas__sub_menu_item" href="checkout.html">Checkout page</a></li>
                                 </ul>
-                                <button class="offcanvas__sub_menu_toggle"></button>
                             </li>
                         </ul>
-                        <button class="offcanvas__sub_menu_toggle"></button>
                     </li>
                     <li class="offcanvas__menu_li">
                         <a class="offcanvas__menu_item" href="blog.html">Blog</a>
@@ -1055,7 +955,6 @@
                             <li class="offcanvas__sub_menu_li"><a href="blog-left-sidebar.html" class="offcanvas__sub_menu_item">Blog Left Sidebar</a></li>
                             <li class="offcanvas__sub_menu_li"><a href="blog-right-sidebar.html" class="offcanvas__sub_menu_item">Blog Right Sidebar</a></li>
                         </ul>
-                        <button class="offcanvas__sub_menu_toggle"></button>
                     </li>
                     <li class="offcanvas__menu_li">
                         <a class="offcanvas__menu_item" href="#">Pages</a>
@@ -1064,23 +963,20 @@
                             <li class="offcanvas__sub_menu_li"><a href="contact.html" class="offcanvas__sub_menu_item">Contact Us</a></li>
                             <li class="offcanvas__sub_menu_li"><a href="cart.html" class="offcanvas__sub_menu_item">Cart Page</a></li>
                             <li class="offcanvas__sub_menu_li"><a href="portfolio.html" class="offcanvas__sub_menu_item">Portfolio Page</a></li>
-                            <li class="offcanvas__sub_menu_li"><a href="{{ route('user.favorites') }}" class="offcanvas__sub_menu_item">Wishlist Page</a></li>
+                            <li class="offcanvas__sub_menu_li"><a href="wishlist.html" class="offcanvas__sub_menu_item">Wishlist Page</a></li>
                             <li class="offcanvas__sub_menu_li"><a href="login.html" class="offcanvas__sub_menu_item">Login Page</a></li>
                             <li class="offcanvas__sub_menu_li"><a href="404.html" class="offcanvas__sub_menu_item">Error Page</a></li>
                         </ul>
-                        <button class="offcanvas__sub_menu_toggle"></button>
                     </li>
-                    <li class="offcanvas__menu_li"><a class="offcanvas__menu_item" href="about.html">About</a>
-                    </li>
-                    <li class="offcanvas__menu_li"><a class="offcanvas__menu_item" href="contact.html">Contact</a>
-                    </li>
+                    <li class="offcanvas__menu_li"><a class="offcanvas__menu_item" href="about.html">About</a></li>
+                    <li class="offcanvas__menu_li"><a class="offcanvas__menu_item" href="contact.html">Contact</a></li>
                 </ul>
                 <div class="offcanvas__account--items">
                     <a class="offcanvas__account--items__btn d-flex align-items-center" href="login.html">
                         <span class="offcanvas__account--items__icon">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20.51" height="19.443" viewBox="0 0 512 512">
-                                <path d="M344 144c-3.92 52.87-44 96-88 96s-84.15-43.12-88-96c-4-55 35-96 88-96s92 42 88 96z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"></path>
-                                <path d="M256 304c-87 0-175.3 48-191.64 138.6C62.39 453.52 68.57 464 80 464h352c11.44 0 17.62-10.48 15.65-21.4C431.3 352 343 304 256 304z" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32"></path>
+                                <path d="M344 144c-3.92 52.87-44 96-88 96s-84.15-43.12-88-96c-4-55 35-96 88-96s92 42 88 96z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" />
+                                <path d="M256 304c-87 0-175.3 48-191.64 138.6C62.39 453.52 68.57 464 80 464h352c11.44 0 17.62-10.48 15.65-21.4C431.3 352 343 304 256 304z" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32" />
                             </svg>
                         </span>
                         <span class="offcanvas__account--items__label">Login / Register</span>
@@ -1089,10 +985,10 @@
                 <div class="offcanvas__account--wrapper d-flex">
                     <div class="offcanvas__account--currency">
                         <a class="offcanvas__account--currency__menu d-flex align-items-center text-black" href="javascript:void(0)">
-                            <img src="#" alt="currency">
+                            <img src="assets/img/icon/usd-icon.webp" alt="currency">
                             <span>USD</span>
                             <svg xmlns="http://www.w3.org/2000/svg" width="9.797" height="6.05" viewBox="0 0 9.797 6.05">
-                                <path d="M14.646,8.59,10.9,12.329,7.151,8.59,6,9.741l4.9,4.9,4.9-4.9Z" transform="translate(-6 -8.59)" fill="currentColor" opacity="0.7"></path>
+                                <path d="M14.646,8.59,10.9,12.329,7.151,8.59,6,9.741l4.9,4.9,4.9-4.9Z" transform="translate(-6 -8.59)" fill="currentColor" opacity="0.7" />
                             </svg>
                         </a>
                         <div class="offcanvas__account--currency__submenu">
@@ -1108,17 +1004,14 @@
                         <a class="offcanvas__language--switcher" href="javascript:void(0)">
                             <span>English</span>
                             <svg xmlns="http://www.w3.org/2000/svg" width="9.797" height="6.05" viewBox="0 0 9.797 6.05">
-                                <path d="M14.646,8.59,10.9,12.329,7.151,8.59,6,9.741l4.9,4.9,4.9-4.9Z" transform="translate(-6 -8.59)" fill="currentColor" opacity="0.7"></path>
+                                <path d="M14.646,8.59,10.9,12.329,7.151,8.59,6,9.741l4.9,4.9,4.9-4.9Z" transform="translate(-6 -8.59)" fill="currentColor" opacity="0.7" />
                             </svg>
                         </a>
                         <div class="offcanvas__dropdown--language">
                             <ul>
-                                <li class="language__items"><a class="language__text" href="#">France</a>
-                                </li>
-                                <li class="language__items"><a class="language__text" href="#">Russia</a>
-                                </li>
-                                <li class="language__items"><a class="language__text" href="#">Spanish</a>
-                                </li>
+                                <li class="language__items"><a class="language__text" href="#">France</a></li>
+                                <li class="language__items"><a class="language__text" href="#">Russia</a></li>
+                                <li class="language__items"><a class="language__text" href="#">Spanish</a></li>
                             </ul>
                         </div>
                     </div>
@@ -1143,14 +1036,14 @@
                 </a>
             </li>
             <li class="offcanvas__stikcy--toolbar__list">
-                <a class="offcanvas__stikcy--toolbar__btn" href="shop.html">
+                <a class="offcanvas__stikcy--toolbar__btn" href="{{route("shop.index")}}">
                     <span class="offcanvas__stikcy--toolbar__icon">
                         <svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" width="18.51" height="17.443" viewBox="0 0 448 512">
                             <path d="M416 32H32A32 32 0 0 0 0 64v384a32 32 0 0 0 32 32h384a32 32 0 0 0 32-32V64a32 32 0 0 0-32-32zm-16 48v152H248V80zm-200 0v152H48V80zM48 432V280h152v152zm200 0V280h152v152z">
                             </path>
                         </svg>
                     </span>
-                    <span class="offcanvas__stikcy--toolbar__label">Shop</span>
+                    <span class="offcanvas__stikcy--toolbar__label">Alışveriş</span>
                 </a>
             </li>
             <li class="offcanvas__stikcy--toolbar__list ">
@@ -1162,7 +1055,7 @@
                             <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="32" d="M338.29 338.29L448 448"></path>
                         </svg>
                     </span>
-                    <span class="offcanvas__stikcy--toolbar__label">Search</span>
+                    <span class="offcanvas__stikcy--toolbar__label">Ara</span>
                 </a>
             </li>
             <li class="offcanvas__stikcy--toolbar__list">
@@ -1178,8 +1071,8 @@
                             </g>
                         </svg>
                     </span>
-                    <span class="offcanvas__stikcy--toolbar__label">Cart</span>
-                    <span class="items__count">3</span>
+                    <span class="offcanvas__stikcy--toolbar__label">Sepet</span>
+                    <span class="items__count">{{Cart::count()}}</span>
                 </a>
             </li>
             <li class="offcanvas__stikcy--toolbar__list">
@@ -1190,8 +1083,8 @@
                             </path>
                         </svg>
                     </span>
-                    <span class="offcanvas__stikcy--toolbar__label">Wishlist</span>
-                    <span class="items__count">3</span>
+                    <span class="offcanvas__stikcy--toolbar__label">Favoriler</span>
+                    <span class="items__count favorite_count">{{$favoriteCount}}</span>
                 </a>
             </li>
         </ul>
@@ -1234,12 +1127,12 @@
     <!-- Start serch box area -->
     <div class="predictive__search--box ">
         <div class="predictive__search--box__inner">
-            <h2 class="predictive__search--title">Search Products</h2>
-            <form class="predictive__search--form" action="#">
+            <h2 class="predictive__search--title">Ürünlerde Ara</h2>
+            <form class="predictive__search--form" action="{{route("shop.search")}}">
                 <label>
-                    <input class="predictive__search--input" placeholder="Search Here" type="text">
+                    <input class="predictive__search--input" placeholder="Ara" name="query" type="text">
                 </label>
-                <button class="predictive__search--button text-white" aria-label="search button"><svg class="product__items--action__btn--svg" xmlns="http://www.w3.org/2000/svg" width="30.51" height="25.443" viewBox="0 0 512 512">
+                <button type="submit" class="predictive__search--button text-white" aria-label="search button"><svg class="product__items--action__btn--svg" xmlns="http://www.w3.org/2000/svg" width="30.51" height="25.443" viewBox="0 0 512 512">
                         <path d="M221.09 64a157.09 157.09 0 10157.09 157.09A157.1 157.1 0 00221.09 64z" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32"></path>
                         <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="32" d="M338.29 338.29L448 448"></path>
                     </svg> </button>

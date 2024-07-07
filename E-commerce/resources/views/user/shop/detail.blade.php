@@ -2,79 +2,64 @@
 
 
 @section('content')
-    <!-- Start product details section -->
-    <section class="product__details--section section--padding">
-        <div class="container">
-            <div class="row row-cols-lg-2 row-cols-md-2">
-                <div class="col">
-                    <div class="product__details--media">
-                        <div class="single__product--preview  swiper mb-25">
-                            <div class="swiper-wrapper">
-                                <div class="swiper-slide">
-                                    <div class="product__media--preview__items">
-                                        <a class="product__media--preview__items--link glightbox"
-                                            data-gallery="product-media-preview"
-                                            href="{{ asset('upload/products') . '/' . $product->image }}"><img
-                                                class="product__media--preview__items--img"
-                                                src=" {{ asset('upload/products') . '/' . $product->image }}"
-                                                alt="product-media-img"></a>
-                                        <div class="product__media--view__icon">
-                                            <a class="product__media--view__icon--link glightbox"
-                                                href="assets/img/product/big-product/product2.webp"
-                                                data-gallery="product-media-preview">
-                                                <svg class="product__items--action__btn--svg"
-                                                    xmlns="http://www.w3.org/2000/svg" width="22.51" height="22.443"
-                                                    viewBox="0 0 512 512">
-                                                    <path
-                                                        d="M221.09 64a157.09 157.09 0 10157.09 157.09A157.1 157.1 0 00221.09 64z"
-                                                        fill="none" stroke="currentColor" stroke-miterlimit="10"
-                                                        stroke-width="32"></path>
-                                                    <path fill="none" stroke="currentColor" stroke-linecap="round"
-                                                        stroke-miterlimit="10" stroke-width="32" d="M338.29 338.29L448 448">
-                                                    </path>
-                                                </svg>
-                                                <span class="visually-hidden">product view</span>
-                                            </a>
-                                        </div>
+<!-- Start product details section -->
+<section class="product__details--section section--padding">
+    <div class="container">
+        <div class="row row-cols-lg-2 row-cols-md-2">
+            <div class="col">
+                <div class="product__details--media">
+                    <div class="single__product--preview  swiper mb-25">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <div class="product__media--preview__items">
+                                    <a class="product__media--preview__items--link glightbox" data-gallery="product-media-preview" href="{{ asset('upload/products') . '/' . $product->image }}"><img class="product__media--preview__items--img" src=" {{ asset('upload/products') . '/' . $product->image }}" alt="product-media-img"></a>
+                                    <div class="product__media--view__icon">
+                                        <a class="product__media--view__icon--link glightbox" href="assets/img/product/big-product/product2.webp" data-gallery="product-media-preview">
+                                            <svg class="product__items--action__btn--svg" xmlns="http://www.w3.org/2000/svg" width="22.51" height="22.443" viewBox="0 0 512 512">
+                                                <path d="M221.09 64a157.09 157.09 0 10157.09 157.09A157.1 157.1 0 00221.09 64z" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32"></path>
+                                                <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="32" d="M338.29 338.29L448 448">
+                                                </path>
+                                            </svg>
+                                            <span class="visually-hidden">product view</span>
+                                        </a>
                                     </div>
                                 </div>
-
                             </div>
+
                         </div>
-                        <div class="single__product--nav swiper">
-                            <div class="swiper-wrapper">
-                                <div class="swiper-slide">
-                                    <div class="product__media--nav__items">
-                                        <img class="product__media--nav__items--img"
-                                            src=" {{ asset('upload/products') . '/' . $product->image }}"
-                                            alt="product-nav-img">
-                                    </div>
+                    </div>
+                    <div class="single__product--nav swiper">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <div class="product__media--nav__items">
+                                    <img class="product__media--nav__items--img" src=" {{ asset('upload/products') . '/' . $product->image }}" alt="product-nav-img">
                                 </div>
-
-                               
                             </div>
-                            <div class="swiper__nav--btn swiper-button-next">
 
-                                <i class="fa-solid fa-arrow-right"></i>
 
-                            </div>
-                            <div class="swiper__nav--btn swiper-button-prev">
-                                <i class="fa-solid fa-arrow-left"></i>
+                        </div>
+                        <div class="swiper__nav--btn swiper-button-next">
 
-                            </div>
+                            <i class="fa-solid fa-arrow-right"></i>
+
+                        </div>
+                        <div class="swiper__nav--btn swiper-button-prev">
+                            <i class="fa-solid fa-arrow-left"></i>
+
                         </div>
                     </div>
                 </div>
-                <div class="col">
-                    <div class="product__details--info">
-                        {{-- <form action="#"> --}}
-                        <h2 class="product__details--info__title mb-15">{{ $product->name }}
-                        </h2>
-                        <div class="product__details--info__price mb-12">
-                            <span class="current__price">{{ $product->price }} TL</span>
-                            {{-- <span class="old__price">$68.00</span> --}}
-                        </div>
-                        {{-- <ul class="rating product__card--rating mb-15 d-flex">
+            </div>
+            <div class="col">
+                <div class="product__details--info">
+                    {{-- <form action="#"> --}}
+                    <h2 class="product__details--info__title mb-15">{{ $product->name }}
+                    </h2>
+                    <div class="product__details--info__price mb-12">
+                        <span class="current__price">{{ $product->price }} TL</span>
+                        {{-- <span class="old__price">$68.00</span> --}}
+                    </div>
+                    {{-- <ul class="rating product__card--rating mb-15 d-flex">
                                 <li class="rating__list">
                                     <span class="rating__icon">
                                         <svg width="14" height="13" viewBox="0 0 14 13" fill="none"
@@ -129,9 +114,9 @@
                                     <span class="rating__review--text">(126) Review</span>
                                 </li>
                             </ul> --}}
-                        <p class="product__details--info__desc mb-15">{{ $product->short_description }}</p>
-                        <div class="product__variant">
-                            {{-- <div class="product__variant--list mb-10">
+                    <p class="product__details--info__desc mb-15">{{ $product->short_description }}</p>
+                    <div class="product__variant">
+                        {{-- <div class="product__variant--list mb-10">
                                     <fieldset class="variant__input--fieldset">
                                         <legend class="product__variant--title mb-8">Color :</legend>
                                         <div class="variant__color d-flex">
@@ -166,7 +151,7 @@
                                         </div>
                                     </fieldset>
                                 </div> --}}
-                            {{-- <div class="product__variant--list mb-20">
+                        {{-- <div class="product__variant--list mb-20">
                                     <fieldset class="variant__input--fieldset">
                                         <legend class="product__variant--title mb-8">Weight :</legend>
                                         <ul class="variant__size d-flex">
@@ -185,102 +170,97 @@
                                         </ul>
                                     </fieldset>
                                 </div> --}}
-                            <div class="product__variant--list quantity d-flex align-items-center mb-20">
-                                <div class="quantity__box">
-                                    <button type="button" class="quantity__value quickview__value--quantity decrease"
-                                        aria-label="quantity value" value="Decrease Value">-</button>
-                                    <label>
-                                        <input type="number" class="quantity__number quickview__value--number"
-                                            value="1" data-counter />
-                                    </label>
-                                    <button type="button" class="quantity__value quickview__value--quantity increase"
-                                        aria-label="quantity value" value="Increase Value">+</button>
-                                </div>
-                                <button class="primary__btn quickview__cart--btn" type="submit">Sepete Ekle</button>
+                        <div class="product__variant--list quantity d-flex align-items-center mb-20">
+                            <div class="quantity__box">
+                                <button type="button" class="quantity__value quickview__value--quantity decrease" aria-label="quantity value" value="Decrease Value">-</button>
+                                <label>
+                                    <input type="number" class="quantity__number quickview__value--number" value="1" data-counter />
+                                </label>
+                                <button type="button" class="quantity__value quickview__value--quantity increase" aria-label="quantity value" value="Increase Value">+</button>
                             </div>
-
-
-                            <div class="product__variant--list mb-15">
-
-                                @auth
-
-
-
-                                    @if (auth()->user()->isFavorited($product->id))
-                                        <form action=" {{ route('user.favorite.destroy', $product) }}" method="POST">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button class="variant__wishlist--icon mb-15 btn btn-lg" style="font-size: 1 rem;"
-                                                type="submit"> <i class="fa-solid fa-heart fa-2x m-2"></i> Favorilerden sil
-                                            </button>
-                                        </form>
-                                    @else
-                                        <form action=" {{ route('user.favorite.store', $product) }}" method="POST">
-                                            @csrf
-
-                                            <button class="variant__wishlist--icon mb-15 btn btn-lg" style="font-size: 1 rem;"
-                                                type="submit"> <i class="fa-solid fa-heart fa-2x m-2"></i> Favorilere Ekle
-                                            </button>
-                                        </form>
-                                    @endif
-                                @endauth
-
-                                <button class="variant__buy--now__btn primary__btn" type="submit">Şimdi Satın Al</button>
-                            </div>
-                            <div class="product__variant--list mb-15">
-                                <div class="product__details--info__meta">
-                                    <p class="product__details--info__meta--list"><strong>Kategori:</strong> <span>
-                                            {{ $product->category->name }}</span> </p>
-                                    <p class="product__details--info__meta--list">
-                                        <strong>Lastik Ebatları:</strong>
-                                        <span>{{ $product->width }}-{{ $product->aspect_ratio }}-{{ $product->rim_diameter }}</span>
-                                    </p>
-                                    <p class="product__details--info__meta--list"><strong>Marka:</strong>
-                                        <span>{{ $product->brand->name }}</span>
-                                    </p>
-
-                                </div>
-                            </div>
+                            <button class="primary__btn quickview__cart--btn" type="submit">Sepete Ekle</button>
                         </div>
 
-                        {{-- <div class="guarantee__safe--checkout">
+
+                        <div class="product__variant--list mb-15">
+
+                            @auth
+
+
+
+                            @if (auth()->user()->isFavorited($product->id))
+                            <form action=" {{ route('user.favorite.destroy', $product) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button class="variant__wishlist--icon mb-15 btn btn-lg" style="font-size: 1 rem;" type="submit"> <i class="fa-solid fa-heart fa-2x m-2"></i> Favorilerden sil
+                                </button>
+                            </form>
+                            @else
+                            <form action=" {{ route('user.favorite.store', $product) }}" method="POST">
+                                @csrf
+
+                                <button class="variant__wishlist--icon mb-15 btn btn-lg" style="font-size: 1 rem;" type="submit"> <i class="fa-solid fa-heart fa-2x m-2"></i> Favorilere Ekle
+                                </button>
+                            </form>
+                            @endif
+                            @endauth
+
+                            <button class="variant__buy--now__btn primary__btn" type="submit">Şimdi Satın Al</button>
+                        </div>
+                        <div class="product__variant--list mb-15">
+                            <div class="product__details--info__meta">
+                                <p class="product__details--info__meta--list"><strong>Kategori:</strong> <span>
+                                        {{ $product->category->name }}</span> </p>
+                                <p class="product__details--info__meta--list">
+                                    <strong>Lastik Ebatları:</strong>
+                                    <span>{{ $product->width }}-{{ $product->aspect_ratio }}-{{ $product->rim_diameter }}</span>
+                                </p>
+                                <p class="product__details--info__meta--list"><strong>Marka:</strong>
+                                    <span>{{ $product->brand->name }}</span>
+                                </p>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    {{-- <div class="guarantee__safe--checkout">
                             <h5 class="guarantee__safe--checkout__title">Guaranteed Safe Checkout</h5>
                             <img class="guarantee__safe--checkout__img" src="assets/img/other/safe-checkout.webp"
                                 alt="Payment Image">
                         </div> --}}
 
 
-                        {{-- </form> --}}
-                    </div>
+                    {{-- </form> --}}
                 </div>
             </div>
         </div>
-    </section>
-    <!-- End product details section -->
+    </div>
+</section>
+<!-- End product details section -->
 
 
-    <!-- Start product details tab section -->
-    <section class="product__details--tab__section section--padding">
-        <div class="container">
-            <div class="row row-cols-1">
-                <div class="col">
-                    <ul class="product__tab--one product__details--tab d-flex mb-30">
-                        <li class="product__details--tab__list active" data-toggle="tab" data-target="#description">
-                            Description</li>
+<!-- Start product details tab section -->
+<section class="product__details--tab__section section--padding">
+    <div class="container">
+        <div class="row row-cols-1">
+            <div class="col">
+                <ul class="product__tab--one product__details--tab d-flex mb-30">
+                    <li class="product__details--tab__list active" data-toggle="tab" data-target="#description">
+                        Description</li>
 
-                        <li class="product__details--tab__list" data-toggle="tab" data-target="#information">Additional
-                            Info</li>
-                    </ul>
-                    <div class="product__details--tab__inner border-radius-10">
-                        <div class="tab_content">
-                            <div id="description" class="tab_pane active show">
-                                <div class="product__tab--content">
-                                    <div class="product__tab--content__step mb-30">
-                                        {!! $product->description !!}
-                                    </div>
-                                    {{-- <div class="product__tab--content__step style2 d-flex align-items-center mb-30">
+                    <li class="product__details--tab__list" data-toggle="tab" data-target="#information">Additional
+                        Info</li>
+                </ul>
+                <div class="product__details--tab__inner border-radius-10">
+                    <div class="tab_content">
+                        <div id="description" class="tab_pane active show">
+                            <div class="product__tab--content">
+                                <div class="product__tab--content__step mb-30">
+                                    {!! $product->description !!}
+                                </div>
+                                {{-- <div class="product__tab--content__step style2 d-flex align-items-center mb-30">
                                         <div class="product__tab--content__banner">
-                                            <img class="product__tab--content__banner--img border-radius-5"
+                                            <img class="product__tab--content__banner--img border-radius-5"ned variable 
                                                 src="assets/img/other/car-banner-img.webp" alt="banner-img">
                                         </div>
                                         <div class="product__tab--content__right">
@@ -325,50 +305,50 @@
                                             </div>
                                         </div>
                                     </div> --}}
-                                    <div class="product__tab--content__step">
-                                        <p class="product__tab--content__desc">Polor sit amet, consectetuer adipiscing
-                                            elit. Morbi commodo, ipsum sed pharetra gravida, orci magna rhoncus neque, id
-                                            pulvinar odio
-                                            lorem non turpis. Nullam sit amet enim. Suspendisse id velit vitae ligula
-                                            volutpat condimentum. Aliquam erat volutpat. Sed quis velit.
-                                            Nulla facilisi. Nulla libero. Vivamus pharetra posuere.</p>
-                                    </div>
+                                <div class="product__tab--content__step">
+                                    <p class="product__tab--content__desc">Polor sit amet, consectetuer adipiscing
+                                        elit. Morbi commodo, ipsum sed pharetra gravida, orci magna rhoncus neque, id
+                                        pulvinar odio
+                                        lorem non turpis. Nullam sit amet enim. Suspendisse id velit vitae ligula
+                                        volutpat condimentum. Aliquam erat volutpat. Sed quis velit.
+                                        Nulla facilisi. Nulla libero. Vivamus pharetra posuere.</p>
                                 </div>
                             </div>
-
-                            <div id="information" class="tab_pane">
-                                <div class="product__tab--conten">
-                                    <div class="product__tab--content__step">
-                                        <ul class="additional__info_list">
-                                            <li class="additional__info_list--item">
-                                                <span class="info__list--item-head"><strong>Color</strong></span>
-                                                <span class="info__list--item-content">Black, white, blue, red, gray</span>
-                                            </li>
-                                            <li class="additional__info_list--item">
-                                                <span class="info__list--item-head"><strong>Weight</strong></span>
-                                                <span class="info__list--item-content">2kg</span>
-                                            </li>
-                                            <li class="additional__info_list--item">
-                                                <span class="info__list--item-head"><strong>Brand</strong></span>
-                                                <span class="info__list--item-content">Gadget</span>
-                                            </li>
-                                            <li class="additional__info_list--item">
-                                                <span class="info__list--item-head"><strong>Guarantee</strong></span>
-                                                <span class="info__list--item-content">5 years</span>
-                                            </li>
-                                            <li class="additional__info_list--item">
-                                                <span class="info__list--item-head"><strong>Battery</strong></span>
-                                                <span class="info__list--item-content">10000 mA</span>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-
                         </div>
+
+                        <div id="information" class="tab_pane">
+                            <div class="product__tab--conten">
+                                <div class="product__tab--content__step">
+                                    <ul class="additional__info_list">
+                                        <li class="additional__info_list--item">
+                                            <span class="info__list--item-head"><strong>Color</strong></span>
+                                            <span class="info__list--item-content">Black, white, blue, red, gray</span>
+                                        </li>
+                                        <li class="additional__info_list--item">
+                                            <span class="info__list--item-head"><strong>Weight</strong></span>
+                                            <span class="info__list--item-content">2kg</span>
+                                        </li>
+                                        <li class="additional__info_list--item">
+                                            <span class="info__list--item-head"><strong>Brand</strong></span>
+                                            <span class="info__list--item-content">Gadget</span>
+                                        </li>
+                                        <li class="additional__info_list--item">
+                                            <span class="info__list--item-head"><strong>Guarantee</strong></span>
+                                            <span class="info__list--item-content">5 years</span>
+                                        </li>
+                                        <li class="additional__info_list--item">
+                                            <span class="info__list--item-head"><strong>Battery</strong></span>
+                                            <span class="info__list--item-content">10000 mA</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 @endsection

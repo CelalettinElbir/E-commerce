@@ -72,6 +72,6 @@ class User extends Authenticatable
 
     public function favoriteCount()
     {
-        return Favorite::where('user_id', auth()->id())->count();
+        return $this->favoriteProducts()->count();
     }
 }

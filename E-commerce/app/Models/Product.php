@@ -45,18 +45,33 @@ class Product extends Model
         }
 
         // Marka filtresi varsa ve boş değilse
-        if ($request->filled('brands')) {
-            $query->whereIn('brand_id', $request->brands);
+        if ($request->filled('brands')  && !empty(array_filter($request->brands))) {
+            // dd($request->brands, !empty($request->brands), !$request->brands == "", !empty(array_filter($request->brands)));
+            $query->whereIn('brand_id', $request->brands,);
         }
 
         // Kategori filtresi varsa ve boş değilse
-        if ($request->filled('categories')) {
+        if ($request->filled('categories') && !empty(array_filter($request->categories))) {
             $query->whereIn('category_id', $request->categories);
+        }
+
+        // Genişlik filtresi varsa ve boş değilse
+        if ($request->filled('width')) {
+            $query->where('width', $request->width);
+        }
+
+        // Yanak Oranı filtresi varsa ve boş değilse
+        if ($request->filled('aspect_ratio')) {
+            $query->where('aspect_ratio', $request->aspect_ratio);
+        }
+
+        // Jant Çapı filtresi varsa ve boş değilse
+        if ($request->filled('rim_diameter')) {
+            $query->where('rim_diameter', $request->rim_diameter);
         }
 
         return $query;
     }
-
 
     public function category()
     {

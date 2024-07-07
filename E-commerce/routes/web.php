@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\AdminSliderController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\User\AdressController;
 use App\Http\Controllers\User\CartController;
+use App\Http\Controllers\User\ContactController;
 use App\Http\Controllers\User\FavoriteController;
 use App\Http\Controllers\User\HomeController;
 use App\Http\Controllers\User\paymentController;
@@ -39,7 +40,30 @@ use Illuminate\Support\Facades\Route;
 
 Route::get("", [HomeController::class, "index"])->name("user.index");
 
+
+// Route::get('/whatsapp', function () {
+//     // İşletme WhatsApp numaranızı buraya yazın
+//     $phone = '905377898108';
+//     // WhatsApp web linkini oluşturun
+//     $url = 'https://wa.me/' . $phone;
+
+//     // Kullanıcıyı WhatsApp'a yönlendirin
+//     return redirect()->away($url);
+// })->name('whatsapp');
+
+Route::redirect('/whatsapp', 'https://wa.me/905377898108?')->name("whatsapp");
 //shop page
+
+
+
+Route::get('/contact', [ContactController::class, 'showForm'])->name('contact.form');
+Route::post('/contact', [ContactController::class, 'submitForm'])->name('contact.submit');
+
+Route::get('/admin/messages', [ContactController::class, 'index'])->name('admin.messages.index');
+Route::get('/admin/messages/{message}', [ContactController::class, 'show'])->name('admin.messages.show');
+Route::delete('/admin/messages/{message}', [ContactController::class, 'destroy'])->name('admin.messages.destroy');
+
+
 
 Route::get("/products", [ShopController::class, "index"])->name("shop.index");
 Route::get("product/{product:slug}", [ShopController::class, "show"])->name("shop.show");
@@ -82,8 +106,9 @@ Route::middleware("auth")->group(function () {
 
 Route::controller(CartController::class)->prefix("cart")->group(function () {
     Route::get('/', 'index')->name("user.cart.index");
-    Route::post('/add-to-cart/{product:id}', [CartController::class, 'addToCart'])->name('cart.add');
-    route::delete("/delete-from-cart/{product:id}", [CartController::class, 'deleteFromCart'])->name("delete.item.cart");
+    Route::post('/add-to-cart/{product}', [CartController::class, 'addToCart'])->name('cart.add');
+    Route::delete("/delete-from-cart/{product:id}", [CartController::class, 'deleteFromCart'])->name("delete.item.cart");
+    Route::post('/empty', [CartController::class, 'emptyCart'])->name('cart.empty');
 });
 
 Route::controller(UserOrderController::class)->prefix("user/orders/")->group(function () {

@@ -3,9 +3,8 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
-use App\Models\Cart;
 use App\Models\Product;
-use Gloudemans\Shoppingcart\Facades\Cart as FacadesCart;
+use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -21,31 +20,79 @@ class CartController extends Controller
 
 
 
-    public function addToCart(int $productId)
+    // public function addToCart(int $productId)
+    // {
+
+    //     // get data from session (this equals Session::get(), use empty array as default)
+    //     $shoppingCart = session('shoppingCart', []);
+    //     if (isset($shoppingCart[$productId])) {
+    //         // product is already in shopping cart, increment the amount
+    //         $shoppingCart[$productId]['amount'] += 1;
+    //     } else {
+    //         // fetch the product and add 1 to the shopping cart
+    //         $product = Product::findOrFail($productId);
+    //         $shoppingCart[$productId] = [
+    //             'productId' => $productId,
+    //             'amount'    => 1,
+    //             "image"     => $product->image,
+    //             'brand' => $product->brand->name,
+    //             'price'     => $product->price,
+    //             'name'      => $product->name,
+    //         ];
+    //     }
+
+    //     // update the session data (this equals Session::put() )
+    //     session(['shoppingCart' => $shoppingCart]);
+
+    //     return back()->with('success', 'Sepete Başarıyla Eklendi!');
+    // }
+
+
+
+
+    public function addToCart(Request $request, Product $product)
     {
-        // get data from session (this equals Session::get(), use empty array as default)
-        $shoppingCart = session('shoppingCart', []);
-        if (isset($shoppingCart[$productId])) {
-            // product is already in shopping cart, increment the amount
-            $shoppingCart[$productId]['amount'] += 1;
-        } else {
-            // fetch the product and add 1 to the shopping cart
-            $product = Product::findOrFail($productId);
-            $shoppingCart[$productId] = [
-                'productId' => $productId,
-                'amount'    => 1,
-                "image"     => $product->image,
+
+
+        // Add the item to the cart
+        Cart::add([
+            'id' => $product->id,
+            'name' => $product->name,
+            'qty' => 1,
+            'price' => $product->price,
+            'options' => [
                 'brand' => $product->brand->name,
-                'price'     => $product->price,
-                'name'      => $product->name,
-            ];
-        }
+                'image' => $product->image,
+            ]
+        ]);
 
-        // update the session data (this equals Session::put() )
-        session(['shoppingCart' => $shoppingCart]);
+        // Set up the notification message
+        $notification = [
+            'message' => 'Karta başarıyla eklendi.',
+            'alert-type' => 'success' // Changed to 'success' for a more appropriate alert type
+        ];
 
-        return back()->with('success', 'Sepete Başarıyla Eklendi!');
+        // Redirect back with the notification
+        return redirect()->back()->with($notification);
     }
+
+
+
+    public function emptyCart(Request $request)
+    {
+        // Destroy all items in the cart
+        Cart::destroy();
+
+        // Set up the notification message
+        $notification = [
+            'message' => 'Kart başarıyla temizlendi.',
+            'alert-type' => 'success'
+        ];
+
+        // Redirect back with the notification
+        return redirect()->back()->with($notification);
+    }
+
 
 
     public function deleteFromCart(Product $product)
@@ -62,8 +109,8 @@ class CartController extends Controller
         session(['shoppingCart' => $shoppingCart]);
 
 
-        
-        return back()->with(['type' => 'succses', 'message' =>'Hata oluştu']);
+
+        return back()->with(['type' => 'succses', 'message' => 'Hata oluştu']);
     }
 
 

@@ -45,8 +45,7 @@
     </div>
     <!-- ./wrapper -->
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
     <!-- Vendor JS -->
     <script src="{{ asset('AdminTheme/assets/vendor_components/ckeditor/ckeditor.js') }}"></script>
@@ -68,22 +67,22 @@
     </script>
 
     <script>
-        @if (Session::has('message'))
-            var type = "{{ Session::get('alert-type', 'info') }}";
-            switch (type) {
-                case 'info':
-                    toastr.info(" {{ Session::get('message') }} ");
-                    break;
-                case 'success':
-                    toastr.success(" {{ Session::get('message') }} ");
-                    break;
-                case 'warning':
-                    toastr.warning(" {{ Session::get('message') }} ");
-                    break;
-                case 'error':
-                    toastr.error(" {{ Session::get('message') }} ");
-                    break;
-            }
+        @if(Session::has('message'))
+        var type = "{{ Session::get('alert-type', 'info') }}";
+        switch (type) {
+            case 'info':
+                toastr.info(" {{ Session::get('message') }} ");
+                break;
+            case 'success':
+                toastr.success(" {{ Session::get('message') }} ");
+                break;
+            case 'warning':
+                toastr.warning(" {{ Session::get('message') }} ");
+                break;
+            case 'error':
+                toastr.error(" {{ Session::get('message') }} ");
+                break;
+        }
         @endif
     </script>
 

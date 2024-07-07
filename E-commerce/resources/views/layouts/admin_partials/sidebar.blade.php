@@ -83,12 +83,18 @@
                       <span>Slider</span>
                   </a>
               </li>
-              {{-- <li>
-                  <a href="{{ route('order.index') }}">
-                      <i data-feather=""></i>
-                      <span>sipariş</span>
+              <li>
+                  <a href="{{ route('admin.messages.index') }}">
+                      <i class="fa fa-envelope"></i>
+                      <span>Messages</span>
+                      @php
+                      $unreadCount = App\Models\Message::where('is_read', false)->count();
+                      @endphp
+                      @if ($unreadCount > 0)
+                      <span class="badge badge-danger">{{ $unreadCount }}</span>
+                      @endif
                   </a>
-              </li> --}}
+              </li>
 
               <li class="treeview">
                   <a href="">
@@ -108,7 +114,7 @@
                   </ul>
               </li>
 
-             
+
               {{-- return [
                 'pending' => 'Beklemede',
                 'processing' => 'İşleniyor',
@@ -371,13 +377,10 @@
 
       <div class="sidebar-footer">
           <!-- item-->
-          <a href="javascript:void(0)" class="link" data-toggle="tooltip" title=""
-              data-original-title="Settings" aria-describedby="tooltip92529"><i class="ti-settings"></i></a>
+          <a href="javascript:void(0)" class="link" data-toggle="tooltip" title="" data-original-title="Settings" aria-describedby="tooltip92529"><i class="ti-settings"></i></a>
           <!-- item-->
-          <a href="mailbox_inbox.html" class="link" data-toggle="tooltip" title=""
-              data-original-title="Email"><i class="ti-email"></i></a>
+          <a href="mailbox_inbox.html" class="link" data-toggle="tooltip" title="" data-original-title="Email"><i class="ti-email"></i></a>
           <!-- item-->
-          <a href="javascript:void(0)" class="link" data-toggle="tooltip" title=""
-              data-original-title="Logout"><i class="ti-lock"></i></a>
+          <a href="javascript:void(0)" class="link" data-toggle="tooltip" title="" data-original-title="Logout"><i class="ti-lock"></i></a>
       </div>
   </aside>
