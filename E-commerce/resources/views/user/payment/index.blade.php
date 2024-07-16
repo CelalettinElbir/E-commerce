@@ -39,14 +39,28 @@
                                         Yeni Adres
                                     </label>
                                 </div>
-                                @endif
 
+
+                                @else
+                                <div class="mb-20">
+                                    <label class="list-group-item">
+                                        <input type="radio" name="address_id" value="new" checked>
+                                        Yeni Adres
+                                    </label>
+                                </div>
+
+
+
+
+                                @endif
                                 <div id="newAddressForm">
                                     <div class="row">
                                         <div class="col-lg-12 col-md-12 col-sm-6 mb-20">
                                             <div class="checkout__input--list">
                                                 <label class="checkout__input--label mb-2" for="address_name">Adres Adı <span class="checkout__input--label__star">*</span></label>
                                                 <input id="address_name" class="checkout__input--field border-radius-5 form-control" placeholder="Adres Adı" type="text" name="address_name" required>
+
+
                                             </div>
                                         </div>
 
@@ -54,6 +68,8 @@
                                             <div class="checkout__input--list">
                                                 <label class="checkout__input--label mb-2" for="tel_no">Telefon Numarası <span class="checkout__input--label__star">*</span></label>
                                                 <input id="tel_no" class="checkout__input--field border-radius-5 form-control" placeholder="Telefon Numarası" type="text" name="tel_no" required>
+
+
                                             </div>
                                         </div>
 
@@ -61,12 +77,16 @@
                                             <div class="checkout__input--list">
                                                 <label class="checkout__input--label mb-2" for="first_name">Ad <span class="checkout__input--label__star">*</span></label>
                                                 <input id="first_name" class="checkout__input--field border-radius-5 form-control" placeholder="Ad" type="text" name="first_name" required>
+
+
                                             </div>
                                         </div>
                                         <div class="col-lg-6 col-md-6 col-sm-6 mb-20">
                                             <div class="checkout__input--list">
                                                 <label class="checkout__input--label mb-2" for="last_name">Soyad <span class="checkout__input--label__star">*</span></label>
                                                 <input id="last_name" class="checkout__input--field border-radius-5 form-control" placeholder="Soyad" type="text" name="last_name" required>
+
+
                                             </div>
                                         </div>
 
@@ -74,12 +94,18 @@
                                             <div class="checkout__input--list">
                                                 <label class="checkout__input--label mb-2" for="city">Şehir <span class="checkout__input--label__star">*</span></label>
                                                 <input id="city" class="checkout__input--field border-radius-5 form-control" placeholder="Şehir" type="text" name="city" required>
+
+
                                             </div>
                                         </div>
                                         <div class="col-lg-6 mb-20">
                                             <div class="checkout__input--list">
                                                 <label class="checkout__input--label mb-2" for="state">İlçe</label>
                                                 <input id="state" class="checkout__input--field border-radius-5 form-control" placeholder="İlçe" type="text" name="state">
+
+                                                @error('state')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                                @enderror
                                             </div>
                                         </div>
 
@@ -87,11 +113,20 @@
                                             <div class="checkout__input--list">
                                                 <label class="checkout__input--label mb-2" for="address">Adres <span class="checkout__input--label__star">*</span></label>
                                                 <input id="address" class="checkout__input--field border-radius-5 form-control" placeholder="Adres" type="text" name="address" required>
+
+                                                @error('address')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                                @enderror
                                             </div>
                                         </div>
                                         <div class="col-12 mb-20">
                                             <div class="checkout__input--list">
                                                 <input id="address2" class="checkout__input--field border-radius-5 form-control" placeholder="Apartman, daire, vs. (isteğe bağlı)" type="text" name="address2">
+
+                                                @error('address2')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                                @enderror
+
                                             </div>
                                         </div>
 
@@ -99,6 +134,10 @@
                                             <div class="checkout__input--list">
                                                 <label class="checkout__input--label mb-2" for="postal_code">Posta Kodu <span class="checkout__input--label__star">*</span></label>
                                                 <input id="postal_code" class="checkout__input--field border-radius-5 form-control" placeholder="Posta Kodu" type="text" name="postal_code" required>
+
+                                                @error('postal_code')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                                @enderror
                                             </div>
                                         </div>
 
@@ -106,6 +145,10 @@
                                             <div class="checkout__input--list">
                                                 <label class="checkout__input--label mb-2" for="tc">TC Kimlik Numarası</label>
                                                 <input id="tc" class="checkout__input--field border-radius-5 form-control" placeholder="TC Kimlik Numarası" type="text" name="tc">
+
+                                                @error('tc')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                                @enderror
                                             </div>
                                         </div>
                                     </div>

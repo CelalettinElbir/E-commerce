@@ -89,25 +89,28 @@
                             <li class="footer__widget--menu__list"><a class="footer__widget--menu__text" href="{{route("contact.form")}}">İletişim </a></li>
                             <li class="footer__widget--menu__list"><a class="footer__widget--menu__text" href="about.html">Hakkımızda</a></li>
                             <li class="footer__widget--menu__list"><a class="footer__widget--menu__text" href="wishlist.html">Favoriler</a></li>
-                            <li class="footer__widget--menu__list"><a class="footer__widget--menu__text" href="privacy-policy.html">Privacy Policy</a></li>
-                            <li class="footer__widget--menu__list"><a class="footer__widget--menu__text" href="faq.html">Frequently</a></li>
+                            <!-- <li class="footer__widget--menu__list"><a class="footer__widget--menu__text" href="privacy-policy.html">Privacy Policy</a></li> -->
+                            <!-- <li class="footer__widget--menu__list"><a class="footer__widget--menu__text" href="faq.html">Frequently</a></li> -->
                         </ul>
                     </div>
                 </div>
                 <div class="col-lg-2 col-md-4">
                     <div class="footer__widget">
-                        <h2 class="footer__widget--title ">FIND IT FAST <button class="footer__widget--button" aria-label="footer widget button"></button>
+                        <h2 class="footer__widget--title "> <button class="footer__widget--button" aria-label="footer widget button"></button>
                             <svg class="footer__widget--title__arrowdown--icon" xmlns="http://www.w3.org/2000/svg" width="12.355" height="8.394" viewBox="0 0 10.355 6.394">
                                 <path d="M15.138,8.59l-3.961,3.952L7.217,8.59,6,9.807l5.178,5.178,5.178-5.178Z" transform="translate(-6 -8.59)" fill="currentColor"></path>
                             </svg>
                         </h2>
-                        <ul class="footer__widget--menu footer__widget--inner">
-                            <li class="footer__widget--menu__list"><a class="footer__widget--menu__text" href="shop.html">Smartphone ablet</a></li>
-                            <li class="footer__widget--menu__list"><a class="footer__widget--menu__text" href="shop.html">Computer Laptop</a></li>
-                            <li class="footer__widget--menu__list"><a class="footer__widget--menu__text" href="shop.html">TV & Audio</a></li>
-                            <li class="footer__widget--menu__list"><a class="footer__widget--menu__text" href="shop.html">Car Accessories</a></li>
-                            <li class="footer__widget--menu__list"><a class="footer__widget--menu__text" href="shop.html">Cameras Photos</a></li>
-                        </ul>
+
+
+                        <img src="{{asset('upload/logo.jpg')}}" alt="">
+                        <!-- <ul class="footer__widget--menu footer__widget--inner">
+                            <li class="footer__widget--menu__list"><a class="footer__widget--menu__text" href="{{route("shop.index")}}">Smartphone ablet</a></li>
+                            <li class="footer__widget--menu__list"><a class="footer__widget--menu__text" href="{{route("shop.index")}}">Computer Laptop</a></li>
+                            <li class="footer__widget--menu__list"><a class="footer__widget--menu__text" href="{{route("shop.index")}}">TV & Audio</a></li>
+                            <li class="footer__widget--menu__list"><a class="footer__widget--menu__text" href="{{route("shop.index")}}">Car Accessories</a></li>
+                            <li class="footer__widget--menu__list"><a class="footer__widget--menu__text" href="{{route("shop.index")}}">Cameras Photos</a></li>
+                        </ul> -->
                     </div>
                 </div>
             </div>

@@ -1,66 +1,41 @@
 <header class="header__section  mb-20">
     <div class="header__topbar border-bottom">
         <div class="container">
-            <div class="header__topbar--inner d-flex align-items-center justify-content-between">
-                <ul class="header__topbar--info d-none d-lg-flex">
-                    <li class="header__info--list">
-                        <a class="header__info--link" href="shop.html">STORES</a>
-                    </li>
-                    <li class="header__info--list">
-                        <a class="header__info--link" href="shop.html">DELIVERY</a>
-                    </li>
-                    <li class="header__info--list">
-                        <a class="header__info--link" href="privacy-policy.html">GUARANTEE</a>
-                    </li>
-                    <li class="header__info--list">
-                        <a class="header__info--link" href="mailto:info@example.com">
-                            <svg width="15" height="13" viewBox="0 0 15 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M7.368 9.104C7.26133 9.17867 7.13867 9.216 7 9.216C6.86133 9.216 6.744 9.17867 6.648 9.104L0.36 4.624C0.264 4.56 0.178667 4.54933 0.104 4.592C0.04 4.624 0.00800002 4.69867 0.00800002 4.816V11.984C0.00800002 12.112 0.0506667 12.2187 0.136 12.304C0.221333 12.3893 0.322667 12.432 0.44 12.432H13.56C13.6773 12.432 13.7787 12.3893 13.864 12.304C13.96 12.2187 14.008 12.112 14.008 11.984V4.816C14.008 4.69867 13.9707 4.624 13.896 4.592C13.8213 4.54933 13.736 4.56 13.64 4.624L7.368 9.104ZM6.76 8.32C6.84533 8.37333 6.92533 8.4 7 8.4C7.08533 8.4 7.16533 8.37333 7.24 8.32L12.52 4.56C12.6373 4.464 12.696 4.352 12.696 4.224V0.783999C12.696 0.666666 12.6533 0.570666 12.568 0.495999C12.4933 0.410666 12.3973 0.367999 12.28 0.367999H1.72C1.60267 0.367999 1.50667 0.410666 1.432 0.495999C1.35733 0.570666 1.32 0.666666 1.32 0.783999V4.224C1.32 4.37333 1.37333 4.48533 1.48 4.56L6.76 8.32ZM3.784 2.064H9.96C10.088 2.064 10.1947 2.112 10.28 2.208C10.3653 2.29333 10.408 2.4 10.408 2.528C10.408 2.64533 10.3653 2.74667 10.28 2.832C10.1947 2.91733 10.088 2.96 9.96 2.96H3.784C3.656 2.96 3.54933 2.91733 3.464 2.832C3.37867 2.74667 3.336 2.64533 3.336 2.528C3.336 2.4 3.37867 2.29333 3.464 2.208C3.54933 2.112 3.656 2.064 3.784 2.064ZM3.784 3.632H9.96C10.088 3.632 10.1947 3.68 10.28 3.776C10.3653 3.86133 10.408 3.96267 10.408 4.08C10.408 4.19733 10.3653 4.304 10.28 4.4C10.1947 4.48533 10.088 4.528 9.96 4.528H3.784C3.656 4.528 3.54933 4.48533 3.464 4.4C3.37867 4.31467 3.336 4.21333 3.336 4.096C3.336 3.968 3.37867 3.86133 3.464 3.776C3.54933 3.68 3.656 3.632 3.784 3.632Z" fill="#FF2D37"></path>
-                            </svg>
-                            info@example.com</a>
-                    </li>
-                </ul>
-                <div class="header__top--right d-flex align-items-center">
-                    <ul class="header__top--link d-flex align-items-center">
-                        <li class="header__link--menu"><a class="header__link--menu__text" href="{{ route('user.favorites') }}">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class=" -heart">
-                                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z">
-                                    </path>
-                                </svg> Favoriler</a>
-                        </li>
-                        <!-- <li class="header__link--menu"><a class="header__link--menu__text" href="compare.html">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 512 512">
-                                    <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M400 304l48 48-48 48M400 112l48 48-48 48M64 352h85.19a80 80 0 0066.56-35.62L256 256">
-                                    </path>
-                                    <path d="M64 160h85.19a80 80 0 0166.56 35.62l80.5 120.76A80 80 0 00362.81 352H416M416 160h-53.19a80 80 0 00-66.56 35.62L288 208" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"></path>
-                                </svg>Compare</a>
-                        </li> -->
-                    </ul>
+            <div class="header__topbar--inner d-flex align-items-center justify-content-center">
+                <ul class="header__topbar--info d-md-flex d-lg-flex">
+                    <!--  -->
+
+
+
                     <ul class="social__share d-flex">
                         <li class="social__share--list">
-                            <a class="social__share--icon" target="_blank" href="https://www.facebook.com/profile.php?id=100093568951131 ">
-                                <svg width="9" height="15" viewBox="0 0 9 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M7.62891 8.625L8.01172 6.10938H5.57812V4.46875C5.57812 3.75781 5.90625 3.10156 7 3.10156H8.12109V0.941406C8.12109 0.941406 7.10938 0.75 6.15234 0.75C4.15625 0.75 2.84375 1.98047 2.84375 4.16797V6.10938H0.601562V8.625H2.84375V14.75H5.57812V8.625H7.62891Z" fill="currentColor"></path>
-                                </svg>
-                                <span class="visually-hidden">Facebook</span>
+                            <a class="social__share--icon" target="_blank" href="https://www.hepsiburada.com/magaza/ozelcileroto">
+                                <i class="fa-solid fa-shop"></i>
+                                <span class=>Hepsiburada</span>
                             </a>
                         </li>
 
                         <li class="social__share--list">
-                            <a class="social__share--icon" target="_blank" href="{{route("whatsapp")}}">
-                                <i class="fa-brands fa-whatsapp"></i>
-
-                                <span class="visually-hidden">whatsapp</span>
+                            <a class="social__share--icon" target="_blank" href="https://www.n11.com/magaza/ozelcilerotomotiv">
+                                <i class="fa-solid fa-shop"></i>
+                                <span class="">N11</span>
                             </a>
                         </li>
 
 
+
+                        <li class="social__share--list">
+                            <a class="social__share--icon" target="_blank" href="https://www.hepsiburada.com/magaza/ozelcileroto">
+                                <i class="fa-solid fa-shop"></i>
+                                <span class="">Hepsiburada</span>
+                            </a>
+                        </li>
                         <li class="social__share--list">
                             <a class="social__share--icon" target="_blank" href="https://www.instagram.com/ozelciler_oto_michelin/">
                                 <svg width="14" height="13" viewBox="0 0 14 13" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M7.125 3.60547C5.375 3.60547 3.98047 5.02734 3.98047 6.75C3.98047 8.5 5.375 9.89453 7.125 9.89453C8.84766 9.89453 10.2695 8.5 10.2695 6.75C10.2695 5.02734 8.84766 3.60547 7.125 3.60547ZM7.125 8.80078C6.00391 8.80078 5.07422 7.89844 5.07422 6.75C5.07422 5.62891 5.97656 4.72656 7.125 4.72656C8.24609 4.72656 9.14844 5.62891 9.14844 6.75C9.14844 7.89844 8.24609 8.80078 7.125 8.80078ZM11.1172 3.49609C11.1172 3.08594 10.7891 2.75781 10.3789 2.75781C9.96875 2.75781 9.64062 3.08594 9.64062 3.49609C9.64062 3.90625 9.96875 4.23438 10.3789 4.23438C10.7891 4.23438 11.1172 3.90625 11.1172 3.49609ZM13.1953 4.23438C13.1406 3.25 12.9219 2.375 12.2109 1.66406C11.5 0.953125 10.625 0.734375 9.64062 0.679688C8.62891 0.625 5.59375 0.625 4.58203 0.679688C3.59766 0.734375 2.75 0.953125 2.01172 1.66406C1.30078 2.375 1.08203 3.25 1.02734 4.23438C0.972656 5.24609 0.972656 8.28125 1.02734 9.29297C1.08203 10.2773 1.30078 11.125 2.01172 11.8633C2.75 12.5742 3.59766 12.793 4.58203 12.8477C5.59375 12.9023 8.62891 12.9023 9.64062 12.8477C10.625 12.793 11.5 12.5742 12.2109 11.8633C12.9219 11.125 13.1406 10.2773 13.1953 9.29297C13.25 8.28125 13.25 5.24609 13.1953 4.23438ZM11.8828 10.3594C11.6914 10.9062 11.2539 11.3164 10.7344 11.5352C9.91406 11.8633 8 11.7812 7.125 11.7812C6.22266 11.7812 4.30859 11.8633 3.51562 11.5352C2.96875 11.3164 2.55859 10.9062 2.33984 10.3594C2.01172 9.56641 2.09375 7.65234 2.09375 6.75C2.09375 5.875 2.01172 3.96094 2.33984 3.14062C2.55859 2.62109 2.96875 2.21094 3.51562 1.99219C4.30859 1.66406 6.22266 1.74609 7.125 1.74609C8 1.74609 9.91406 1.66406 10.7344 1.99219C11.2539 2.18359 11.6641 2.62109 11.8828 3.14062C12.2109 3.96094 12.1289 5.875 12.1289 6.75C12.1289 7.65234 12.2109 9.56641 11.8828 10.3594Z" fill="currentColor"></path>
                                 </svg>
-                                <span class="visually-hidden">Instagram</span>
+                                <span class="">Instagram</span>
                             </a>
                         </li>
                         <li class="social__share--list">
@@ -68,12 +43,20 @@
                                 <svg width="16" height="11" viewBox="0 0 16 11" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M15.0117 2.16797C14.8477 1.51172 14.3281 0.992188 13.6992 0.828125C12.5234 0.5 7.875 0.5 7.875 0.5C7.875 0.5 3.19922 0.5 2.02344 0.828125C1.39453 0.992188 0.875 1.51172 0.710938 2.16797C0.382812 3.31641 0.382812 5.77734 0.382812 5.77734C0.382812 5.77734 0.382812 8.21094 0.710938 9.38672C0.875 10.043 1.39453 10.5352 2.02344 10.6992C3.19922 11 7.875 11 7.875 11C7.875 11 12.5234 11 13.6992 10.6992C14.3281 10.5352 14.8477 10.043 15.0117 9.38672C15.3398 8.21094 15.3398 5.77734 15.3398 5.77734C15.3398 5.77734 15.3398 3.31641 15.0117 2.16797ZM6.34375 7.99219V3.5625L10.2266 5.77734L6.34375 7.99219Z" fill="currentColor"></path>
                                 </svg>
-                                <span class="visually-hidden">Youtube</span>
+                                <span class="">Youtube</span>
                             </a>
                         </li>
 
+                        <li class="social__share--list">
+                            <a class="social__share--icon" target="_blank" href="{{route("whatsapp")}}">
+                                <i class="fa-brands fa-whatsapp"></i>
+
+                                <span class="">Whatsapp</span>
+                            </a>
+                        </li>
                     </ul>
-                </div>
+                </ul>
+
             </div>
         </div>
     </div>
@@ -94,18 +77,19 @@
                 <div class="header__search--widget d-none d-lg-block header__sticky--none">
                     <form class="d-flex header__search--form border-radius-5" action="{{ route('shop.search') }}" method="GET">
                         <div class="header__select--categories select">
-                            <select class="header__select--inner">
+                            <select class="header__select--inner" name="brands[]">
                                 <option selected="" value="1"> Kategoriler</option>
                                 @foreach($categories as $category)
-                                <option value="{{$loop->index}}">{{$category->name}} </option>
+                                <option value="{{ $category->id }}" name>{{$category->name}} </option>
                                 @endforeach
-
-
                             </select>
+
+
+
                         </div>
                         <div class="header__search--box">
                             <label>
-                                <input class="header__search--input" placeholder="Lastikleri Ara..." type="text">
+                                <input class="header__search--input" placeholder="Lastikleri Ara..." name="query" type="text">
                             </label>
                             <button class="header__search--button bg__primary text-white" aria-label="search button" type="submit">
                                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -182,8 +166,7 @@
                                         <ul class="header__mega--sub__menu">
                                             <li class="header__mega--sub__menu_li"><a class="header__mega--sub__menu--title" href="about.html">About
                                                     Us</a></li>
-                                            <li class="header__mega--sub__menu_li"><a class="header__mega--sub__menu--title" href="contact.html">Contact
-                                                    Us</a></li>
+                                            <li class="header__mega--sub__menu_li"><a class="header__mega--sub__menu--title" href="{{route('contact.form')}}">İletişim</a></li>
                                             <li class="header__mega--sub__menu_li"><a class="header__mega--sub__menu--title" href="portfolio.html">Portfolio</a></li>
                                             <li class="header__mega--sub__menu_li"><a class="header__mega--sub__menu--title" href="compare.html">Compare</a></li>
                                             <li class="header__mega--sub__menu_li"><a class="header__mega--sub__menu--title" href="checkout.html">Checkout</a></li>
@@ -235,7 +218,7 @@
                                 </a>
                                 <ul class="header__sub--menu">
                                     <li class="header__sub--menu__items"><a href="about.html" class="header__sub--menu__link">About Us</a></li>
-                                    <li class="header__sub--menu__items"><a href="contact.html" class="header__sub--menu__link">Contact Us</a></li>
+                                    <li class="header__sub--menu__items"><a href="{{route('contact.form')}}" class="header__sub--menu__link">İletişim</a></li>
                                     <li class="header__sub--menu__items"><a href="cart.html" class="header__sub--menu__link">Cart Page</a></li>
                                     <li class="header__sub--menu__items"><a href="portfolio.html" class="header__sub--menu__link">Portfolio Page</a></li>
                                     <li class="header__sub--menu__items"><a href="{{ route('user.favorites') }}" class="header__sub--menu__link">Wishlist Page</a></li>
@@ -245,15 +228,13 @@
                                 </ul>
                             </li>
                             <li class="header__menu--items">
-                                <a class="header__menu--link" href="contact.html">Contact </a>
+                                <a class="header__menu--link" href="{{route('contact.form')}}">İletişim </a>
                             </li>
                         </ul>
                     </nav>
                 </div>
-                <div class="header__account header__sticky--none">
+                <div class=" header__account header__sticky--none">
                     <ul class="header__account--wrapper d-flex align-items-center">
-
-
                         @auth
                         <li class="header__account--items d-none d-lg-block">
                             <a class="header__account--btn" href="{{ route('profile.edit') }}">
@@ -405,11 +386,8 @@
                             <path d="M15.138,8.59l-3.961,3.952L7.217,8.59,6,9.807l5.178,5.178,5.178-5.178Z" transform="translate(-6 -8.59)" fill="currentColor"></path>
                         </svg>
                     </div>
-                    <div class="dropdown__categories--menu border-radius-5 active collapse" id="categoriesAccordion" style="">
+                    <div class="dropdown__categories--menu border-radius-5 active collapse" id="categoriesAccordion">
                         <ul class="d-none d-lg-block">
-
-
-
                             <li class="categories__menu--items">
                                 <a class="categories__menu--link" href="{{ route('shop.index') }}">
                                     <i class="fa-solid fa-tire"></i>
@@ -511,9 +489,6 @@
                                     </svg>Gaming Toiys
                                 </a>
                             </li> -->
-
-
-
                         </ul>
                         <nav class="category__mobile--menu">
                             <ul class="category__mobile--menu_ul">
@@ -723,7 +698,7 @@
                     <div class="header__menu">
                         <nav class="header__menu--navigation">
                             <ul class="header__menu--wrapper d-flex">
-                                <li class="header__menu--items">
+                                <!-- <li class="header__menu--items">
                                     <a class="header__menu--link text-white" href="index.html">Home
                                         <svg class="menu__arrowdown--icon" xmlns="http://www.w3.org/2000/svg" width="12" height="7.41" viewBox="0 0 12 7.41">
                                             <path d="M16.59,8.59,12,13.17,7.41,8.59,6,10l6,6,6-6Z" transform="translate(-6 -8.59)" fill="currentColor" opacity="0.7"></path>
@@ -736,8 +711,8 @@
                                         <li class="header__sub--menu__items"><a href="index-4.html" class="header__sub--menu__link">Home Four</a></li>
                                         <li class="header__sub--menu__items"><a href="index-5.html" class="header__sub--menu__link">Home Five</a></li>
                                     </ul>
-                                </li>
-                                <li class="header__menu--items mega__menu--items">
+                                </li> -->
+                                <!-- <li class="header__menu--items mega__menu--items">
                                     <a class="header__menu--link text-white" href="shop.html">Shop
                                         <svg class="menu__arrowdown--icon" xmlns="http://www.w3.org/2000/svg" width="12" height="7.41" viewBox="0 0 12 7.41">
                                             <path d="M16.59,8.59,12,13.17,7.41,8.59,6,10l6,6,6-6Z" transform="translate(-6 -8.59)" fill="currentColor" opacity="0.7"></path>
@@ -777,7 +752,7 @@
                                         <li class="header__mega--menu__li">
                                             <ul class="header__mega--sub__menu">
                                                 <li class="header__mega--sub__menu_li"><a class="header__mega--sub__menu--title" href="about.html">About Us</a></li>
-                                                <li class="header__mega--sub__menu_li"><a class="header__mega--sub__menu--title" href="contact.html">Contact Us</a></li>
+                                                <li class="header__mega--sub__menu_li"><a class="header__mega--sub__menu--title" href="{{route('contact.form')}}">İletişim</a></li>
                                                 <li class="header__mega--sub__menu_li"><a class="header__mega--sub__menu--title" href="portfolio.html">Portfolio</a></li>
                                                 <li class="header__mega--sub__menu_li"><a class="header__mega--sub__menu--title" href="compare.html">Compare</a></li>
                                                 <li class="header__mega--sub__menu_li"><a class="header__mega--sub__menu--title" href="checkout.html">Checkout</a></li>
@@ -804,9 +779,7 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="header__menu--items">
-                                    <a class="header__menu--link text-white" href="shop.html">Accesories </a>
-                                </li>
+                              
                                 <li class="header__menu--items">
                                     <a class="header__menu--link text-white active" href="blog.html">Blog
                                         <svg class="menu__arrowdown--icon" xmlns="http://www.w3.org/2000/svg" width="12" height="7.41" viewBox="0 0 12 7.41">
@@ -828,7 +801,7 @@
                                     </a>
                                     <ul class="header__sub--menu">
                                         <li class="header__sub--menu__items"><a href="about.html" class="header__sub--menu__link">About Us</a></li>
-                                        <li class="header__sub--menu__items"><a href="contact.html" class="header__sub--menu__link">Contact Us</a></li>
+                                        <li class="header__sub--menu__items"><a href="{{route('contact.form')}}" class="header__sub--menu__link">İletişim</a></li>
                                         <li class="header__sub--menu__items"><a href="cart.html" class="header__sub--menu__link">Cart Page</a></li>
                                         <li class="header__sub--menu__items"><a href="portfolio.html" class="header__sub--menu__link">Portfolio Page</a></li>
                                         <li class="header__sub--menu__items"><a href="{{ route('user.favorites') }}" class="header__sub--menu__link">Wishlist Page</a></li>
@@ -836,17 +809,15 @@
                                         <li class="header__sub--menu__items"><a href="login.html" class="header__sub--menu__link">Login Page</a></li>
                                         <li class="header__sub--menu__items"><a href="404.html" class="header__sub--menu__link">Error Page</a></li>
                                     </ul>
-                                </li>
-                                <li class="header__menu--items">
-                                    <a class="header__menu--link text-white" href="contact.html">Contact </a>
-                                </li>
+                                </li> -->
+
                             </ul>
                         </nav>
                     </div>
 
 
 
-                    <li class="language__currency--list">
+                    <!-- <li class="language__currency--list">
                         <a class="language__switcher" href="javascript:void(0)">
                             <span>Türkçe </span>
                             <svg xmlns="http://www.w3.org/2000/svg" width="9.797" height="6.05" viewBox="0 0 9.797 6.05">
@@ -861,11 +832,31 @@
                                 <li class="language__items"><a class="language__text" href="#" onclick="doGTranslate('tr|en');return false;">English</a></li>
                             </ul>
                         </div>
-                    </li>
-                    <div id="google_translate_element" style="display: none;"></div>
+                    </li> -->
+
+                    <ul class="d-flex p-2">
 
 
+                        <li class="header__menu--items">
+                            <a class="header__menu--link text-white" href="shop.html">
+                                <i class="fa-solid fa-phone"></i>
+                                (0422) 212-55-51
+                                <span class="visually-hidden">Whatsapp</span>
 
+
+                            </a>
+                        </li>
+
+                        <li class="header__menu--items">
+                            <a class="header__menu--link text-white" href="{{route('contact.form')}}">İletişim </a>
+                        </li>
+
+                        <a class="header__menu--link text-white d-flex align-items-center" href="{{ route('whatsapp') }}">
+                            <i class="fa-brands fa-whatsapp fa-2x me-2"></i>
+                            Whatsapp Hattı
+                        </a>
+
+                    </ul>
 
                 </div>
             </div>
@@ -939,7 +930,7 @@
                                 <a href="#" class="offcanvas__sub_menu_item">Column Three</a>
                                 <ul class="offcanvas__sub_menu">
                                     <li class="offcanvas__sub_menu_li"><a class="offcanvas__sub_menu_item" href="about.html">About Us</a></li>
-                                    <li class="offcanvas__sub_menu_li"><a class="offcanvas__sub_menu_item" href="contact.html">Contact Us</a></li>
+                                    <li class="offcanvas__sub_menu_li"><a class="offcanvas__sub_menu_item" href="{{route('contact.form')}}">İletişim</a></li>
                                     <li class="offcanvas__sub_menu_li"><a class="offcanvas__sub_menu_item" href="portfolio.html">Portfolio</a></li>
                                     <li class="offcanvas__sub_menu_li"><a class="offcanvas__sub_menu_item" href="compare.html">Compare Pages</a></li>
                                     <li class="offcanvas__sub_menu_li"><a class="offcanvas__sub_menu_item" href="checkout.html">Checkout page</a></li>
@@ -960,7 +951,7 @@
                         <a class="offcanvas__menu_item" href="#">Pages</a>
                         <ul class="offcanvas__sub_menu">
                             <li class="offcanvas__sub_menu_li"><a href="about.html" class="offcanvas__sub_menu_item">About Us</a></li>
-                            <li class="offcanvas__sub_menu_li"><a href="contact.html" class="offcanvas__sub_menu_item">Contact Us</a></li>
+                            <li class="offcanvas__sub_menu_li"><a href="{{route('contact.form')}}" class="offcanvas__sub_menu_item">İletişim</a></li>
                             <li class="offcanvas__sub_menu_li"><a href="cart.html" class="offcanvas__sub_menu_item">Cart Page</a></li>
                             <li class="offcanvas__sub_menu_li"><a href="portfolio.html" class="offcanvas__sub_menu_item">Portfolio Page</a></li>
                             <li class="offcanvas__sub_menu_li"><a href="wishlist.html" class="offcanvas__sub_menu_item">Wishlist Page</a></li>
@@ -969,7 +960,7 @@
                         </ul>
                     </li>
                     <li class="offcanvas__menu_li"><a class="offcanvas__menu_item" href="about.html">About</a></li>
-                    <li class="offcanvas__menu_li"><a class="offcanvas__menu_item" href="contact.html">Contact</a></li>
+                    <li class="offcanvas__menu_li"><a class="offcanvas__menu_item" href="{{route('contact.form')}}">İletişim</a></li>
                 </ul>
                 <div class="offcanvas__account--items">
                     <a class="offcanvas__account--items__btn d-flex align-items-center" href="login.html">
@@ -1115,7 +1106,7 @@
 
             <div class="minicart__button d-flex justify-content-center">
                 <a class="primary__btn minicart__button--link" href="{{ route('user.cart.index') }}">Sepete Git</a>
-                <a class="primary__btn minicart__button--link" href="{{ route('user.account.index') }}">Satın
+                <a class="primary__btn minicart__button--link" href="{{ route('user.payment.index') }}">Satın
                     Al</a>
             </div>
 

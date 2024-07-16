@@ -15,9 +15,11 @@ use App\Http\Controllers\User\paymentController;
 use App\Http\Controllers\User\ShopController;
 use App\Http\Controllers\User\UserAccountController;
 use App\Http\Controllers\User\UserOrderController;
-
+use App\Mail\OrderCreated;
+use App\Models\ShopOrder;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
-
+use App\Models\User;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -39,7 +41,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get("", [HomeController::class, "index"])->name("user.index");
-
+Route::get("about-us", [HomeController::class, "AboutUs"])->name("about-us");
 
 // Route::get('/whatsapp', function () {
 //     // İşletme WhatsApp numaranızı buraya yazın
@@ -53,7 +55,6 @@ Route::get("", [HomeController::class, "index"])->name("user.index");
 
 Route::redirect('/whatsapp', 'https://wa.me/905377898108?')->name("whatsapp");
 //shop page
-
 
 
 Route::get('/contact', [ContactController::class, 'showForm'])->name('contact.form');
@@ -95,7 +96,7 @@ Route::middleware("auth")->group(function () {
     Route::post('/checkout/payment/callback', [paymentController::class, 'paytrCallback'])->name('user.payment.callback');
     Route::get('/checkout/success', [paymentController::class, 'success'])->name('user.payment.success');
     Route::get('/checkout/failure', [paymentController::class, 'failure'])->name('user.payment.failure');
-
+    Route::get('/deneme', [paymentController::class, 'order']);
 
 
     Route::get("/user/adresses", [AdressController::class, "index"])->name("user.address.index");

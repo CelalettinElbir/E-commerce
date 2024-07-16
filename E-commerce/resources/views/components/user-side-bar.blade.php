@@ -23,6 +23,26 @@
                     <i class="fas fa-heart"></i> Favoriler
                 </a>
             </li>
+
+            <li class="account__menu--list ">
+                <a href="#" id="logout-link">
+                    <i class="fas fa-user"></i> Çıkış yap
+                </a>
+            </li>
+
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                @csrf
+            </form>
+
+            <script>
+                $(document).ready(function() {
+                    $('#logout-link').click(function(e) {
+                        e.preventDefault(); // a etiketinin varsayılan davranışını engelle
+                        $('#logout-form').submit(); // formu gönder
+                    });
+                });
+            </script>
+
         </ul>
     </div>
 </div>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Mail\OrderCreated;
 use App\Models\Address;
 use App\Models\ShopOrder;
 use App\Models\ShopOrderItem;
@@ -10,6 +11,7 @@ use BeyondCode\QueryDetector\Outputs\Json;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class paymentController extends Controller
 {
@@ -239,15 +241,59 @@ class paymentController extends Controller
     }
 
     // Store address
+    // public function storeAddress(Request $request)
+    // {
+    //     $user = Auth::user();
+
+    //     // Handle address
+    //     if ($request->address_id == 'new') {
+    //         // Validate the new address data
+    //         // dd(request()->all());
+
+    //         $request->validate([
+    //             'first_name' => 'required|string|max:255',
+    //             'last_name' => 'required|string|max:255',
+    //             'address' => 'required|string|max:255',
+    //             'city' => 'required|string|max:255',
+    //             'postal_code' => 'required|string|max:20',
+    //             'tel_no' => 'required|string|max:20',
+    //             'address_name' => 'required|string|max:255',
+    //         ]);
+
+    //         // Save the new address
+    //         $address = new Address();
+    //         $address->user_id = $user->id;
+    //         $address->first_name = $request->first_name;
+    //         $address->last_name = $request->last_name;
+    //         $address->address_line_1 = $request->address;
+    //         $address->address_line_2 = $request->address2;
+    //         $address->city = $request->city;
+    //         $address->state = $request->state;
+    //         $address->postal_code = $request->postal_code;
+    //         $address->tel_no = $request->tel_no;
+    //         $address->addres_name = $request->address_name;
+    //         $address->tc = $request->tc;
+    //         $address->save();
+    //     } else {
+
+    //         // Use existing address
+    //         $address = Address::find($request->address_id);
+    //         if (!$address || $address->user_id != $user->id) {
+    //             return back()->withErrors(['address_id' => 'Invalid address selected.']);
+    //         }
+    //     }
+
+    //     // Redirect to payment page
+    //     return redirect()->route('user.payment.checkout');
+    // }
+
+
     public function storeAddress(Request $request)
     {
         $user = Auth::user();
-
         // Handle address
         if ($request->address_id == 'new') {
             // Validate the new address data
-            // dd(request()->all());
-
             $request->validate([
                 'first_name' => 'required|string|max:255',
                 'last_name' => 'required|string|max:255',
@@ -258,32 +304,62 @@ class paymentController extends Controller
                 'address_name' => 'required|string|max:255',
             ]);
 
-            // Save the new address
-            $address = new Address();
-            $address->user_id = $user->id;
-            $address->first_name = $request->first_name;
-            $address->last_name = $request->last_name;
-            $address->address_line_1 = $request->address;
-            $address->address_line_2 = $request->address2;
-            $address->city = $request->city;
-            $address->state = $request->state;
-            $address->postal_code = $request->postal_code;
-            $address->tel_no = $request->tel_no;
-            $address->addres_name = $request->address_name;
-            $address->tc = $request->tc;
-            $address->save();
-        } else {
+            try {
+                // Save the new address
+                $address = new Address();
+                $address->user_id = $user->id;
+                $address->first_name = $request->first_name;
+                $address->last_name = $request->last_name;
+                $address->address_line_1 = $request->address;
+                $address->address_line_2 = $request->address2;
+                $address->city = $request->city;
+                $address->state = $request->state;
+                $address->postal_code = $request->postal_code;
+                $address->tel_no = $request->tel_no;
+                $address->addres_name = $request->address_name;
+                $address->tc = $request->tc;
+                $address->save();
 
-            // Use existing address
-            $address = Address::find($request->address_id);
-            if (!$address || $address->user_id != $user->id) {
-                return back()->withErrors(['address_id' => 'Invalid address selected.']);
+                $notification = array(
+                    "message" => "Adres başarıyla kaydedildi.",
+                    "alert-type" => "success"
+                );
+                return redirect()->route('user.payment.checkout')->with($notification);
+            } catch (\Exception $e) {
+                $notification = array(
+                    "message" => "Adres kaydedilirken bir hata oluştu. Lütfen tekrar deneyin.",
+                    "alert-type" => "error"
+                );
+                return $e;
+            }
+        } else {
+            try {
+                // Use existing address
+                $address = Address::find($request->address_id);
+                if (!$address || $address->user_id != $user->id) {
+                    $notification = array(
+                        "message" => "Geçersiz adres seçildi.",
+                        "alert-type" => "error"
+                    );
+                    return back()->with($notification);
+                }
+
+                $notification = array(
+                    "message" => "Adres başarıyla seçildi.",
+                    "alert-type" => "success"
+                );
+                return redirect()->route('user.payment.checkout')->with($notification);
+            } catch (\Exception $e) {
+                $notification = array(
+                    "message" => "Adres getirilirken bir hata oluştu. Lütfen tekrar deneyin.",
+                    "alert-type" => "error"
+                );
+                return back()->with($notification);
             }
         }
-
-        // Redirect to payment page
-        return redirect()->route('user.payment.checkout');
     }
+
+
 
     // Show payment form
     public function paymentForm()
@@ -328,7 +404,6 @@ class paymentController extends Controller
                 $orderItem->price = $cartItem->price;
                 $orderItem->save();
             }
-
             // Clear the cart
             Cart::destroy();
 
@@ -365,5 +440,19 @@ class paymentController extends Controller
     public function failure()
     {
         return view('user.payment.failure');
+    }
+
+
+    public function order()
+    {
+
+
+        $data = [
+            'name' => 'John Doe',
+            'email' => 'john.doe@example.com',
+        ];
+
+
+        return new OrderCreated($data, ShopOrder::find(4));
     }
 }
