@@ -15,7 +15,7 @@ class ShopController extends Controller
      */
     public function index(Request $request)
     {
-        $products = Product::latest()->filter(request())->with("brand")->paginate(12);
+        $products = Product::filter(request())->with("brand")->paginate(12);
         $productCount = $products->total();
         $categories = Category::latest()->get();
         $brands = Brand::latest()->get();
@@ -48,6 +48,23 @@ class ShopController extends Controller
 
         return view('user.shop.index', compact('products', "categories", "brands", "productCount"));
     }
+
+
+
+    public function  showCategory(Request $request, Category $category)
+
+    {
+        // Kategoriye ait ürünleri filtreleme
+        $products = $category->products()->filter($request)->with('brand')->paginate(12);
+        $productCount = $products->total();
+        $categories = Category::latest()->get();
+        $brands = Brand::latest()->get();
+        $products->appends(request()->query());
+
+        return view('user.shop.category', compact('category', 'products', 'brands', 'categories', 'productCount'));
+    }
+
+
 
 
 

@@ -7,7 +7,7 @@
         <div class="row row-cols-1">
             <div class="col">
                 <div class="breadcrumb__content text-center">
-                    <h1 class="breadcrumb__content--title">Ürünler</h1>
+                    <h1 class="breadcrumb__content--title">{{$category->name}}</h1>
 
                 </div>
             </div>
@@ -22,7 +22,7 @@
             <div class="col-xl-3 col-lg-4  col-md-4 shop-col-width-lg-4">
                 <div class="shop__sidebar--widget widget__area d-none d-lg-block">
 
-                    <form action="{{route("shop.index")}}" method="GET" id="filterForm">
+                    <form action="{{route("shop.showCategory",$category->slug)}}" method="GET" id="filterForm">
                         <!-- Existing filters -->
 
                         <!-- Hidden inputs for the selected filters -->
@@ -73,17 +73,6 @@
                             </div>
                         </div>
 
-                        <div class="single__widget widget__bg">
-                            <h2 class="widget__title h3">Kategoriler</h2>
-                            <ul class="widget__tagcloud d-flex flex-column">
-                                @foreach ($categories as $category)
-                                <li class="widget__tagcloud--item d-flex gap-2">
-                                    <input type="checkbox" name="categories[]" value="{{ $category->id }}" @if(in_array($category->id, request('categories', []))) checked @endif>
-                                    <label for="{{ $category->id }}">{{ $category->name }}</label>
-                                </li>
-                                @endforeach
-                            </ul>
-                        </div>
 
                         <!-- Brands -->
                         <div class="single__widget widget__bg">
@@ -150,7 +139,7 @@
 
                         <div class="shop__sidebar--footer d-flex justify-content-between align-items-center p-3 bg-light rounded">
                             <button class="btn primary__btn btn-lg">Ara</button>
-                            <a href="{{ route('shop.index') }}" class="btn btn-secondary btn-lg">Temizle</a>
+                            <a href="{{route("shop.showCategory",$category->slug)}}" class="btn btn-secondary btn-lg">Temizle</a>
                         </div>
                     </form>
 
@@ -367,7 +356,7 @@
             event.preventDefault(); // Prevent default form submission
 
             // Construct the URL based on current filters
-            var baseUrl = "{{ route('shop.index') }}"; // Replace with your route URL
+            var baseUrl = "{{ route('shop.showCategory',$category->slug) }}"; // Replace with your route URL
             var params = [];
 
             // Add min_price and max_price if available

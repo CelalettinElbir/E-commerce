@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminBannerController;
 use App\Http\Controllers\Admin\AdminBrandController;
 use App\Http\Controllers\Admin\AdminCategoryController;
 use App\Http\Controllers\Admin\AdminOrderController;
@@ -17,6 +18,7 @@ use App\Http\Controllers\User\UserAccountController;
 use App\Http\Controllers\User\UserOrderController;
 use App\Mail\OrderCreated;
 use App\Models\ShopOrder;
+use App\Models\Category;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 use App\Models\User;
@@ -70,6 +72,8 @@ Route::get("/products", [ShopController::class, "index"])->name("shop.index");
 Route::get("product/{product:slug}", [ShopController::class, "show"])->name("shop.show");
 Route::get('/products/searchNavbar', [ShopController::class, "search"])->name('shop.search');
 Route::get('/products/search', [ShopController::class, "sliderSearch"])->name('shop.sliderSearch');
+Route::get("/{category:slug}", [ShopController::class, 'showCategory'])->name('shop.showCategory');
+
 
 
 
@@ -135,6 +139,7 @@ Route::middleware('auth')->group(function () {
 });
 Route::prefix('admin')->group(function () {
     Route::resource('categories', AdminCategoryController::class);
+    Route::resource('banners', AdminBannerController::class);
     Route::resource('brands', AdminBrandController::class);
     route::resource('slider', AdminSliderController::class);
     route::resource('order', AdminOrderController::class);

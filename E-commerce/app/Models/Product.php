@@ -70,6 +70,43 @@ class Product extends Model
             $query->where('rim_diameter', $request->rim_diameter);
         }
 
+        if ($request->has('discounted') && $request->discounted) {
+            $query->whereNotNull('discount_price');
+        }
+
+        if ($request->has("sort")) {
+            switch ($request->sort) {
+                case 'latest':
+                    $query->orderByDesc('created_at');
+                    break;
+
+                case 'newness':
+                    $query->orderByDesc('created_at');
+                    break;
+                case 'price':
+                    $query->orderBy('price');
+
+                    break;
+                case 'price-desc':
+                    $query->orderByDesc('price');
+                    break;
+                case 'name':
+                    $query->orderBy('name');
+                    break;
+                case 'name-desc':
+                    $query->orderByDesc('name');
+                    break;
+
+                default:
+                    $query->orderByDesc('created_at'); // Default sorting by latest
+                    break;
+            }
+        } else {
+            $query->orderByDesc('created_at'); // Default sorting by latest
+        }
+
+
+
         return $query;
     }
 
