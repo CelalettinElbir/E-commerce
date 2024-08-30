@@ -9,6 +9,7 @@ use Flasher\Laravel\Facade\Flasher;
 use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 use function PHPSTORM_META\type;
 
@@ -17,10 +18,13 @@ class FavoriteController extends Controller
 
     public function favorites()
     {
+
         $favoriteProducts =  auth()->user()->favoriteProducts;
         if ($favoriteProducts) {
-
+            Log::info('User authenticated', ['user_id' => auth()->user()->id]);
             return view("user.favorites.index", compact("favoriteProducts"));
+        } else {
+            Log::info('User not authenticated');
         }
     }
 

@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ShipppingMethod extends Model
+class ShippingMethod extends Model
 {
     use HasFactory;
 
@@ -13,9 +13,10 @@ class ShipppingMethod extends Model
         'name',
         'price',
         'hint',
+        "tracking_number"
     ];
     public function orders()
     {
-        return $this->hasMany(ShopOrder::class);
+        return $this->hasMany(ShopOrder::class, "shipping_method_id");
     }
 }

@@ -56,28 +56,38 @@ class AdminBannerController extends Controller
 
     public function edit(Banner $banner)
     {
-        return view('admin.banners.edit', compact('banner'));
+        return view('admin.banner.edit', compact('banner'));
     }
 
     public function update(Request $request, Banner $banner)
     {
+
         $request->validate([
             'title' => 'required|string|max:255',
             'image_path' => 'image',
             'link' => 'required|url',
         ]);
 
-        if ($request->hasFile('image_path')) {
-            $imagePath = $request->file('image_path')->store('banners', 'public');
-            $banner->update([
-                'image_path' => $imagePath,
-            ]);
+
+
+
+
+        if ($request->hasFile('image')) {
+            // Mevcut resmi sil
+            if ($banner->image_path && file_exists(public_path($banner->image_path))) {
+                unlink(public_path($banner->image_path));
+            }
+
+            // Yeni resmi yükle
+            $image = $request->file('image');
+            $image_name = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
+            $image->move('upload/banners/', $image_name);
+            $banner->image_path = 'upload/banners/' . $image_name;
         }
 
+
+
         $banner->update($request->only('title', 'description', 'link'));
-
-
-
 
         return redirect()->route('banners.index')->with(["message" => " Başarıyla Güncellendi.", "alert-type" => "success"]);
     }

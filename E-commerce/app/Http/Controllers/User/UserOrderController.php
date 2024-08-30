@@ -19,14 +19,13 @@ class UserOrderController extends Controller
     {
         $user = auth()->user();
 
-        $status = ShopOrder::getStatuses();
         $orders = ShopOrder::with([
             'orderDetails.product:id,name,aspect_ratio,width,rim_diameter,price,discount_price,image',
             'address:id,first_name,last_name'
         ])->where('user_id', 1)->get();
 
 
-        return view("user.order.index", compact("orders", "status"));
+        return view("user.order.index", compact("orders"));
     }
 
 
@@ -36,10 +35,9 @@ class UserOrderController extends Controller
      */
     public function show(ShopOrder $shopOrder)
     {
-        $status = ShopOrder::getStatuses();
-        // $Shoporder = ShopOrder::where("id",  $id)->with("orderDetails", "address", "ShippingDetails")->get();
-        $shopOrder->load("orderDetails", "address", "ShippingDetails", "orderDetails.product")->get();
-        return view("user.order.detail", compact("shopOrder", "status"));
+
+        $shopOrder->load("orderDetails", "address", "ShippingMethod", "orderDetails.product")->get();
+        return view("user.order.detail", compact("shopOrder"));
     }
 
 
@@ -69,7 +67,7 @@ class UserOrderController extends Controller
 
         $address = Address::create($addressData);
 
-        
+
         // Validate the request data for order
         $orderData = $request->validate([
             'order_total' => 'required|numeric|min:0',
@@ -87,7 +85,7 @@ class UserOrderController extends Controller
         return response()->json(['order' => $order, 'address' => $address], 201);
     }
 
-   
+
 
 
 
@@ -134,5 +132,4 @@ class UserOrderController extends Controller
     {
         //
     }
-
 }

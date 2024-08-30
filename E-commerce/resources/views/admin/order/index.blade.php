@@ -52,7 +52,7 @@
                                     </td>
                                     <td>{{ $order->address->address_line_1 }}</td>
                                     <td>
-                                        <span class="badge badge-pill badge-danger">{{ $status[$order->status] }}</span>
+                                        <span class="badge badge-pill badge-danger">{{ $order->status }}</span>
                                     </td>
                                     <td>{{ $order->order_total }}</td>
                                     <td class="d-flex justify-content-center  align-items-center">
@@ -60,24 +60,36 @@
                                             <i data-feather="eye"></i>
                                         </a>
 
-                                        @if ($order->status == 'pending')
+                                        @if ($order->status == 'beklemede')
                                         <form action="{{ route('admin.orders.updateStatus', $order->id) }}" method="POST" class="d-flex justify-content-around  ">
                                             @csrf
                                             @method('PUT')
 
                                             <select name="status" class="form-control ">
-                                                <option value="pending">Beklemede</option>
-                                                <option value="processing">İşleniyor</option>
+                                                <option value="beklemede">Beklemede</option>
+                                                <option value="işleniyor">İşleniyor</option>
+                                                <option value="iptal edildi">İşleniyor</option>
+
                                             </select>
                                             <button type="submit" class="btn btn-primary ">Güncelle</button>
                                         </form>
-                                        @elseif($order->status == 'processing')
+                                        @elseif($order->status == 'işleniyor')
                                         <div class="d-flex align-items-center">
                                             <a class="btn btn-info btn" href="{{ route('admin.orders.ShipmentCode', $order) }}" title="Kargo Kodu">
                                                 <i data-feather="truck"></i>
                                             </a>
                                         </div>
                                         @endif
+
+                                        @elseif($order->status == 'işleniyor')
+                                        <div class="d-flex align-items-center">
+                                            <a class="btn btn-info btn" href="{{ route('admin.orders.ShipmentCode', $order) }}" title="Kargo Kodu">
+                                                <i data-feather="truck"></i>
+                                            </a>
+                                        </div>
+                                        @endif
+
+
                                     </td>
                                 </tr>
                                 @endforeach

@@ -69,12 +69,18 @@ class AdminCategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
+
+        $request['slug'] = Str::slug($request['name']);
         $request->validate([
             'name' => 'required|string|max:255',
             "description" => 'required|string|max:255',
         ]);
 
-        $category->update($request->all());
+        $category->update([
+            'name' => $request->name,
+            'description' => $request->description,
+            "slug" => $request['slug']
+        ]);
 
 
         $notification = array(

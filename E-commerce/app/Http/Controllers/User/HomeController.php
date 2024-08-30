@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Models\Banner;
 use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Slider;
@@ -18,7 +19,8 @@ class HomeController extends Controller
         $sliders = Slider::latest()->get();
         $categories = Category::latest()->get();
         $brands = Brand::latest()->get();
-        return view("user.index", compact("sliders", "categories", "brands"));
+        $banners = Banner::latest()->get();
+        return view("user.index", compact("sliders", "categories", "brands", "banners"));
     }
 
     public function AboutUs(): View

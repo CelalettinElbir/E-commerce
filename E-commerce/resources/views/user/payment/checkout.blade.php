@@ -12,7 +12,7 @@
                     <form method="POST" action="{{ route('user.payment.process') }}">
                         @csrf
 
-                        {{-- Card Number --}}
+            
                         <div class="form-group row">
                             <label for="card_number" class="col-md-4 col-form-label text-md-right">Card Number</label>
 

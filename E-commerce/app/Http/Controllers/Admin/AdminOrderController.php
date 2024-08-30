@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\ShipppingMethod;
 use App\Models\ShopOrder;
 use Illuminate\Http\Request;
+use App\Models\ShippingMethod;
 
 class AdminOrderController extends Controller
 {
@@ -62,7 +62,7 @@ class AdminOrderController extends Controller
     public function updateStatus(Request $request, $id)
     {
         $request->validate([
-            'status' => 'required|in:pending,processing,completed,cancelled',
+            'status' => 'required|in:beklemede,işleniyor,tamamlandı,gönderildi,iptal edildi',
         ]);
         $order = ShopOrder::findOrFail($id);
 
@@ -86,35 +86,29 @@ class AdminOrderController extends Controller
 
     public function ShipmentCreate(Request $request, ShopOrder $ShopOrder)
     {
-
         // Doğrulama kurallarını tanımla
-        $validatedData = $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'price' => ['required', 'numeric', 'min:0'],
-            'hint' => ['required', 'numeric', 'min:0'],
+        $request->validate([
+            'name' => 'required|string|max:255',
+            "tracking_number" => "required",
+            'price' => 'required',
+            'hint' => 'nullable',
         ]);
 
-        try {
-            // Yeni kargo yöntemini oluştur ve kaydet
-            $shipping = ShipppingMethod::create($validatedData);
 
-            // ShopOrder modeline kargo yöntemi ekleniyor
-            $ShopOrder->shippingMethod = $shipping->id;
-            $ShopOrder->save();
+        // Yeni kargo yöntemini oluştur ve kaydet
+        $shipping = ShippingMethod::create($request->all());
 
-            // Başarı durumunda bir mesaj döndür
-            $notification = [
-                "message" => "Kargo Kodu başarıyla oluşturuldu.",
-                "alert-type" => "success"
-            ];
-        } catch (\Exception $e) {
-            // Hata durumunda bir mesaj döndür
-            $notification = [
-                "message" => "Kargo Kodu oluşturulurken bir hata oluştu: " . $e->getMessage(),
-                "alert-type" => "error"
-            ];
-            return $e;
-        }
+        // ShopOrder modeline kargo yöntemi ekleniyor
+
+        $ShopOrder->shipping_method_id = $shipping->id;
+        $ShopOrder->status = "gönderildi";
+        $ShopOrder->save();
+
+        // Başarı durumunda bir mesaj döndür
+        $notification = [
+            "message" => "Kargo Kodu başarıyla oluşturuldu.",
+            "alert-type" => "success"
+        ];
 
         // Yönlendirme yaparak mesajı göster
         return redirect()->route("order.index")->with($notification);

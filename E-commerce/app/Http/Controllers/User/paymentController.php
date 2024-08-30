@@ -392,7 +392,7 @@ class paymentController extends Controller
             $order->user_id = Auth::id();
             $order->address_id = Address::where('user_id', Auth::id())->latest()->first()->id; // Get latest address ID
             $order->order_total = Cart::total();
-            $order->status = 'pending'; // Set initial status as pending
+            $order->status = 'beklemede'; // Set initial status as pending
             $order->save();
 
             // Create order items

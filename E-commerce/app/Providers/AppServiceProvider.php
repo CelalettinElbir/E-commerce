@@ -31,8 +31,8 @@ class AppServiceProvider extends ServiceProvider
 
             $brands = Brand::all();
             $view->with('brands', $brands);
-            // $categories = Category::all();
-            // $view->with('categories', $categories);
+            $categories = Category::all();
+            $view->with('categories', $categories);
 
 
 

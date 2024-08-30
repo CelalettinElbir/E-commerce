@@ -6,10 +6,32 @@ use App\Http\Controllers\Controller;
 use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Product;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
 class ShopController extends Controller
 {
+
+
+    public function  showBrand(Request $request, Brand $brand)
+
+    {
+        // Kategoriye ait ürünleri filtreleme
+        $products = $brand->products()->filter($request)->with('brand')->paginate(12);
+        $productCount = $products->total();
+        $categories = Category::latest()->get();
+        $brands = Brand::latest()->get();
+        $products->appends(request()->query());
+
+        return view('user.shop.brand', compact('brand', 'products', 'brands', 'categories', 'productCount'));
+    }
+
+
+
+
+
+
+
     /**
      * Display a listing of the resource.
      */
@@ -63,6 +85,9 @@ class ShopController extends Controller
 
         return view('user.shop.category', compact('category', 'products', 'brands', 'categories', 'productCount'));
     }
+
+
+
 
 
 

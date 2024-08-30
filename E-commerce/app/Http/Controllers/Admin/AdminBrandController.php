@@ -26,22 +26,31 @@ class AdminBrandController extends Controller
     {
         //
     }
-    
+
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
+        // Assign slug before validation
+        $request['slug'] = Str::slug($request['name']);
+
+        // Validate the request
         $validator = Validator::make($request->all(), [
             'name' => 'required|max:255',
             'description' => 'required',
+            'slug' => 'required|unique:brands,slug', // Ensure slug is unique
         ]);
-        // $request["slug"] = Str::slug($request["name"]);
+
         $validator->validate();
-        Brand::create($request->all());
-        // Eğer productF başarıyla oluşturulduysa, isteği uygun şekilde işleyebilirsiniz
-        return redirect()->route('brands.index')->with('success', 'Ürün başarıyla oluşturuldu.');
+
+        // Create the brand with the validated data
+        Brand::create($request->only(['name', 'description', 'slug']));
+
+        // Redirect to the brands index with a success message
+        return redirect()->route('brands.index')->with('success', 'Marka başarıyla oluşturuldu.');
     }
+
 
     /**
      * Display the specified resource.
@@ -64,15 +73,19 @@ class AdminBrandController extends Controller
      */
     public function update(Request $request, Brand $brand)
     {
+
+        $request['slug'] = Str::slug($request['name']);
         $request->validate([
             'name' => 'required|max:255',
             'description' => 'nullable',
+
         ]);
 
         try {
             $brand->update([
                 'name' => $request->name,
                 'description' => $request->description,
+                "slug" => $request['slug']
             ]);
 
             return redirect()->route('brands.index')->with('success', 'Marka başarıyla güncellendi.');

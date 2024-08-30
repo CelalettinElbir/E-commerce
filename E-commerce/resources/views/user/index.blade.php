@@ -209,4 +209,73 @@
 </section>
 
 
+<section class="blog__section section--padding">
+    <div class="container">
+        <!-- <div class="section__heading section__heading--flex border-bottom d-flex justify-content-between align-items-end mb-30">
+            <h2 class="section__heading--maintitle">Blog & article</h2>
+            <a class="view__all--link" href="blog.html">View all Blog</a>
+        </div> -->
+        <div class="blog__section--inner blog__swiper--activation swiper">
+            <div class="swiper-wrapper">
+
+
+                @foreach($banners as $banner)
+                <div class="swiper-slide">
+                    <div class="blog__card">
+                        <div class="blog__card--thumbnail">
+                            <a class="blog__card--thumbnail__link" href="{{$banner->link}}"><img class="blog__card--thumbnail__img" src="{{asset($banner->image_path)}}" alt="blog-img"></a>
+                        </div>
+
+                    </div>
+                </div>
+
+                @endforeach
+
+
+
+            </div>
+            <div class="swiper__nav--btn swiper-button-next">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class=" -chevron-right">
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+            </div>
+            <div class="swiper__nav--btn swiper-button-prev">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class=" -chevron-left">
+                    <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<div class="brand__section section--padding pt-0">
+    <div class="container">
+
+
+
+        <div class="brand__section--inner d-flex justify-content-between align-items-center">
+
+
+            <div class="brang__logo--items">
+                <img class="brang__logo--img" src="{{asset("upload/logos/CI.jpg")}}" alt="brand-logo">
+            </div>
+            <div class="brang__logo--items">
+                <img class="brang__logo--img" src="{{asset("upload/logos/bridgestonelogo-150x150w.png")}}" alt="brand-logo">
+            </div>
+            <div class="brang__logo--items">
+                <img class="brang__logo--img" src="{{asset("upload/logos/continantal.jpg")}}" alt="brand-logo">
+            </div>
+            <div class="brang__logo--items">
+                <img class="brang__logo--img" src="assets/img/logo/brand-logo5.webp" alt="brand-logo">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
 @endsection

@@ -15,11 +15,12 @@ class ShopOrder extends Model
         'shipping_address',
         'order_total',
         'status',
+        "shipping_method_id"
     ];
 
-    public function ShippingDetails()
+    public function ShippingMethod()
     {
-        return $this->belongsTo(ShipppingMethod::class);
+        return $this->belongsTo(ShippingMethod::class, "shipping_method_id");
     }
 
     public function orderDetails()
