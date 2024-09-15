@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="../images/favicon.ico">
-    <title>Sunny Admin - Dashboard</title>
+    <title>Özelçiler otomotiv</title>
 
     <!-- Vendors Style-->
     <link rel="stylesheet" href="{{ asset('AdminTheme/main-dark/css/vendors_css.css') }} ">

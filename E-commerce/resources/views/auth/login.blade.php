@@ -17,7 +17,7 @@
 
         <form method="POST" action="{{ route('login') }}">
             @csrf
-            <div class="col-md-8 mx-auto">
+            <div class="col-md-6 mx-auto">
                 <div class="account__login">
                     <div class="account__login--header mb-25">
                         <h2 class="account__login--header__title mb-10">Giriş yap </h2>
@@ -54,12 +54,20 @@
 
 
 
-                        <x-primary-button class="account__login--btn primary__btn">
+                        <x-primary-button class="account__login--btn primary__btn pb-4">
                             {{ __('Giriş Yap ') }}
                         </x-primary-button>
 
 
-                        <div class="flex items-center justify-end mt-4">
+
+
+                    <div class="flex items-center justify-end mt-4">
+                    <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                        href="{{ route('login') }}">
+                        {{ __('Hesabınız Yok mu?') }}
+                    </a>
+                </div>
+                        <!-- <div class="flex items-center justify-end mt-4">
                             @if (Route::has('password.request'))
                                 <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                                     href="{{ route('password.request') }}">
@@ -68,7 +76,7 @@
                             @endif
 
 
-                        </div>
+                        </div> -->
 
                     </div>
                 </div>

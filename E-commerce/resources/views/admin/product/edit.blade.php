@@ -76,22 +76,20 @@
 
                                  </div>
 
+                               
                                  <div class="col-md-6 ">
 
-                                     <div class="form-group">
-                                         <h5> Stok kodu <span class="text-danger">*</span></h5>
-                                         <div class="input-group">
-                                             <input type="" name="stock_code" value="{{ $product->stock_code }}"
-                                                 class="form-control" required
-                                                 data-validation-required-message="Bu alan zorunludur">
-                                         </div>
-                                     </div>
-                                     @error('stock_code')
-                                         <span class="text-danger">{{ $message }}</span>
-                                     @enderror
-
-
-
+                        <div class="form-group">
+                            <h5> Üretim Yılı <span class="text-danger"></span></h5>
+                            <div class="input-group">
+                                <input type="" name="stock_code" value="{{ $product->production_year }}"
+                                    class="form-control" 
+                                   >
+                            </div>
+                        </div>
+                        @error('stock_code')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
 
 
 
@@ -180,7 +178,7 @@
                                      <div class="form-group">
                                          <h5> Fiyat <span class="text-danger">*</span></h5>
                                          <div class="input-group">
-                                             <input type="number" name="price" value="{{ $product->price }}"
+                                             <input  name="price" value="{{ $product->price }}"
                                                  class="form-control" required
                                                  data-validation-required-message="Bu alan zorunludur">
                                          </div>
@@ -196,8 +194,8 @@
                                      <div class="form-group">
                                          <h5> İndirimli fiyat</h5>
                                          <div class="input-group">
-                                             <input type="number" value="{{ $product->discount_price }}"
-                                                 name="discount_price" class="form-control" required
+                                             <input  value="{{ $product->discount_price }}"
+                                                 name="discount_price" class="form-control" 
                                                  data-validation-required-message="Bu alan zorunludur">
                                          </div>
                                      </div>
@@ -208,7 +206,79 @@
 
                              </div><!--  üçüncü sıra  bitiş-->
 
+                             <div class="row"><!-- Beşinci sıra -->
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <h5>Yakıt Tüketimi <span class="text-danger">*</span></h5>
+                                    <div class="input-group">
+                                        <select name="fuel_consumption" class="form-control" required>
+                                            <option value="">Seçiniz</option>
+                                            <option value="A" @if(old('fuel_consumption', $product->fuel_consumption) == 'A') selected @endif>A</option>
+                                            <option value="B" @if(old('fuel_consumption', $product->fuel_consumption) == 'B') selected @endif>B</option>
+                                            <option value="C" @if(old('fuel_consumption', $product->fuel_consumption) == 'C') selected @endif>C</option>
+                                            <option value="D" @if(old('fuel_consumption', $product->fuel_consumption) == 'D') selected @endif>D</option>
+                                            <option value="E" @if(old('fuel_consumption', $product->fuel_consumption) == 'E') selected @endif>E</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                @error('fuel_consumption')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
 
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <h5>Yol Tutuşu <span class="text-danger">*</span></h5>
+                                    <div class="input-group">
+                                        <select name="grip" class="form-control" required>
+                                            <option value="">Seçiniz</option>
+                                            <option value="A" @if(old('grip', $product->grip) == 'A') selected @endif>A</option>
+                                            <option value="B" @if(old('grip', $product->grip) == 'B') selected @endif>B</option>
+                                            <option value="C" @if(old('grip', $product->grip) == 'C') selected @endif>C</option>
+                                            <option value="D" @if(old('grip', $product->grip) == 'D') selected @endif>D</option>
+                                            <option value="E" @if(old('grip', $product->grip) == 'E') selected @endif>E</option>
+                                        </select>
+                                    </div>  
+                                </div>
+                                @error('grip')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <h5>Gürültü Seviyesi (dB) <span class="text-danger"></span></h5>
+                                    <div class="input-group">
+                                        <input type="number" name="noise_level" value="{{ old('noise_level', $product->noise_level) }}" class="form-control" required data-validation-required-message="Bu alan zorunludur">
+                                    </div>
+                                </div>
+                                @error('noise_level')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div><!-- Beşinci sıra bitiş -->
+
+                                <div class="row">
+
+                                <div class="col-md-4 ">
+
+                            <div class="form-group">
+                                <h5> Stok kodu <span class="text-danger"></span></h5>
+                                <div class="input-group">
+                                    <input type="" name="stock_code" value="{{ $product->stock_code }}"
+                                        class="form-control" required
+                                       >
+                                </div>
+                            </div>
+                            @error('stock_code')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
+
+
+
+                                </div>
+
+                                </div>
                              <div class="row">
                                  <div class="col-12">
 
@@ -243,18 +313,17 @@
 
                              <div class="row">
                                  <div class="col-md-6">
-                                     <div class="form-group">
-                                         <h5>Durum</h5>
-                                         <div class="controls">
-                                             <input type="checkbox" id="status" name="status"
-                                                 value="{{ $product->status }}" {{ $product->status ? 'checked' : '' }}>
-                                             <label for="status" id="check">Aktif</label>
-                                         </div>
-                                         @error('status')
-                                             <span class="text-danger">{{ $message }}</span>
-                                         @enderror
-                                     </div>
-                                 </div>
+                                 <div class="form-group">
+                                    <h5>Durum</h5>
+                                    <div class="controls">
+                                        <input type="checkbox" id="status" name="status" value="1" {{ $product->status ? 'checked' : '' }}>
+                                        <label for="status" id="check">Aktif</label>
+                                    </div>
+                                    @error('status')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                                </div>
                                  <div class="col-md-6">
                                      <div class="form-group">
                                          <h5>Ürün Tagleri <span class="text-danger">*</span></h5>

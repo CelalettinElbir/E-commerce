@@ -258,7 +258,7 @@
                                         <circle cx="176" cy="256" r="28" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="28" />
                                         <circle cx="336" cy="384" r="28" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="28" />
                                     </svg>
-                                    <span class="widget__filter--btn__text">Filter</span>
+                                    <span class="widget__filter--btn__text">Filtrele</span>
                                 </button>
                                 <div class="product__view--mode__list product__short--by align-items-center d-flex ">
                                     <label class="product__view--label">Ürün </label>

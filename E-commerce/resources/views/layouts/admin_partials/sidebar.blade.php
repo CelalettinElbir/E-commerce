@@ -5,11 +5,11 @@
 
         <div class="user-profile">
             <div class="ulogo">
-                <a href="index.html">
+                <a href="{{route("admin.dashboard")}}">
                     <!-- logo for regular state and mobile devices -->
                     <div class="d-flex align-items-center justify-content-center">
-                        <img src="../images/logo-dark.png" alt="">
-                        <h3><b>Sunny</b> Admin</h3>
+                        <img src="../" alt="">
+                        <h3><b>Özelçiler</b> Otomotiv</h3>
                     </div>
                 </a>
             </div>
@@ -56,6 +56,14 @@
                 <a href="{{ route('slider.index') }}">
                     <i data-feather="image"></i>
                     <span>Slider</span>
+                </a>
+            </li>
+
+
+            <li>
+                <a href="{{ route('banners.index') }}">
+                    <i data-feather="speaker"></i>
+                    <span>Afiş</span>
                 </a>
             </li>
 

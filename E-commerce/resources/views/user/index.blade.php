@@ -118,7 +118,7 @@
 
 
 
-<section class="categories__section section--padding">
+<!-- <section class="categories__section section--padding">
     <div class="container">
         <div class="row mb--n25">
             <div class="col-lg-2 col-md-4 col-sm-4 col-6 mb-25">
@@ -206,7 +206,7 @@
             </div>
         </div>
     </div>
-</section>
+</section> -->
 
 
 <section class="blog__section section--padding">
@@ -251,7 +251,7 @@
 
 
 <div class="brand__section section--padding pt-0">
-    <div class="container">
+    <div class="container-fluid">
 
 
 
@@ -268,8 +268,20 @@
                 <img class="brang__logo--img" src="{{asset("upload/logos/continantal.jpg")}}" alt="brand-logo">
             </div>
             <div class="brang__logo--items">
-                <img class="brang__logo--img" src="assets/img/logo/brand-logo5.webp" alt="brand-logo">
+                <img class="brang__logo--img" src="{{asset("upload/logos/PETLAS__LOGO-150x150.png")}}"  alt="petlas">
             </div>
+            <div class="brang__logo--items">
+                <img class="brang__logo--img" src="{{asset("upload/logos/logı-150x150w.webp")}}"  alt="petlas">
+            </div>
+
+            <div class="brang__logo--items">
+                <img class="brang__logo--img" src="{{asset("upload/logos/kormoran-150x150w.png")}}"  alt="kormoran">
+            </div>
+
+            <div class="brang__logo--items">
+                <img class="brang__logo--img" src="{{asset("upload/logos/pirelli-480x320-150x150w.png")}}"  alt="pirelli">
+            </div>
+
         </div>
     </div>
 </div>

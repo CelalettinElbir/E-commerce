@@ -1,5 +1,4 @@
 @extends('layouts.admin')
-
 @section('content')
 <div class="content-header">
     <div class="d-flex align-items-center">
@@ -81,15 +80,7 @@
                                         </div>
                                         @endif
 
-                                        @elseif($order->status == 'işleniyor')
-                                        <div class="d-flex align-items-center">
-                                            <a class="btn btn-info btn" href="{{ route('admin.orders.ShipmentCode', $order) }}" title="Kargo Kodu">
-                                                <i data-feather="truck"></i>
-                                            </a>
-                                        </div>
-                                        @endif
-
-
+                                       
                                     </td>
                                 </tr>
                                 @endforeach

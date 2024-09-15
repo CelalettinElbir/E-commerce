@@ -2,6 +2,16 @@
 
 
 @section('content')
+
+<style>
+
+
+.input-group > .form-control::placeholder {
+    color: #888; /* Placeholder metin rengini değiştirir */
+}
+
+
+</style>
     <section class="content">
 
         <!-- Basic Forms -->
@@ -80,31 +90,23 @@
 
                                         </div>
 
-                                        <div class="col-md-6 ">
-
+                                        <div class="col-md-6">
                                             <div class="form-group">
-                                                <h5> Stok kodu <span class="text-danger">*</span></h5>
+                                                <h5>Üretim Yılı <span class="text-danger"></span></h5>
                                                 <div class="input-group">
-                                                    <input type="" name="stock_code" class="form-control" required
-                                                        data-validation-required-message="Bu alan zorunludur">
+                                                    <input type="number" name="production_year" class="form-control" required data-validation-required-message="Bu alan zorunludur" placeholder="YYYY" min="2020" max="{{ date('Y') }}">
                                                 </div>
                                             </div>
-                                            @error('stock_code')
+                                            @error('production_year')
                                                 <span class="text-danger">{{ $message }}</span>
                                             @enderror
-
-
-
-
-
-
                                         </div>
 
                                     </div><!--  ikinci sıra  bitiş-->
 
 
 
-                                    <div class="row"><!--  üçüncü sıra -->
+                                        <div class="row"><!--  üçüncü sıra -->
                                         <div class="col-md-4 ">
 
                                             <div class="form-group">
@@ -177,7 +179,7 @@
                                             <div class="form-group">
                                                 <h5> Fiyat <span class="text-danger">*</span></h5>
                                                 <div class="input-group">
-                                                    <input type="number" name="price" class="form-control" required
+                                                    <input  name="price" placeholder="1500.46" class="form-control" required
                                                         data-validation-required-message="Bu alan zorunludur">
                                                 </div>
                                             </div>
@@ -192,8 +194,8 @@
                                             <div class="form-group">
                                                 <h5> İndirimli fiyat</h5>
                                                 <div class="input-group">
-                                                    <input type="number" name="discount_price" class="form-control"
-                                                        required data-validation-required-message="Bu alan zorunludur">
+                                                    <input  placeholder="1500.46" name="discount_price" class="form-control"
+                                                    >
                                                 </div>
                                             </div>
                                             @error('discount_price')
@@ -203,6 +205,82 @@
 
                                     </div><!--  üçüncü sıra  bitiş-->
 
+                            
+                                    <div class="row"><!-- Beşinci sıra -->
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <h5>Yakıt Tüketimi <span class="text-danger">*</span></h5>
+                                                <div class="input-group">
+                                                    <select name="fuel_consumption" class="form-control" required>
+                                                        <option value="">Seçiniz</option>
+                                                        <option value="A">A</option>
+                                                        <option value="B">B</option>
+                                                        <option value="C">C</option>
+                                                        <option value="D">D</option>
+                                                        <option value="E">E</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            @error('fuel_consumption')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <h5>Yol Tutuşu <span class="text-danger">*</span></h5>
+                                                <div class="input-group">
+                                                    <select name="grip" class="form-control" required>
+                                                        <option value="">Seçiniz</option>
+                                                        <option value="A">A</option>
+                                                        <option value="B">B</option>
+                                                        <option value="C">C</option>
+                                                        <option value="D">D</option>
+                                                        <option value="E">E</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            @error('grip')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <h5>Gürültü Seviyesi (dB) <span class="text-danger">*</span></h5>
+                                                <div class="input-group">
+                                                    <input type="number" name="noise_level" class="form-control" required data-validation-required-message="Bu alan zorunludur">
+                                                </div>
+                                            </div>
+                                            @error('noise_level')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+
+                                      
+                                    </div><!-- Beşinci sıra bitiş -->
+
+
+                                    <div class="row">
+
+                                    <div class="col-md-4">
+                                            <div class="form-group">
+                                                <h5>Stok kodu  </h5>
+                                                <div class="input-group">
+                                                    <input  name="stock_code" placeholder="Sopyo.." class="form-control"  >
+                                                </div>
+                                            </div>
+                                            @error('noise_level')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+
+
+                                    </div>
+
+
+
+
                                     <div class="row">
                                         <div class="col-12">
 
@@ -211,9 +289,7 @@
                                                     <h4 class="box-title">Ürün açıklaması <br>
                                                     </h4>
                                                 </div>
-                                                <!-- /.box-header -->
                                                 <div class="box-body">
-
                                                     <textarea id="editor1" name="description" rows="10" cols="80">
                                                                           Ürün Açıklaması 
                                                       </textarea>

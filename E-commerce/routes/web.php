@@ -46,7 +46,6 @@ Route::prefix('admin/messages')->group(function () {
     Route::delete('/{message}', [ContactController::class, 'destroy'])->name('admin.messages.destroy');
 });
 
-// Shop Routes
 Route::controller(ShopController::class)->group(function () {
     Route::get('/products', 'index')->name('shop.index');
     Route::get('product/{product:slug}', 'show')->name('shop.show');
@@ -72,7 +71,6 @@ Route::middleware("auth")->group(function () {
     Route::post('/checkout/payment/callback', [paymentController::class, 'paytrCallback'])->name('user.payment.callback');
     Route::get('/checkout/success', [paymentController::class, 'success'])->name('user.payment.success');
     Route::get('/checkout/failure', [paymentController::class, 'failure'])->name('user.payment.failure');
-    // Route::get('/deneme', [paymentController::class, 'order']);
 
     Route::get("/user/adresses", [AdressController::class, "index"])->name("user.address.index");
     Route::get("/user/addresses/{address}/edit", [AdressController::class, "edit"])->name("user.address.edit");

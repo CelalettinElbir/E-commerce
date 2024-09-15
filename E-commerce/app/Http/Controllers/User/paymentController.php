@@ -385,13 +385,13 @@ class paymentController extends Controller
 
         // For demonstration, assume payment is successful
         $paymentSuccessful = true;
-
+        $orderTotal = Cart::total(0, '', ''); // Formatlanmamış total
         if ($paymentSuccessful) {
             // Create the order
             $order = new ShopOrder();
             $order->user_id = Auth::id();
             $order->address_id = Address::where('user_id', Auth::id())->latest()->first()->id; // Get latest address ID
-            $order->order_total = Cart::total();
+            $order->order_total =  $orderTotal;
             $order->status = 'beklemede'; // Set initial status as pending
             $order->save();
 

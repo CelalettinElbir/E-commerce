@@ -246,10 +246,9 @@
             <div class="col">
                 <ul class="product__tab--one product__details--tab d-flex mb-30">
                     <li class="product__details--tab__list active" data-toggle="tab" data-target="#description">
-                        Description</li>
+                        Detaylar</li>
 
-                    <li class="product__details--tab__list" data-toggle="tab" data-target="#information">Additional
-                        Info</li>
+                    <!-- <li class="product__details--tab__list" data-toggle="tab" data-target="#information">Ek Bilgiler</li> -->
                 </ul>
                 <div class="product__details--tab__inner border-radius-10">
                     <div class="tab_content">
@@ -258,65 +257,14 @@
                                 <div class="product__tab--content__step mb-30">
                                     {!! $product->description !!}
                                 </div>
-                                {{-- <div class="product__tab--content__step style2 d-flex align-items-center mb-30">
-                                        <div class="product__tab--content__banner">
-                                            <img class="product__tab--content__banner--img border-radius-5"ned variable 
-                                                src="assets/img/other/car-banner-img.webp" alt="banner-img">
-                                        </div>
-                                        <div class="product__tab--content__right">
-                                            <p class="product__tab--content__desc">Lorem ipsum dolor sit amet consectetur
-                                                adipisicing elit. Cumque nisi tempora quibusdam libero possimus magni
-                                                impedit a, facere recusandae eos ut at quod sed praesentium!</p>
-                                            <div class="image__with--text__percent product__tab--percent__style">
-                                                <ul>
-                                                    <li class="image__with--text__percent--list mb-20">
-                                                        <span
-                                                            class="image__with--text__percent--top d-flex justify-content-between align-content-center">
-                                                            <span class="image__with--text__percent--content">Integrative
-                                                                control</span>
-                                                            <span class="image__with--text__percent--content">58%</span>
-                                                        </span>
-                                                    </li>
-                                                    <li class="image__with--text__percent--list two mb-20">
-                                                        <span
-                                                            class="image__with--text__percent--top d-flex justify-content-between align-content-center">
-                                                            <span class="image__with--text__percent--content">Design
-                                                                Device</span>
-                                                            <span class="image__with--text__percent--content">77%</span>
-                                                        </span>
-                                                    </li>
-                                                    <li class="image__with--text__percent--list three mb-20">
-                                                        <span
-                                                            class="image__with--text__percent--top d-flex justify-content-between align-content-center">
-                                                            <span class="image__with--text__percent--content">Service
-                                                                Control</span>
-                                                            <span class="image__with--text__percent--content">58%</span>
-                                                        </span>
-                                                    </li>
-                                                    <li class="image__with--text__percent--list four">
-                                                        <span
-                                                            class="image__with--text__percent--top d-flex justify-content-between align-content-center">
-                                                            <span class="image__with--text__percent--content">Metar
-                                                                Surusn</span>
-                                                            <span class="image__with--text__percent--content">69%</span>
-                                                        </span>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div> --}}
+                              
                                 <div class="product__tab--content__step">
-                                    <p class="product__tab--content__desc">Polor sit amet, consectetuer adipiscing
-                                        elit. Morbi commodo, ipsum sed pharetra gravida, orci magna rhoncus neque, id
-                                        pulvinar odio
-                                        lorem non turpis. Nullam sit amet enim. Suspendisse id velit vitae ligula
-                                        volutpat condimentum. Aliquam erat volutpat. Sed quis velit.
-                                        Nulla facilisi. Nulla libero. Vivamus pharetra posuere.</p>
+                                    <p class="product__tab--content__desc"> {!! $product->description !!}</p>
                                 </div>
                             </div>
                         </div>
 
-                        <div id="information" class="tab_pane">
+                        <!-- <div id="information" class="tab_pane">
                             <div class="product__tab--conten">
                                 <div class="product__tab--content__step">
                                     <ul class="additional__info_list">
@@ -343,7 +291,7 @@
                                     </ul>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
 
                     </div>
                 </div>

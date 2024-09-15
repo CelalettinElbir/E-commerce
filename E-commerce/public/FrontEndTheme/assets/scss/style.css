@@ -1805,17 +1805,17 @@ body.overlay__active::before,
   display: block;
 }
 .main__logo--img {
-  max-width: 145px;
+  max-width: 100px;
   display: block;
 }
 @media only screen and (min-width: 480px) {
   .main__logo--img {
-    max-width: 160px;
+    max-width: 60px
   }
 }
 @media only screen and (min-width: 768px) {
   .main__logo--img {
-    max-width: 100%;
+    max-width: 80px;
   }
 }
 .main__logo--title {

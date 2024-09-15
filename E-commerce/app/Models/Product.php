@@ -16,8 +16,10 @@ class Product extends Model
     protected $fillable = [
         'name', 'stock_code', 'aspect_ratio', 'width', 'rim_diameter',
         'stock', 'price', 'discount_price', 'description', 'status',
-        'image', 'short_description', 'slug', "brand_id", "category_id"
+        'image', 'short_description', 'slug', 'brand_id', 'category_id',
+        'fuel_consumption', 'grip', 'noise_level', 'production_year'
     ];
+    
 
     public function orderDetails()
     {

@@ -7,7 +7,7 @@
 
 
 
-                    <ul class="social__share d-flex">
+                    <ul class="social__share d-flex justify-content-center">
                         <li class="social__share--list">
                             <a class="social__share--icon" target="_blank" href="https://www.hepsiburada.com/magaza/ozelciler-otomotiv">
                                 <i class="fa-solid fa-shop"></i>
@@ -102,9 +102,9 @@
                 <div class="header__menu d-none d-lg-block header__sticky--block">
                     <nav class="header__menu--navigation">
                         <ul class="header__menu--wrapper d-flex">
-
-
                             <li class="header__menu--items">
+                            <a class="header__menu--link" href="{{route('contact.form')}}">İletişim </a>
+
                                 <!-- <a class="header__menu--link" href="index.html">Home
                                     <svg class="menu__arrowdown--icon" xmlns="http://www.w3.org/2000/svg" width="12" height="7.41" viewBox="0 0 12 7.41">
                                         <path d="M16.59,8.59,12,13.17,7.41,8.59,6,10l6,6,6-6Z" transform="translate(-6 -8.59)" fill="currentColor" opacity="0.7">
@@ -119,7 +119,7 @@
                                     <li class="header__sub--menu__items"><a href="index-5.html" class="header__sub--menu__link">Home Five</a></li>
                                 </ul> -->
                             </li>
-                            <li class="header__menu--items mega__menu--items">
+                            <!-- <li class="header__menu--items mega__menu--items">
                                 <a class="header__menu--link" href="shop.html">Shop
                                     <svg class="menu__arrowdown--icon" xmlns="http://www.w3.org/2000/svg" width="12" height="7.41" viewBox="0 0 12 7.41">
                                         <path d="M16.59,8.59,12,13.17,7.41,8.59,6,10l6,6,6-6Z" transform="translate(-6 -8.59)" fill="currentColor" opacity="0.7">
@@ -226,10 +226,16 @@
                                     <li class="header__sub--menu__items"><a href="login.html" class="header__sub--menu__link">Login Page</a></li>
                                     <li class="header__sub--menu__items"><a href="404.html" class="header__sub--menu__link">Error Page</a></li>
                                 </ul>
-                            </li>
+                            </li> -->
+                            
+
+
                             <li class="header__menu--items">
-                                <a class="header__menu--link" href="{{route('contact.form')}}">İletişim </a>
+                                 <a class="header__menu--link" href="{{route('contact.form')}}"> </a>
+
+
                             </li>
+
                         </ul>
                     </nav>
                 </div>
@@ -248,15 +254,23 @@
                         @endauth
 
                         @guest
-                        <li class="header__account--items d-none d-lg-block">
-                            <a class="header__account--btn" href="{{ route('profile.edit') }}">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class=" -user">
-                                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                                    <circle cx="12" cy="7" r="4"></circle>
-                                </svg>
-                                <span class="visually-hidden">Profilim</span>
-                            </a>
-                        </li>
+                      
+                        <li class="header__menu--items">
+                        <a class="header__menu--link " href="#">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user">
+                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="12" cy="7" r="4"></circle>
+                            </svg> 
+                            <svg class="menu__arrowdown--icon" xmlns="http://www.w3.org/2000/svg" width="12" height="7.41" viewBox="0 0 12 7.41">
+                                <path d="M16.59,8.59,12,13.17,7.41,8.59,6,10l6,6,6-6Z" transform="translate(-6 -8.59)" fill="currentColor" opacity="0.7"></path>
+                            </svg>
+                        </a>
+                        <ul class="header__sub--menu">
+                            <li class="header__sub--menu__items"><a href="{{ route('register') }}" class="header__sub--menu__link">Kayıt Ol</a></li>
+                            <li class="header__sub--menu__items"><a href="{{ route('login') }}" class="header__sub--menu__link">Giriş Yap</a></li>
+                        </ul>
+                    </li>
+
                         @endguest
 
                         <li class="header__account--items  header__account--search__items mobile__d--block d-sm-2-none">
@@ -306,7 +320,7 @@
                                     <path d="M221.09 64a157.09 157.09 0 10157.09 157.09A157.1 157.1 0 00221.09 64z" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32"></path>
                                     <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="32" d="M338.29 338.29L448 448"></path>
                                 </svg>
-                                <span class="visually-hidden">Search</span>
+                                <span class="visually-hidden">Ara</span>
                             </a>
                         </li>
                         @auth
@@ -326,7 +340,7 @@
 
                         @guest
 
-                        <li class="header__account--items d-none d-lg-block">
+                        <!-- <li class="header__account--items d-none d-lg-block">
                             <a class="header__account--btn" href="{{ route('profile.edit') }}">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class=" -user">
                                     <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
@@ -334,7 +348,14 @@
                                 </svg>
                                 <span class="visually-hidden">Hesabım</span>
                             </a>
-                        </li>
+                        </li> -->
+
+
+                        <a class="header__menu--link text-white" href="blog.html">Blog 
+                                            <svg class="menu__arrowdown--icon" xmlns="http://www.w3.org/2000/svg" width="12" height="7.41" viewBox="0 0 12 7.41">
+                                                <path d="M16.59,8.59,12,13.17,7.41,8.59,6,10l6,6,6-6Z" transform="translate(-6 -8.59)" fill="currentColor" opacity="0.7"></path>
+                                            </svg>
+                                        </a>
 
                         @endguest
 
@@ -492,7 +513,7 @@
                         </ul>
                         <nav class="category__mobile--menu">
                             <ul class="category__mobile--menu_ul">
-                                <li class="categories__menu--items">
+                                <!-- <li class="categories__menu--items">
                                     <a class="categories__menu--link" href="shop.html">
                                         <svg class="categories__menu--svgicon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                             <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
@@ -502,7 +523,7 @@
                                             </line>
                                         </svg> Lighting
                                     </a>
-                                </li>
+                                </li> -->
                                 <li class="categories__menu--items">
                                     <a class="categories__menu--link" href="shop.html">
                                         <svg class="categories__menu--svgicon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
